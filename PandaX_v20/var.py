@@ -1,5 +1,4 @@
 """
-📚 Commands Available -
 
 **DataBase Commands, do not use if you don't know what it is.**
 
