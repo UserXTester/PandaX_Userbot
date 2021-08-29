@@ -51,7 +51,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-PandaBranch = "[PandaUserbot](https://github.com/MrxXP/PandaX_Userbot)" 
+PandaBranch = "[PandaUserbot](https://github.com/ilhammansiz/PandaX_Userbot)" 
 
 PANDA = "https://telegra.ph//file/813db0b898e3df7611c2c.jpg"
 helps = get_string("inline_1")
@@ -98,7 +98,7 @@ _main_help_menu = [
 
 SUP_BUTTONS = [
     [
-        Button.url("♨ 𝚁𝙴𝙿𝙾 ♨", url="https://github.com/PandaUserbot/Panda"),
+        Button.url("♨ 𝚁𝙴𝙿𝙾 ♨", url="https://github.com/ilhammansiz/PandaX_Userbot"),
         Button.url(
             "📙 𝐌𝐨𝐝𝐮𝐥𝐞𝐬 📙", url="https://github.com/IlhamMansiz/PandaX_UserbotModules"
         ),
@@ -112,7 +112,7 @@ SUP_BUTTONS = [
 
 PANDAX = [
     [
-        Button.url("♨ 𝚁𝙴𝙿𝙾 ♨", url="https://github.com/PandaUserbot/Panda"),
+        Button.url("♨ 𝚁𝙴𝙿𝙾 ♨", url="https://github.com/ilhammansiz/PandaX_Userbot"),
         Button.url(
             "📙 𝐌𝐨𝐝𝐮𝐥𝐞𝐬 📙", url="https://github.com/IlhamMansiz/PandaX_UserbotModules"
         ),
