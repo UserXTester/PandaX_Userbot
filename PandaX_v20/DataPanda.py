@@ -8,7 +8,6 @@
 
 
 """
-💐 Commands Available -
 • `{i}kickme`
     Leaves the group in which it is used.
 • `{i}date`
