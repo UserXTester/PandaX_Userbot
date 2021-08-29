@@ -1,5 +1,4 @@
 """
-💐 Commands Available
 • `{i}zip <reply to file>
     zip the replied file
 • `{i}unzip <reply to zip file>`
