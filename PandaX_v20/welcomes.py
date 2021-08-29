@@ -1,6 +1,4 @@
 """
-💐 Commands Available -
-
 ---- Welcomes ----
 • `{i}setwelcome <message/reply to message>`
     Set welcome message in the current chat.
