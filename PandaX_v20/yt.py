@@ -1,5 +1,4 @@
 """
-💐 Commands Available -
 • `{i}yta <(youtube) link>`
    Download audio from the link.
 • `{i}ytv <(youtube) link>`
