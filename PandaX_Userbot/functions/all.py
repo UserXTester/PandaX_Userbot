@@ -95,7 +95,7 @@ CMD_WEB = {
     "siasky": 'curl -X POST "https://siasky.net/skynet/skyfile" -F "file=@{}"',
 }
 
-UPSTREAM_REPO_URL = "https://github.com/MrxXP/PandaX_Userbot"
+UPSTREAM_REPO_URL = "https://github.com/ilhammansiz/PandaX_Userbot"
 
 width_ratio = 0.7
 reqs = "filepanda.txt"
