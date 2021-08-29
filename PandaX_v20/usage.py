@@ -1,5 +1,4 @@
 """
-💐 Commands Available
 
 • `{i}usage`
     Get overall usage.
