@@ -1,5 +1,4 @@
 """
-💐 Commands Available -
 
 • `{i}get var <variable name>`
    Get value of the given variable name.
