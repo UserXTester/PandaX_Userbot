@@ -9,7 +9,6 @@
 
 
 """
-💐 Commands Available -
 • `{i}fsub <chat username><id>`
     Enable ForceSub in Used Chat !
 • `{i}checkfsub`
