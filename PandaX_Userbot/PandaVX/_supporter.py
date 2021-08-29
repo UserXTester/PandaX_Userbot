@@ -16,7 +16,21 @@ from ..Panda.database import Var
 ALIVE_NAME = petercordpanda_bot.me.first_name
 BOTLOG = int(udB.get("LOG_CHANNEL"))
 BOTLOG_CHATID = int(udB.get("LOG_CHANNEL"))
-
+TEMP_DOWNLOAD_DIRECTORY = os.environ.get(
+            "TEMP_DOWNLOAD_DIRECTORY", "PandaVersion/downloads/"
+        )
+G_BAN_LOGGER_GROUP = int(udB.get("LOG_CHANNEL"))
+HEROKU_APP_NAME = Var.HEROKU_APP_NAME
+HEROKU_API_KEY = Var.HEROKU_API
+GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
+GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
+CHROME_DRIVER = os.environ.get(
+            "CHROME_DRIVER", "/app/.chromedriver/bin/chromedriver"
+        )
+GOOGLE_CHROME_BIN = os.environ.get(
+            "GOOGLE_CHROME_BIN", "/app/.apt/usr/bin/google-chrome"
+        )
+ 
 ultroid_bot = petercordpanda_bot
 bot = petercordpanda_bot
 borg = petercordpanda_bot
