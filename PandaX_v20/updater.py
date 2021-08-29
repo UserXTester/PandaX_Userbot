@@ -3,7 +3,6 @@
 # 
 
 """
-💐 Commands Available -
 • `{i}update`
    perintah untuk memeriksa pembaruan userbot dan memperbarui nya ke versi terbaru.
 """
