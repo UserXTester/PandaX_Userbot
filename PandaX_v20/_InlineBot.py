@@ -230,7 +230,7 @@ async def setting(event):
             len(PANDA),
             cmd,
         ),
-        file=Panda_Logo,
+        file=Panda_Alive,
         link_preview=False,
         buttons=[
             [
@@ -283,7 +283,7 @@ async def setting(event):
             len(PANDA),
             cmd,
         ),
-        file=Panda_Logo,
+        file=Panda_Alive,
         link_preview=False,
         buttons=[
             [
