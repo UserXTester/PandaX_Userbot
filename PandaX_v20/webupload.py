@@ -1,5 +1,4 @@
 """
-💐 Commands Available -
 • `{i}webupload`
     Upload files on another server.
 """
