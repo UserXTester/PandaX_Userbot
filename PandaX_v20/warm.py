@@ -6,7 +6,6 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-♨ Commands Available
 •`{i}warn <reply to user> <reason>`
     Gives Warn.
 •`{i}resetwarn <reply to user>`
