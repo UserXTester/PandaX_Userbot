@@ -33,7 +33,6 @@ KLIK DAN PILIH REPO PANDA USERBOT DAN PandaX_Userbot ☺
 ## HEROKU
 <a href="https://heroku.com/deploy?template=https://github.com/PandaUserbot/Panda" rel="nofollow" style="background-color: initial; box-sizing: border-box; color: #0366d6; text-decoration-line: none;"><img alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" style="border-style: none; box-sizing: initial; max-width: 100%;" /></a></div>
  
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FMrxXP%2FPandaX_Userbot%2Ftree%2FPandaUserbot&plugins=redis&envs=SESSION%2CAPI_ID%2CAPI_HASH&optionalEnvs=API_ID%2CAPI_HASH&SESSIONDesc=Your+telethon+session+string.&API_IDDesc=api_id%2C+from+my.telegram.org&API_HASHDesc=api_hash%2C+from+my.telegram.org)
 
 <img src="https://media.giphy.com/media/Rr6J53cRIwdBS/giphy.gif" alt="PandaX_Userbot" width=400px></a>
 
