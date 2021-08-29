@@ -9,7 +9,6 @@
 
 
 """
-💐 Commands Available : payudara
 • `{i}tetek` 
    mengirim gambar tetek besar 😂.
 """
