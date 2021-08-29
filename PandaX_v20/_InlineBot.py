@@ -704,7 +704,7 @@ async def on_plug_in_callback_query_handler(event):
 @owner
 async def on_plug_in_callback_query_handler(event):
     plugin_name = event.data_match.group(1).decode("UTF-8")
-    help_string = f"nama plugin : `{plugin_name}`\n"
+    help_string = f"nama plugin : `{plugin_name}`\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
     try:
         for i in HELP[plugin_name]:
             help_string += i
@@ -749,7 +749,7 @@ async def on_plug_in_callback_query_handler(event):
 @owner
 async def on_plug_in_callback_query_handler(event):
     plugin_name = event.data_match.group(1).decode("UTF-8")
-    help_string = f"nama plugin : `{plugin_name}`\n"
+    help_string = f"nama plugin : `{plugin_name}`\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
     try:
         for i in HELP[plugin_name]:
             help_string += i
@@ -802,14 +802,14 @@ async def on_plug_in_callback_query_handler(event):
         try:
             for u in CMD_HELP[plugin_name]:
                 help_string = (
-                    f"nama plugin : {plugin_name}\n\n📚 Commands Available-\n\n"
+                    f"nama plugin : {plugin_name}\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
                 )
                 help_string += str(CMD_HELP[plugin_name])
         except BaseException:
             try:
                 if plugin_name in LIST:
                     help_string = (
-                        f"nama plugin : {plugin_name}\n\n📚 Commands Available-\n\n"
+                        f"nama plugin : {plugin_name}\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
                     )
                     for d in LIST[plugin_name]:
                         help_string += HNDLR + d
@@ -854,7 +854,7 @@ def page_num(page_number, loaded_plugins, prefix, type):
     if emoji:
         multi, mult2i = emoji, emoji
     else:
-        multi, mult2i = "♻", "♻"
+        multi, mult2i = "🧥", "🧥"
     helpable_plugins = []
     global upage
     upage = page_number
