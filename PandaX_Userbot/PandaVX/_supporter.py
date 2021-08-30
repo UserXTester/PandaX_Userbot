@@ -90,7 +90,6 @@ def admin_cmd(pattern=None, command=None, **args):
 friday_on_cmd = admin_cmd
 j_cmd = admin_cmd
 command = ilhammansiz_cmd
-register = register
 ultroid_cmd = ilhammansiz_cmd
 geezbot_cmd = admin_cmd
 
