@@ -13,6 +13,7 @@ from .. import udB, petercordpanda_bot, LOGSPAMMER
 from ..Panda.core import LIST
 from ..Panda.database import Var
 
+CMD_HELP = {}
 ALIVE_NAME = petercordpanda_bot.me.first_name
 BOTLOG = int(udB.get("LOG_CHANNEL"))
 BOTLOG_CHATID = int(udB.get("LOG_CHANNEL"))
