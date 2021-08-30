@@ -1,5 +1,4 @@
 """
-💐 Commands Available -
 • `{i}hack`
    ketik {i}hack untuk meng hack.
 """
