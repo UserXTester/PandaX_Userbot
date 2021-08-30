@@ -3,7 +3,7 @@
    ketik {i}hack untuk meng hack.
 """
 
-
+from time import sleep
 import asyncio
 
 from . import *
