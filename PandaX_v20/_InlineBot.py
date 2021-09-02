@@ -103,7 +103,7 @@ SUP_BUTTONS = [
             "📙 𝐌𝐨𝐝𝐮𝐥𝐞𝐬 📙", url="https://github.com/IlhamMansiz/PandaX_UserbotModules"
         ),
     ],
-    [Button.inline("♻ STATS DATA ♻", data="davina")],
+    [Button.inline("♻ STATS DATA ♻", data="statt")],
     [
         Button.url("✅ SUPPORT ✅", url="https://t.me/TEAMSquadUserbotSupport"),
     ],
@@ -295,7 +295,7 @@ async def setting(event):
                     url="https://github.com/IlhamMansiz/PandaX_UserbotModules",
                 ),
             ],
-            [Button.inline("♻ STATS DATA ♻", data="davina")],
+            [Button.inline("♻ STATS DATA ♻", data="statt")],
             [
                 Button.url("✅ SUPPORT ✅", url="https://t.me/TEAMSquadUserbotSupport"),
             ],
@@ -450,6 +450,15 @@ async def _(event):
 async def _(event):
     uptime = await get_readable_time((time.time() - start_time))
     pin = f"🚀 ᴜᴘᴛɪᴍᴇ = {uptime}\n🐼 OWNERS = {OWNER_NAME}"
+    await event.answer(pin, cache_time=0, alert=True)
+
+@callback("statt")
+async def _(event):
+    owner = OWNER_NAME
+    Plugins = len(PLUGINS)
+    Modules = len(MODULES)
+    ExraPanda = len(PANDA)
+    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬ - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n➣ ☬ Exra Panda - {ExtraPanda}"
     await event.answer(pin, cache_time=0, alert=True)
 
 
