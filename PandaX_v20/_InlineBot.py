@@ -103,6 +103,9 @@ SUP_BUTTONS = [
             "📙 𝐌𝐨𝐝𝐮𝐥𝐞𝐬 📙", url="https://github.com/IlhamMansiz/PandaX_UserbotModules"
         ),
     ],
+    [
+        Button.inline("⏰ Ping", data="pkng"),
+        Button.inline("🚀 Uptime", data="upp")],
     [Button.inline("♻ STATS DATA ♻", data="statt")],
     [
         Button.url("✅ SUPPORT ✅", url="https://t.me/TEAMSquadUserbotSupport"),
