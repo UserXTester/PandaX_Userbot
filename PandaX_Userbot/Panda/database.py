@@ -16,3 +16,8 @@ class Var:
     REDIS_PASSWORD = config("REDIS_PASSWORD", default=None)
     VC_SESSION = config("VC_SESSION", default=None)
     MODULES = config("MODULES", default=None)
+
+
+REDISHOST = config("REDISHOST", default=None)
+REDISPORT = config("REDISPORT", default=None)
+REDISUSER = config("REDISUSER", default=None)
