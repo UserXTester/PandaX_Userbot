@@ -460,7 +460,7 @@ async def _(event):
     owner = OWNER_NAME
     Plugins = len(PLUGINS)
     Modules = len(MODULES)
-    command = len(z)
+    command = cmd
     upload = humanbytes(psutil.net_io_counters().bytes_sent)
     down = humanbytes(psutil.net_io_counters().bytes_recv)
     TOTAL = humanbytes(total)
