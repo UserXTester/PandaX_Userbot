@@ -11,7 +11,7 @@ import time
 from datetime import datetime
 from math import ceil
 from os import remove
-
+import shutil
 from git import Repo
 from support import *
 from telethon.tl.types import InputBotInlineResult, InputWebDocument
@@ -457,6 +457,7 @@ async def _(event):
 
 @callback("statt")
 async def _(event):
+    total, used, free = shutil.disk_usage(".")
     owner = OWNER_NAME
     Plugins = len(PLUGINS)
     Modules = len(MODULES)
