@@ -402,6 +402,9 @@ if __name__ == "__main__":
         if vcasst and vcClient and CallsClient:
             multiprocessing.Process(target=pycli).start()
         LOGS.info(suc_msg)
-
+        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
+    else:
+        LOGS.info(suc_msg)
+        petercordpanda_bot.run_until_disconnected()
 
         
