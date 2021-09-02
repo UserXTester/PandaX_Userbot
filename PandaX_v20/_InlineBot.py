@@ -460,7 +460,7 @@ async def _(event):
     owner = OWNER_NAME
     Plugins = len(PLUGINS)
     Modules = len(MODULES)
-    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬ - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}"
+    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}"
     await event.answer(pin, cache_time=0, alert=True)
 
 
