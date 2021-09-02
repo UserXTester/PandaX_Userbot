@@ -848,7 +848,7 @@ async def on_plug_in_callback_query_handler(event):
 
 
 def page_num(page_number, loaded_plugins, prefix, type):
-    number_of_rows = 5
+    number_of_rows = 3
     number_of_cols = 2
     emoji = Redis("EMOJI_IN_HELP")
     if emoji:
