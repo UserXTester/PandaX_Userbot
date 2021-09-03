@@ -6,7 +6,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 # Panda Editor by ilham mansiz
 
-from PandaX_v20.usage import Var.HEROKU_APP_NAME, AppHours, AppMinutes, AppPercentage, hours, minutes , percentage
+from PandaX_v20.usage import Var.HEROKU_APP_NAME, AppHours, AppMinutes, AppPercentage, hours, minutes , percentage, TOTAL, USED, FREE
 import re
 import time
 from datetime import datetime
@@ -472,15 +472,15 @@ async def _(event):
 
 @callback("dyno")
 async def _(event):
-    sudos = udB.get("SUDO") if udB.get("SUDO") else "False"
-    owner = OWNER_NAME
-    Plugins = len(PLUGINS)
-    Modules = len(MODULES)
-    upload = humanbytes(psutil.net_io_counters().bytes_sent)
-    down = humanbytes(psutil.net_io_counters().bytes_recv)
-    cpuUsage = psutil.cpu_percent()
-    memory = psutil.virtual_memory().percent
-    disk = psutil.disk_usage("/").percent
+    tt = TOTAL
+    aps = AppHours
+    pm = AppMinutes
+    pp = AppPercentage
+    h = hours
+    m = minutes
+    cpu = USED
+    free = FREE
+    persen = percentage
     pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n➣ 📑 SUDO USERS ID : {sudos}\n\n📊Penggunaan Data📊\nUpload: {upload}\nDown : {down}\nCPU: {cpuUsage}%\nRAM : {memory}%\nDISK : {disk}%"
     await event.answer(pin, cache_time=0, alert=True)
 
