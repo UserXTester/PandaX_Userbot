@@ -539,14 +539,14 @@ async def _(event):
 
 @callback("dyno")
 async def _(event):
-    tt = TOTAL
+    tt = humanbytes(total)
     aps = AppHours
     pm = AppMinutes
     pp = AppPercentage
     h = hours
     m = minutes
-    cpu = USED
-    free = FREE
+    cpu = humanbytes(used)
+    free = humanbytes(free)
     persen = percentage
     pin = f"⚙️ Dyno Usage ⚙️:\n\n Pemakaian Dyno: {aps}h - {pm}m - {h}%\n➣ Sisa kuota jam dyno bulan ini - {h}h - {m}m - {persen}%\n➣ Total Ruang Disk - {tt} Terpakai - {cpu} Kosong - {free}"
     await event.answer(pin, cache_time=0, alert=True)
