@@ -42,51 +42,7 @@ except BaseException:
     HEROKU_API = None
     HEROKU_APP_NAME = None
 
-def heroku_usage():
-    if HEROKU_API is None and HEROKU_APP_NAME is None:
-        return False, "You do not use heroku, bruh!"
-    useragent = grua()
-    user_id = Heroku.account().id
-    headers = {
-        "User-Agent": useragent,
-        "Authorization": f"Bearer {Var.HEROKU_API}",
-        "Accept": "application/vnd.heroku+json; version=3.account-quotas",
-    }
-    her_url = f"https://api.heroku.com/accounts/{user_id}/actions/get-quota"
-    r = requests.get(her_url, headers=headers)
-    if r.status_code != 200:
-        return (
-            True,
-            f"**ERROR**\n`{r.reason}`",
-        )
-    result = r.json()
-    quota = result["account_quota"]
-    quota_used = result["quota_used"]
-    remaining_quota = quota - quota_used
-    percentage = math.floor(remaining_quota / quota * 100)
-    minutes_remaining = remaining_quota / 60
-    hours = math.floor(minutes_remaining / 60)
-    minutes = math.floor(minutes_remaining % 60)
-    App = result["apps"]
-    try:
-        App[0]["quota_used"]
-    except IndexError:
-        AppQuotaUsed = 0
-        AppPercentage = 0
-    else:
-        AppQuotaUsed = App[0]["quota_used"] / 60
-        AppPercentage = math.floor(App[0]["quota_used"] * 100 / quota)
-    AppHours = math.floor(AppQuotaUsed / 60)
-    AppMinutes = math.floor(AppQuotaUsed % 60)
-    total, used, free = shutil.disk_usage(".")
-    cpuUsage = psutil.cpu_percent()
-    memory = psutil.virtual_memory().percent
-    disk = psutil.disk_usage("/").percent
-    upload = humanbytes(psutil.net_io_counters().bytes_sent)
-    down = humanbytes(psutil.net_io_counters().bytes_recv)
-    TOTAL = humanbytes(total)
-    USED = humanbytes(used)
-    FREE = humanbytes(free)
+
 # ================================================#
 notmine = f"ini adalah bot milik {OWNER_NAME}"
 
@@ -536,6 +492,52 @@ async def _(event):
     disk = psutil.disk_usage("/").percent
     pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n➣ 📑 SUDO USERS ID : {sudos}\n\n📊Penggunaan Data📊\nUpload: {upload}\nDown : {down}\nCPU: {cpuUsage}%\nRAM : {memory}%\nDISK : {disk}%"
     await event.answer(pin, cache_time=0, alert=True)
+
+def heroku_usage():
+    if HEROKU_API is None and HEROKU_APP_NAME is None:
+        return False, "You do not use heroku, bruh!"
+    useragent = grua()
+    user_id = Heroku.account().id
+    headers = {
+        "User-Agent": useragent,
+        "Authorization": f"Bearer {Var.HEROKU_API}",
+        "Accept": "application/vnd.heroku+json; version=3.account-quotas",
+    }
+    her_url = f"https://api.heroku.com/accounts/{user_id}/actions/get-quota"
+    r = requests.get(her_url, headers=headers)
+    if r.status_code != 200:
+        return (
+            True,
+            f"**ERROR**\n`{r.reason}`",
+        )
+    result = r.json()
+    quota = result["account_quota"]
+    quota_used = result["quota_used"]
+    remaining_quota = quota - quota_used
+    percentage = math.floor(remaining_quota / quota * 100)
+    minutes_remaining = remaining_quota / 60
+    hours = math.floor(minutes_remaining / 60)
+    minutes = math.floor(minutes_remaining % 60)
+    App = result["apps"]
+    try:
+        App[0]["quota_used"]
+    except IndexError:
+        AppQuotaUsed = 0
+        AppPercentage = 0
+    else:
+        AppQuotaUsed = App[0]["quota_used"] / 60
+        AppPercentage = math.floor(App[0]["quota_used"] * 100 / quota)
+    AppHours = math.floor(AppQuotaUsed / 60)
+    AppMinutes = math.floor(AppQuotaUsed % 60)
+    total, used, free = shutil.disk_usage(".")
+    cpuUsage = psutil.cpu_percent()
+    memory = psutil.virtual_memory().percent
+    disk = psutil.disk_usage("/").percent
+    upload = humanbytes(psutil.net_io_counters().bytes_sent)
+    down = humanbytes(psutil.net_io_counters().bytes_recv)
+    TOTAL = humanbytes(total)
+    USED = humanbytes(used)
+    FREE = humanbytes(free)
 
 @callback("dyno")
 async def _(event):
