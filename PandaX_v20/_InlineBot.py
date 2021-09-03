@@ -481,7 +481,7 @@ async def _(event):
     cpu = USED
     free = FREE
     persen = percentage
-    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n➣ 📑 SUDO USERS ID : {sudos}\n\n📊Penggunaan Data📊\nUpload: {upload}\nDown : {down}\nCPU: {cpuUsage}%\nRAM : {memory}%\nDISK : {disk}%"
+    pin = f"⚙️ Dyno Usage ⚙️:\n\n Pemakaian Dyno: {aps}h - {pm}m - {h}%\n➣ Sisa kuota jam dyno bulan ini - {h}h - {m}m - {persen}%\n➣ Total Ruang Disk - {tt} Terpakai - {cpu} Kosong - {free}"
     await event.answer(pin, cache_time=0, alert=True)
 
     
