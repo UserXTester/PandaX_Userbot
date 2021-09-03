@@ -108,6 +108,7 @@ SUP_BUTTONS = [
         Button.inline("⏰ Ping", data="pkng"),
         Button.inline("🚀 Uptime", data="upp")],
     [Button.inline("♻ STATS DATA ♻", data="statt")],
+    [Button.inline("📼 USAGE 📼", data="dyno")],
     [
         Button.url("✅ SUPPORT ✅", url="https://t.me/TEAMSquadUserbotSupport"),
     ],
