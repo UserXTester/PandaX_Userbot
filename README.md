@@ -3,22 +3,22 @@
 <img src="https://media.giphy.com/media/7LM3Nd9MvnWFO/giphy.gif">
    
 
-[![GitHub issues](https://img.shields.io/github/issues/mrxxp/PandaX_Userbot?&style=plastic&logo=github)](https://github.com/ilhammansiz/PandaX_Userbot/issues)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mrxxp/PandaX_Userbot?&style=plastic&logo=github)](https://github.com/mrxxp/PandaX_Userbot/graphs/commit-activity)
+[![GitHub issues](https://img.shields.io/github/issues/ilhammansiz/PandaX_Userbot?&style=plastic&logo=github)](https://github.com/ilhammansiz/PandaX_Userbot/issues)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ilhammansiz/PandaX_Userbot?&style=plastic&logo=github)](https://github.com/mrxxp/PandaX_Userbot/graphs/commit-activity)
 [![GitHub contributors](https://img.shields.io/github/contributors/mrxxp/PandaX_Userbot?&style=plastic&logo=github)](https://GitHub.com/mrxxp/PandaX_Userbot/graphs/contributors/)
 <p align="justify">
 <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?label=telethon&logo=pypi&logoColor=white&style=for-the-badge" /></a>
 
-[![PR Closed](https://img.shields.io/github/issues-pr-closed/mrxxp/PandaX_Userbot?&style=flat-square&logo=github)](https://github.com/mrxxp/PandaX_Userbot/pulls?q=is:closed)
-[![GitHub stars](https://img.shields.io/github/stars/mrxxp/pandax_userbot?&style=flat-square&logo=github)](https://github.com/mrxxp/pandax_Userbot/stargazers)
+[![PR Closed](https://img.shields.io/github/issues-pr-closed/ilhammansiz/PandaX_Userbot?&style=flat-square&logo=github)](https://github.com/ilhammansiz/PandaX_Userbot/pulls?q=is:closed)
+[![GitHub stars](https://img.shields.io/github/stars/ilhammansiz/pandax_userbot?&style=flat-square&logo=github)](https://github.com/ilhammansiz/pandax_Userbot/stargazers)
 
-<a href="https://travis-ci.com/mrxxp/PandaX_Userbot.svg?branch=PandaUserbot" /></a>
-    <a href="https://app.codacy.com/gh/mrxxp/PandaX_Userbot/dashboard"> <img src="https://img.shields.io/codacy/grade/a8f0747a964e4712818a28d2a7f4edd3?color=blue&logo=codacy&style=for-the-badge" alt="Codacy" /></a>
-    <a href="https://github.com/mrxxp/PandaX_Userbot"> <img src="https://img.shields.io/github/repo-size/mrxxp/PandaX_Userbot?logo=github&style=for-the-badge" /></a>
-    <a href="https://github.com/mrxxp/PandaX_Userbot/network/members"> <img src="https://img.shields.io/github/forks/mrxxp/PandaX_Userbot-Bot?logo=github&style=for-the-badge" /></a>
+<a href="https://travis-ci.com/ilhammansiz/PandaX_Userbot.svg?branch=PandaUserbot" /></a>
+    <a href="https://app.codacy.com/gh/ilhammansiz/PandaX_Userbot/dashboard"> <img src="https://img.shields.io/codacy/grade/a8f0747a964e4712818a28d2a7f4edd3?color=blue&logo=codacy&style=for-the-badge" alt="Codacy" /></a>
+    <a href="https://github.com/ilhammansiz/PandaX_Userbot"> <img src="https://img.shields.io/github/repo-size/ilhammansiz/PandaX_Userbot?logo=github&style=for-the-badge" /></a>
+    <a href="https://github.com/ilhammansiz/PandaX_Userbot/network/members"> <img src="https://img.shields.io/github/forks/ilhammansiz/PandaX_Userbot-Bot?logo=github&style=for-the-badge" /></a>
     
 <p align="left">
-  <a href="https://github.com/mrxxp/PandaX_Userbot/blob/PandaUserbot/LICENSE"><img src="https://img.shields.io/github/license/mrxxp/PandaX_Userbot?&style=social&logo=github">
+  <a href="https://github.com/ilhammansiz/PandaX_Userbot/blob/PandaUserbot/LICENSE"><img src="https://img.shields.io/github/license/ilhammansiz/PandaX_Userbot?&style=social&logo=github">
   </a></p>
 
 
@@ -33,7 +33,7 @@ KLIK DAN PILIH REPO PANDA USERBOT DAN PandaX_Userbot ☺
 ## HEROKU
 <a href="https://heroku.com/deploy?template=https://github.com/ilhammansiz/PandaX_Userbot" rel="nofollow" style="background-color: initial; box-sizing: border-box; color: #0366d6; text-decoration-line: none;"><img alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" style="border-style: none; box-sizing: initial; max-width: 100%;" /></a></div>
 ## RAILWAY
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/ilhammansiz/PandaX_Userbot&plugins=redis&envs=SESSION%2CAPI_ID%2CAPI_HASH)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/ilhammansiz/pandax_userbot&plugins=redis&envs=SESSION%2CAPI_ID%2CAPI_HASH)
 
 <img src="https://media.giphy.com/media/Rr6J53cRIwdBS/giphy.gif" alt="PandaX_Userbot" width=400px></a>
 
