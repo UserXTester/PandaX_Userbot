@@ -458,6 +458,12 @@ async def _(event):
 @callback("statt")
 async def _(event):
     sudos = Redis("SUDOS")
+    if sudos == "" or sudos is None:
+    sumos = sudos.split(" ")
+    msg = ""
+    for i in sumos:
+        try:
+            name = (await ult.client.get_entity(int(i))).first_name
     owner = OWNER_NAME
     Plugins = len(PLUGINS)
     Modules = len(MODULES)
@@ -466,7 +472,7 @@ async def _(event):
     cpuUsage = psutil.cpu_percent()
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage("/").percent
-    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n➣ 📑 SUDO USERS :{sudos}\n\n📊Penggunaan Data📊\nUpload: {upload}\nDown : {down}\nCPU: {cpuUsage}%\nRAM : {memory}%\nDISK : {disk}%"
+    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n➣ 📑 SUDO USERS :{msg}\n\n📊Penggunaan Data📊\nUpload: {upload}\nDown : {down}\nCPU: {cpuUsage}%\nRAM : {memory}%\nDISK : {disk}%"
     await event.answer(pin, cache_time=0, alert=True)
 
     
