@@ -457,7 +457,7 @@ async def _(event):
 
 @callback("statt")
 async def _(event):
-    sudos = Redis("SUDOS")
+    sudos = udB.get("SUDO") if udB.get("SUDO") else "False"
     owner = OWNER_NAME
     Plugins = len(PLUGINS)
     Modules = len(MODULES)
