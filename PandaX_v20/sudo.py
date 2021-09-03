@@ -138,7 +138,7 @@ async def _(ult):
             msg += f"• `{i}` ➠ invalid user\n"
     m = udB.get("SUDO") if udB.get("SUDO") else "False"
     if m == "False":
-        m = "[False](https://telegra.ph/iLHam-MansiezZ-06-28)"
+        m = "[False](https://telegra.ph/ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ-09-03)"
     return await ok.edit(
         f"**SUDO MODE : {m}\n\n💐 Daftar Pengikut sudo :**\n{msg}", link_preview=False
     )
