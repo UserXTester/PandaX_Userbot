@@ -6,7 +6,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 # Panda Editor by ilham mansiz
 
-from PandaX_v20.USAGE import Var.HEROKU_APP_NAME, AppHours, AppMinutes, AppPercentage, hours, minutes , percentage, TOTAL, USED, FREE
+
 import re
 import time
 from datetime import datetime
