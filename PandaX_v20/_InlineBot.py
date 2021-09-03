@@ -457,6 +457,7 @@ async def _(event):
 
 @callback("statt")
 async def _(event):
+    m = udB.get("SUDO") if udB.get("SUDO") else "False"
     owner = OWNER_NAME
     Plugins = len(PLUGINS)
     Modules = len(MODULES)
@@ -465,7 +466,7 @@ async def _(event):
     cpuUsage = psutil.cpu_percent()
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage("/").percent
-    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n\n📊Penggunaan Data📊\nUpload: {upload}\nDown : {down}\nCPU: {cpuUsage}%\nRAM : {memory}%\nDISK : {disk}%"
+    pin = f"➣ ☬ Pengguna 𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 ☬\n\nNama - {owner}\n➣ ☬ Plugins - {Plugins}\n➣ ☬ Modules - {Modules}\n📼 SUDO : {m}\n\n📊Penggunaan Data📊\nUpload: {upload}\nDown : {down}\nCPU: {cpuUsage}%\nRAM : {memory}%\nDISK : {disk}%"
     await event.answer(pin, cache_time=0, alert=True)
 
     
