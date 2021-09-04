@@ -15,6 +15,7 @@ class Var:
     REDIS_URI = config("REDIS_URI", default=None)
     REDIS_PASSWORD = config("REDIS_PASSWORD", default=None)
     VC_SESSION = config("VC_SESSION", default=None)
+    VC_PLUGIN = config("VC_PLUGIN", default=None)
     MODULES = config("MODULES", default=None)
 
 
