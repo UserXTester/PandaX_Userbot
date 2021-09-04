@@ -158,7 +158,7 @@ def client_connection():
 PLUGINS = dict(
     root="PandaX_Userbot",
     include=[
-        "vc." + environ["PLUGIN"]
+        "vc." + udB.get("PLUGIN")
     ]
 )
 def vc_connection(udB):
