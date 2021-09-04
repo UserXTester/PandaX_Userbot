@@ -169,15 +169,15 @@ def vc_connection(udB):
                 ":memory:",
                 api_id=Var.API_ID,
                 api_hash=Var.API_HASH,
+                plugins=PLUGINS,
                 bot_token=udB.get("BOT_TOKEN"),
            )
             vcClient = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH)
-            app = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH, plugins=PLUGINS)
             CallsClient = PyTgCalls(vcClient, log_mode=PyLogs.verbose)
             return vcasst, vcClient, CallsClient
         except Exception as er:
             LOGS.info(str(er))
-    return None, None, None, None
+    return None, None, None
 
 
 
