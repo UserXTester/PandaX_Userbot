@@ -541,10 +541,7 @@ def heroku_usage():
 
 @callback("dyno")
 async def _(event):
-    h = math.floor(minutes_remaining / 60)
-    m = math.floor(minutes_remaining % 60)
-    persen = math.floor(remaining_quota / quota * 100)
-    pin = f"⚙️ Dyno Usage ⚙️:\n\n Pemakaian Dyno: {AppHours}h - {AppMinutes}m - {AppPercentage}%\n➣ Sisa kuota jam dyno bulan ini - {h}h - {m}m - {persen}%"
+    pin = f"⚙️ Dyno Usage ⚙️:\n\n Pemakaian Dyno: {AppHours}h - {AppMinutes}m - {AppPercentage}%\n➣ Sisa kuota jam dyno bulan ini - {hours}h - {minutes}m - {percentage}%"
     await event.answer(pin, cache_time=0, alert=True)
 
     
