@@ -179,7 +179,6 @@ def vc_connection(udB):
                 bot_token=udB.get("BOT_TOKEN"),
            )
             vcClient = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH)
-            pandax = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH, plugins=PLUGINS)
             CallsClient = PyTgCalls(vcClient, log_mode=PyLogs.verbose)
             return vcasst, vcClient, CallsClient
         except Exception as er:
