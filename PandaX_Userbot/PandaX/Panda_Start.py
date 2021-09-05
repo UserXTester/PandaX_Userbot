@@ -6,6 +6,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
+from os import environ
 import os
 import time
 from logging import INFO, FileHandler, StreamHandler, basicConfig, getLogger
@@ -157,12 +158,18 @@ def client_connection():
 
 
 
+PLUGINS = dict(
+    root="PandaX_Userbot",
+    include=[
+        "vc." + environ["PLUGIN"]
+    ]
+)
 
 def vc_connections(udB):
     VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
     if VC_SESSION:
         try:
-            pandax = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH, plugins=dict(root="PandaX_Userbot.vc.player"),)
+            pandax = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH, plugins=PLUGINS)
             return pandax
         except Exception as er:
             LOGS.info(str(er))
