@@ -26,8 +26,9 @@ from PandaX_Userbot.functions.all import bash, dler, time_formatter
 from PandaX_Userbot.PandaVX import sudoers
 from youtube_dl import YoutubeDL
 from youtubesearchpython import VideosSearch
+from pytgcalls import GroupCallFactory, GroupCallFileAction
 
-Client = CallsClient._app
+Client = Client
 
 LOG_CHANNEL = int(udB.get("LOG_CHANNEL"))
 QUEUE = {}
