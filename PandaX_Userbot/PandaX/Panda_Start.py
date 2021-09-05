@@ -161,7 +161,7 @@ def client_connection():
 PLUGINS = dict(
     root="PandaX_Userbot",
     include=[
-        "vc." + environ["PLUGIN"],
+        "player",
         "ping",
         "sysinfo"
     ]
