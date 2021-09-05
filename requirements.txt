@@ -64,3 +64,4 @@ ffmpeg-python
 py-tgcalls==0.5.2
 wheel
 TgCrypto
+pytgcalls[pyrogram]
