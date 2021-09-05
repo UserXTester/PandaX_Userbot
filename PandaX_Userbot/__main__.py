@@ -380,6 +380,7 @@ async def ready():
 
 
 def pycli():
+    pandax.start()
     vcasst.start()
     multiprocessing.Process(target=idle).start()
     CallsClient.run()
