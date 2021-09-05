@@ -156,7 +156,7 @@ def client_connection():
     return client, bot_client
 
 PLUGINS = dict(
-    root="PandaX_Userbot",
+    root="PandaModules",
     include=[
         "vc." + Var.VC_PLUGIN
     ] 
