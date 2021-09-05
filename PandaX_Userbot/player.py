@@ -46,10 +46,10 @@ DURATION_PLAY_HOUR = 3
 USERBOT_HELP = f"""🐼  **Common Commands**:
 __available to group members of current voice chat__
 __starts with / (slash) or ! (exclamation mark)__
-\u2022 **{HNDLR}play**  reply with an audio to play/queue it, or show playlist
-\u2022 **{HNDLR}current**  show current playing time of current track
-\u2022 **{HNDLR}repo**  show git repository of the userbot
-\u2022 `{HNDLR}vchelp`  show help for commands
+\u2022 **.play**  reply with an audio to play/queue it, or show playlist
+\u2022 **.current**  show current playing time of current track
+\u2022 **.repo**  show git repository of the userbot
+\u2022 `.vchelp`  show help for commands
 🐼  **Admin Commands**:
 __available to userbot account itself and its contacts__
 __starts with ! (exclamation mark)__
