@@ -181,6 +181,7 @@ def load_modules(plugin_name):
         from .Panda.core import HELP, MODULES
         from .Panda.database import Var
         from .PandaVX import _supporter as xxx
+        from .PandaBase import * as base
         from .PandaVX._assistant import (
             asst_cmd,
             callback,
@@ -248,6 +249,11 @@ def load_modules(plugin_name):
         modules["userbot.utils"] = xxx
         modules["..core.managers"] = xxx
         modules["userbot.events"] = xxx
+        modules["userbot.modules.antiflood_sql"] = base
+        modules["userbot.modules.blacklist_sql"] = base
+        modules["userbot.modules.gban_sql"] = base
+        modules["userbot.modules.gmute_sql"] = base
+        modules["userbot.modules.filter_sql"] = base
         modules["userbot.plugins"] = xxx
         modules["jarvis.jconfig"] = xxx
         modules["userbot.config"] = xxx
