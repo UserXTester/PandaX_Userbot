@@ -1,5 +1,6 @@
 """ Init file which loads all of the modules """
 from PandaX_Userbot import LOGS
+from PandaX_Userbot import app
 
 
 def __list_all_modules():
