@@ -181,7 +181,7 @@ def load_modules(plugin_name):
         from .Panda.core import HELP, MODULES
         from .Panda.database import Var
         from .PandaVX import _supporter as xxx
-        from .PandaBase import * as base
+        from .PandaBase import PANDABASED as base
         from .PandaVX._assistant import (
             asst_cmd,
             callback,
