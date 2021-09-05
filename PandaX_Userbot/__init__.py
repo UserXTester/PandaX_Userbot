@@ -51,6 +51,7 @@ StartTime = time.time()
 TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./downloads")
 ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 CMD_HELP = {}
+DB_URI = os.environ.get("DATABASE_URL", None)
 CUSTOM_CMD = os.environ.get("CUSTOM_CMD") or "."
 LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 BOTLOG = sb(os.environ.get("BOTLOG", "True"))
