@@ -395,17 +395,9 @@ if Plug_channel:
     petercordpanda_bot.loop.run_until_complete(plug())
 petercordpanda_bot.loop.run_until_complete(ready())
 
-PLUGINS = dict(
-    root="PandaX_Userbot",
-    include=[
-        "vc." + Var.VC_PLUGIN,
-        "ping",
-        "sysinfo"
-    ]
-)
+
 
 if __name__ == "__main__":
-    app = plugins=PLUGINS
     app.start()
     print(suc_msg)
     idle()
