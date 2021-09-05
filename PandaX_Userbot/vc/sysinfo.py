@@ -2,7 +2,8 @@ import psutil
 
 # noinspection PyProtectedMember
 from psutil._common import bytes2human
-from pyrogram import Client, filters
+from pyrogram import filters
+from . import app Client
 
 self_or_contact_filter = filters.create(
     lambda _, __, message: (message.from_user and message.from_user.is_contact)
