@@ -165,11 +165,11 @@ def vc_connections(udB):
     VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
     if VC_SESSION:
         try:
-            pandax = Client(VC_SESSION, Var.API_ID, Var.API_HASH)
-            return pandax
+            app = Client(VC_SESSION, Var.API_ID, Var.API_HASH)
+            return app
         except Exception as er:
             LOGS.info(str(er))
-    return pandax
+    return app
 
 def vc_connection(udB):
     VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
