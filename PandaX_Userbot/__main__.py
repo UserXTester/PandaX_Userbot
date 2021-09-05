@@ -15,6 +15,8 @@ import urllib
 from pathlib import Path
 from random import randint
 from urllib.request import urlretrieve
+from importlib import import_module
+from PandaX_Userbot.vc import ALL_MODULES
 
 from pyrogram import idle, Client
 from pytz import timezone
@@ -395,8 +397,12 @@ petercordpanda_bot.loop.run_until_complete(ready())
 
 
 if __name__ == "__main__":
-    pandax.start()
+    app.start()
     print(suc_msg)
     idle()
-    pandax.stop()
+    app.stop()
+
+for module_name in ALL_MODULES:
+    imported_module = import_module("PandaX_Userbot.vc." + module_name)
+
         
