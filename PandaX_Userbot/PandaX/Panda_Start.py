@@ -155,12 +155,7 @@ def client_connection():
         exit(1)
     return client, bot_client
 
-PLUGINS = dict(
-    root="PandaModules",
-    include=[
-        "vc." + Var.VC_PLUGIN
-    ] 
-)
+
 def vc_connection(udB):
     VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
     if VC_SESSION:
@@ -169,7 +164,6 @@ def vc_connection(udB):
                 ":memory:",
                 api_id=Var.API_ID,
                 api_hash=Var.API_HASH,
-                plugins=PLUGINS,
                 bot_token=udB.get("BOT_TOKEN"),
            )
             vcClient = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH)
