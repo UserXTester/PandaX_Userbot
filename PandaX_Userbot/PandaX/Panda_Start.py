@@ -158,14 +158,21 @@ def client_connection():
 
 
 
-
+PLUGINS = dict(
+    root="PandaX_Userbot",
+    include=[
+        "vc." + Var.VC_PLUGIN,
+        "ping",
+        "sysinfo"
+    ]
+)
 
 
 def vc_connections(udB):
     VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
     if VC_SESSION:
         try:
-            app = Client(VC_SESSION, Var.API_ID, Var.API_HASH)
+            app = Client(VC_SESSION, Var.API_ID, Var.API_HASH, PLUGINS)
             return app
         except Exception as er:
             LOGS.info(str(er))
