@@ -28,6 +28,13 @@ from youtube_dl import YoutubeDL
 from youtubesearchpython import VideosSearch
 from pytgcalls import GroupCallFactory, GroupCallFileAction
 
+from datetime import datetime, timedelta
+
+from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
+from pyrogram.types import Message
+from pyrogram.utils import MAX_CHANNEL_ID
+
+
 Client = Client
 
 LOG_CHANNEL = int(udB.get("LOG_CHANNEL"))
