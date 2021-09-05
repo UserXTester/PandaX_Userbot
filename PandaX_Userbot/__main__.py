@@ -379,11 +379,7 @@ async def ready():
         pass
 
 
-def pycli():
-    pandax.start()
-    vcasst.start()
-    multiprocessing.Process(target=idle).start()
-    CallsClient.run()
+run()
 
 
 suc_msg = """
@@ -399,13 +395,8 @@ petercordpanda_bot.loop.run_until_complete(ready())
 
 
 if __name__ == "__main__":
-    if vcbot:
-        if vcasst and vcClient and CallsClient:
-            multiprocessing.Process(target=pycli).start()
-        LOGS.info(suc_msg)
-        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
-    else:
-        LOGS.info(suc_msg)
-        petercordpanda_bot.run_until_disconnected()
-
+    pandax.start()
+    print(suc_msg)
+    idle()
+    pandax.stop()
         
