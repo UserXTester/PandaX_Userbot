@@ -379,7 +379,7 @@ async def ready():
         pass
 
 
-run()
+
 
 
 suc_msg = """
