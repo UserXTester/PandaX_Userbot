@@ -27,18 +27,10 @@ How to use:
   can use the !play command now
 - check !help for more commands
 """
-import asyncio
-import os
-from datetime import datetime, timedelta
-from PandaX_Userbot import HNDLR 
-# noinspection PyPackageRequirements
-import ffmpeg
-from pyrogram import Client, filters, emoji
-from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
-from pyrogram.types import Message
-from pyrogram.utils import MAX_CHANNEL_ID
+
 
 from . import *
+
 DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
 DURATION_PLAY_HOUR = 3
