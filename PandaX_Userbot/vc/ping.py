@@ -1,9 +1,9 @@
 from datetime import datetime
 from time import time
 
-from pyrogram import Client, emoji, filters
+from pyrogram import emoji, filters
 from pyrogram.types import Message
-
+from . import app
 
 
 START_TIME = datetime.utcnow()
@@ -34,7 +34,7 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-@Client.on_message(
+@app.on_message(
     filters.text
     & self_or_contact_filter
     & ~filters.edited
@@ -49,7 +49,7 @@ async def ping_pong(_, m: Message):
     await m_reply.edit_text(f"{emoji.ROBOT} ping: `{delta_ping * 1000:.3f} ms`")
 
 
-@Client.on_message(
+@app.on_message(
     filters.text
     & self_or_contact_filter
     & ~filters.edited
