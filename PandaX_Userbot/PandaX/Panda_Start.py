@@ -158,21 +158,14 @@ def client_connection():
 
 
 
-PLUGINS = dict(
-    root="PandaX_Userbot",
-    include=[
-        "player",
-        "ping",
-        "sysinfo"
-    ]
-)
+
 
 
 def vc_connections(udB):
     VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
     if VC_SESSION:
         try:
-            pandax = Client(VC_SESSION, Var.API_ID, Var.API_HASH, plugins=PLUGINS)
+            pandax = Client(VC_SESSION, Var.API_ID, Var.API_HASH)
             return pandax
         except Exception as er:
             LOGS.info(str(er))
