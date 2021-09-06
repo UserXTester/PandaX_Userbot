@@ -382,6 +382,10 @@ async def ready():
 
 
 
+def pycli():
+    vcasst.start()
+    multiprocessing.Process(target=idle).start()
+    CallsClient.run()
 
 
 suc_msg = """
@@ -395,7 +399,13 @@ if Plug_channel:
     petercordpanda_bot.loop.run_until_complete(plug())
 petercordpanda_bot.loop.run_until_complete(ready())
 
-print(suc_msg)
-    
 
-        
+if __name__ == "__main__":
+    if vcbot:
+        if vcasst and vcClient and CallsClient:
+            multiprocessing.Process(target=pycli).start()
+        LOGS.info(suc_msg)
+        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
+    else:
+        LOGS.info(suc_msg)
+        petercordpanda_bot.run_until_disconnected()
