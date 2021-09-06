@@ -395,13 +395,7 @@ if Plug_channel:
     petercordpanda_bot.loop.run_until_complete(plug())
 petercordpanda_bot.loop.run_until_complete(ready())
 
-
-
-if __name__ == "__main__":
-    app.start()
-    print(suc_msg)
-    idle()
-    app.stop()
-
+print(suc_msg)
+    
 
         
