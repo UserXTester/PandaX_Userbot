@@ -220,7 +220,7 @@ async def autopilot():
     pfpa = await petercordpanda_bot.download_profile_photo(chat_id)
     if not pfpa:
         urllib.request.urlretrieve(
-            "https://telegra.ph//file/813db0b898e3df7611c2c.jpg", "channelphoto.jpg"
+            "https://telegra.ph//file/a65a4fddaba3a31dc4047.jpg", "channelphoto.jpg"
         )
         ll = await petercordpanda_bot.upload_file("channelphoto.jpg")
         await petercordpanda_bot(EditPhotoRequest(chat_id, InputChatUploadedPhoto(ll)))
@@ -341,7 +341,7 @@ async def customize():
             await petercordpanda_bot.send_message("botfather", UL)
             await asyncio.sleep(1)
             await petercordpanda_bot.send_file(
-                "botfather", "PandaVersion/Panda/PandaGrup.jpg"
+                "botfather", "PandaVersion/Panda/pandaasis.jpg"
             )
             await asyncio.sleep(2)
             await petercordpanda_bot.send_message("botfather", "/setabouttext")
