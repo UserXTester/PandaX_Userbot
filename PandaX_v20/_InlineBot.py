@@ -92,14 +92,14 @@ if PANDA_PIC:
     Panda_Logo = PANDA_PIC
     PANDA = PANDA_PIC
 else:
-    Panda_Logo = "PandaVersion/Panda/PandaGrup.jpg"
+    Panda_Logo = "PandaVersion/Panda/pandaasis.jpg"
 
 
 if PANDA_ALIVE:
     Panda_Alive = PANDA_ALIVE
     PANDA = PANDA_ALIVE
 else:
-    Panda_Alive = "PandaVersion/Panda/PandaGrup.jpg"
+    Panda_Alive = "PandaVersion/Panda/pandaasis.jpg"
 # ============================================#
 
 
