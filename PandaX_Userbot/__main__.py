@@ -46,7 +46,7 @@ async def istart():
     petercordpanda_bot.me.phone = None
     petercordpanda_bot.uid = petercordpanda_bot.me.id
     petercordpanda_bot.first_name = petercordpanda_bot.me.first_name
-    if not ultroid_bot.me.bot:
+    if not petercordpanda_bot.me.bot:
         udB.set("OWNER_ID", petercordpanda_bot.uid)
 
 
