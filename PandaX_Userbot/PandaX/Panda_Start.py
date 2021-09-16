@@ -5,6 +5,37 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
+from PandaX_Userbot.Panda.database import Var
+from PandaX_Userbot.version import __version__ as ver
+from PandaX_Userbot.version import PandaX_version
+
+LOGS = getLogger("PandaX_Userbot")
+
+if os.path.exists("petercordpanda.log"):
+    try:
+        os.remove("petercordpanda.log")
+    except BaseException:
+        pass
+
+basicConfig(
+    format="%(asctime)s || %(name)s [%(levelname)s] - %(message)s",
+    level=INFO,
+    datefmt="%m/%d/%Y, %H:%M:%S",
+    handlers=[FileHandler("petercordpanda.log"), StreamHandler()],
+)
+
+LOGS.info(
+    """
+                -----------------------------------
+                     ♨ MEMULAI DEPLOYMENT ♨
+                -----------------------------------
+"""
+)
+LOGS.info(f"Panda Version - {ver}")
+LOGS.info(f"Telethon Version - {vers}")
+LOGS.info(f"Panda Version - {PandaX_version}")
+
+
 
 from os import environ
 import os
