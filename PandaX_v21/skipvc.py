@@ -5,29 +5,26 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
+"""
+✘ Commands Available -
+• `{i}skip`
+   Skip the current song and play the next in queue, if any.
+"""
+
 from . import *
-from .play import queue_func
 
 
-@asst.on_message(
-    filters.command(["skip", f"skip@{vcusername}"])
-    & filters.user(VC_AUTHS())
-    & ~filters.edited
-)
-async def skiplife(_, message):
-    mst = message.text.split(" ", maxsplit=1)
-    try:
-        chat = (await Client.get_chat(mst[1])).id
-    except BaseException:
-        chat = message.chat.id
-    await queue_func(chat)
-
-
-@Client.on_message(
-    filters.command("skip", HNDLR)
-    & filters.outgoing
-    & ~filters.edited
-    & ~filters.forwarded
-)
-async def vc_skipe(_, message):
-    await skiplife(_, message)
+@vc_asst("skip")
+async def skipper(event):
+    if len(event.text.split()) > 1:
+        chat = event.text.split()[1]
+        if not chat.startswith("@"):
+            chat = int(chat)
+        try:
+            chat = int("-100" + str((await vcClient.get_entity(chat)).id))
+        except Exception as e:
+            return await eor(event, "**ERROR:**\n{}".format(str(e)))
+    else:
+        chat = event.chat_id
+    ultSongs = Player(chat, event)
+    await ultSongs.play_from_queue()
