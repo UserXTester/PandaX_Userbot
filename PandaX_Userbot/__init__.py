@@ -7,15 +7,15 @@
 
 from safety.tools import *
 
-from .PandaX.PandaStart import *
+from .PandaX.Panda_Start import *
 
 LOGS = LOGS
 
 udB = redis_connection()
 
-ultroid_bot, asst = client_connection()
+petercordpanda_bot, asst = client_connection()
 
-vcClient = vc_connection(udB, ultroid_bot)
+vcClient = vc_connection(udB, petercordpanda_bot)
 
 if not udB.get("HNDLR"):
     udB.set("HNDLR", ".")
