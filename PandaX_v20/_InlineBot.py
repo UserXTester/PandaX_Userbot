@@ -872,7 +872,7 @@ async def on_vc_plg_callback_query_handler(event):
         ],
         [
             Button.inline("« Bᴀᴄᴋ", data="bvck"),
-            Button.inline("••Cʟᴏꜱᴇ••", data="close"),
+            Button.inline("••Cʟᴏꜱᴇ••", data="closess"),
         ],
     ]
     try:
