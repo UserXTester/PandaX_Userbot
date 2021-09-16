@@ -15,8 +15,7 @@ udB = redis_connection()
 
 petercordpanda_bot, asst = client_connection()
 
-vcasst, vcClient, CallsClient= vc_connection(udB)
-app = vc_connections(udB)
+vcClient = vc_connection(udB, petercordpanda_bot)
 
 if not udB.get("HNDLR"):
     udB.set("HNDLR", ".")
