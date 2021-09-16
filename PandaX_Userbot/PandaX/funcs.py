@@ -30,22 +30,22 @@ from telethon.tl.types import (
 )
 
 from .. import *
-from ..dB.database import Var
+from ..Panda.database import Var
 from ..functions.all import updater
-from .utils import load_addons
+from PandaX_Userbot.utils import load_modules
 
 
 def startup_stuff():
-    x = ["resources/auths", "resources/downloads", "addons", "vcbot/downloads"]
+    x = ["PandaVersion/auths", "PandaVersion/downloads", "modules", "PandaX_v21/downloads"]
     for x in x:
         if not os.path.isdir(x):
             os.mkdir(x)
 
     if udB.get("CUSTOM_THUMBNAIL"):
-        urlretrieve(udB.get("CUSTOM_THUMBNAIL"), "resources/extras/ultroid.jpg")
+        urlretrieve(udB.get("CUSTOM_THUMBNAIL"), "PandaVersion/Panda/PandaBlanck.jpg")
 
     if udB.get("GDRIVE_TOKEN"):
-        with open("resources/auths/auth_token.txt", "w") as t_file:
+        with open("PandaVersion/auths/auth_token.txt", "w") as t_file:
             t_file.write(udB.get("GDRIVE_TOKEN"))
 
     if udB.get("MEGA_MAIL") and udB.get("MEGA_PASS"):
@@ -61,117 +61,121 @@ def startup_stuff():
             time.tzset()
         except BaseException:
             LOGS.info(
-                "Incorrect Timezone ,\nCheck Available Timezone From Here https://telegra.ph/Ultroid-06-18-2\nSo Time is Default UTC"
+                "Incorrect Timezone ,\nCheck Available Timezone From Here https://telegra.ph/iLHam-MansiezZ-06-27\nSo Time is Default UTC"
             )
             os.environ["TZ"] = "UTC"
             time.tzset()
 
 
 async def autobot():
-    await ultroid_bot.start()
+    await petercordpanda_bot.start()
     if Var.BOT_TOKEN:
         udB.set("BOT_TOKEN", str(Var.BOT_TOKEN))
         return
     if udB.get("BOT_TOKEN"):
         return
-    LOGS.info("MAKING A TELEGRAM BOT FOR YOU AT @BotFather, Kindly Wait")
-    who = await ultroid_bot.get_me()
-    name = who.first_name + "'s Assistant Bot"
+    LOGS.info("🛠 MEMBUAT BOT UNTUK ANDA DI @BotFather, HARAP TUNGU !!")
+    who = await petercordpanda_bot.get_me()
+    name = "PandaX_Userbot Assistant " + who.first_name
     if who.username:
         username = who.username + "_bot"
     else:
-        username = "ultroid_" + (str(who.id))[5:] + "_bot"
+        username = "PandaX_Userbot_" + (str(who.id))[5:] + "_bot"
     bf = "Botfather"
-    await ultroid_bot(UnblockRequest(bf))
-    await ultroid_bot.send_message(bf, "/cancel")
+    await petercordpanda_bot(UnblockRequest(bf))
+    await petercordpanda_bot.send_message(bf, "/cancel")
     await asyncio.sleep(1)
-    await ultroid_bot.send_message(bf, "/start")
+    await petercordpanda_bot.send_message(bf, "/start")
     await asyncio.sleep(1)
-    await ultroid_bot.send_message(bf, "/newbot")
+    await petercordpanda_bot.send_message(bf, "/newbot")
     await asyncio.sleep(1)
-    isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
+    isdone = (await petercordpanda_bot.get_messages(bf, limit=1))[0].text
     if isdone.startswith("That I cannot do."):
         LOGS.info(
-            "Please make a Bot from @BotFather and add it's token in BOT_TOKEN, as an env var and restart me."
+            "Mohon buat bot baru di @BotFather dan tambahkan var BOT_TOKEN, lalu isi token nya dan restart."
         )
         exit(1)
-    await ultroid_bot.send_message(bf, name)
+    await petercordpanda_bot.send_message(bf, name)
     await asyncio.sleep(1)
-    isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
+    isdone = (await petercordpanda_bot.get_messages(bf, limit=1))[0].text
     if not isdone.startswith("Good."):
-        await ultroid_bot.send_message(bf, "My Assistant Bot")
+        await petercordpanda_bot.send_message(bf, "My Assistant Bot")
         await asyncio.sleep(1)
         isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
         if not isdone.startswith("Good."):
             LOGS.info(
-                "Please make a Bot from @BotFather and add it's token in BOT_TOKEN, as an env var and restart me."
+                "Mohon buat bot baru di @BotFather dan tambahkan var BOT_TOKEN, lalu isi token nya dan restart."
             )
             exit(1)
-    await ultroid_bot.send_message(bf, username)
+    await petercordpanda_bot.send_message(bf, username)
     await asyncio.sleep(1)
-    isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
-    await ultroid_bot.send_read_acknowledge("botfather")
+    isdone = (await petercordpanda_bot.get_messages(bf, limit=1))[0].text
+    await petercordpanda_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = "ultroid_" + (str(who.id))[6:] + str(ran) + "_bot"
-        await ultroid_bot.send_message(bf, username)
+        username = "PandaX_Userbot" + (str(who.id))[6:] + str(ran) + "_bot"
+        await petercordpanda_bot.send_message(bf, username)
         await asyncio.sleep(1)
-        nowdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
+        nowdone = (await petercordpanda_bot.get_messages(bf, limit=1))[0].text
         if nowdone.startswith("Done!"):
             token = nowdone.split("`")[1]
             udB.set("BOT_TOKEN", token)
-            await ultroid_bot.send_message(bf, "/setinline")
+            await petercordpanda_bot.send_message(bf, "/setinline")
             await asyncio.sleep(1)
-            await ultroid_bot.send_message(bf, f"@{username}")
+            await petercordpanda_bot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
-            await ultroid_bot.send_message(bf, "Search")
-            LOGS.info(f"DONE YOUR TELEGRAM BOT IS CREATED SUCCESSFULLY @{username}")
+            await petercordpanda_bot.send_message(bf, "menu...")
+            LOGS.info(f"SELESAI, ASSISTANT BOT ANDA SUDAH DIBUAT @{username}")
         else:
             LOGS.info(
-                f"Please Delete Some Of your Telegram bots at @Botfather or Set Var BOT_TOKEN with token of a bot"
+                f"Silakan Hapus Beberapa Bot Telegram Anda di @Botfather atau Set Var BOT_TOKEN dengan token bot."
             )
             exit(1)
     elif isdone.startswith("Done!"):
         token = isdone.split("`")[1]
         udB.set("BOT_TOKEN", token)
-        await ultroid_bot.send_message(bf, "/setinline")
+        await petercordpanda_bot.send_message(bf, "/setinline")
         await asyncio.sleep(1)
-        await ultroid_bot.send_message(bf, f"@{username}")
+        await petercordpanda_bot.send_message(bf, f"@{username}")
         await asyncio.sleep(1)
-        await ultroid_bot.send_message(bf, "Search")
-        LOGS.info(f"DONE YOUR TELEGRAM BOT IS CREATED SUCCESSFULLY @{username}")
+        await petercordpanda_bot.send_message(bf, "menu...")
+        LOGS.info(f"SELESAI, ASSISTANT BOT ANDA SUDAH DIBUAT @{username}")
     else:
         LOGS.info(
-            f"Please Delete Some Of your Telegram bots at @Botfather or Set Var BOT_TOKEN with token of a bot"
+            f"Silakan Hapus Beberapa Bot Telegram Anda di @Botfather atau Set Var BOT_TOKEN dengan token bot."
         )
         exit(1)
+
 
 
 async def autopilot():
     if Var.LOG_CHANNEL and str(Var.LOG_CHANNEL).startswith("-100"):
         udB.set("LOG_CHANNEL", str(Var.LOG_CHANNEL))
+    k = []  # To Refresh private ids
+    async for x in petercordpanda_bot.iter_dialogs():
+        k.append(x.id)
     if udB.get("LOG_CHANNEL"):
         try:
-            await ultroid_bot.get_entity(int(udB.get("LOG_CHANNEL")))
+            await petercordpanda_bot.get_entity(int(udB.get("LOG_CHANNEL")))
             return
         except BaseException:
             udB.delete("LOG_CHANNEL")
     try:
-        r = await ultroid_bot(
+        r = await petercordpanda_bot(
             CreateChannelRequest(
-                title="My Ultroid Logs",
-                about="My Ultroid Log Group\n\n Join @TeamUltroid",
+                title="𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐋𝐎𝐆",
+                about="𝐏𝐚𝐧𝐝𝐚𝐗_𝐔𝐬𝐞𝐫𝐛𝐨𝐭 LOG GROUP.\n\n JOIN @TEAMSquadUserbotSupport",
                 megagroup=True,
             ),
         )
     except ChannelsTooMuchError:
         LOGS.info(
-            "You Are in Too Many Channels & Groups , Leave some And Restart The Bot"
+            "Grup dan channel anda terlalu banyak, Keluar dari salah satu grup atau channel lalu restart."
         )
         exit(1)
     except BaseException:
         LOGS.info(
-            "Something Went Wrong , Create A Group and set its id on config var LOG_CHANNEL."
+            "Ada yang Salah, Buat Grup dan atur id-nya di config var LOG_CHANNEL."
         )
         exit(1)
     chat_id = r.chats[0].id
@@ -189,14 +193,14 @@ async def autopilot():
         anonymous=False,
         manage_call=True,
     )
-    await ultroid_bot(EditAdminRequest(chat_id, asst.me.username, rights, "Assistant"))
-    pfpa = await ultroid_bot.download_profile_photo(chat_id)
+    await petercordpanda_bot(EditAdminRequest(chat_id, asst.me.username, rights, "Assistant"))
+    pfpa = await petercordpanda_bot.download_profile_photo(chat_id)
     if not pfpa:
         urllib.request.urlretrieve(
-            "https://telegra.ph/file/bac3a1c21912a7b35c797.jpg", "channelphoto.jpg"
+            "https://telegra.ph//file/a65a4fddaba3a31dc4047.jpg", "channelphoto.jpg"
         )
-        ll = await ultroid_bot.upload_file("channelphoto.jpg")
-        await ultroid_bot(EditPhotoRequest(chat_id, InputChatUploadedPhoto(ll)))
+        ll = await petercordpanda_bot.upload_file("channelphoto.jpg")
+        await petercordpanda_bot(EditPhotoRequest(chat_id, InputChatUploadedPhoto(ll)))
         os.remove("channelphoto.jpg")
     else:
         os.remove(pfpa)
@@ -208,49 +212,49 @@ async def autopilot():
 async def customize():
     try:
         chat_id = int(udB.get("LOG_CHANNEL"))
-        xx = await ultroid_bot.get_entity(asst.me.username)
+        xx = await petercordpanda_bot.get_entity(asst.me.username)
         if xx.photo is None:
-            LOGS.info("Customising Ur Assistant Bot in @BOTFATHER")
+            LOGS.info("Mengkostumisasi assistant bot anda di @BotFather")
             UL = f"@{asst.me.username}"
-            if (ultroid_bot.me.username) is None:
-                sir = ultroid_bot.me.first_name
+            if (petercordpanda_bot.me.username) is None:
+                sir = petercordpanda_bot.me.first_name
             else:
-                sir = f"@{ultroid_bot.me.username}"
-            await ultroid_bot.send_message(
-                chat_id, "Auto Customisation Started on @botfather"
+                sir = f"@{petercordpanda_bot.me.username}"
+            await petercordpanda_bot.send_message(
+                chat_id, "Kostumisasi otomatis dimulai di @botfather"
             )
             await asyncio.sleep(1)
-            await ultroid_bot.send_message("botfather", "/cancel")
+            await petercordpanda_bot.send_message("botfather", "/cancel")
             await asyncio.sleep(1)
-            await ultroid_bot.send_message("botfather", "/start")
+            await petercordpanda_bot.send_message("botfather", "/start")
             await asyncio.sleep(1)
-            await ultroid_bot.send_message("botfather", "/setuserpic")
+            await petercordpanda_bot.send_message("botfather", "/setuserpic")
             await asyncio.sleep(1)
-            await ultroid_bot.send_message("botfather", UL)
+            await petercordpanda_bot.send_message("botfather", UL)
             await asyncio.sleep(1)
-            await ultroid_bot.send_file(
-                "botfather", "resources/extras/ultroid_assistant.jpg"
-            )
-            await asyncio.sleep(2)
-            await ultroid_bot.send_message("botfather", "/setabouttext")
-            await asyncio.sleep(1)
-            await ultroid_bot.send_message("botfather", UL)
-            await asyncio.sleep(1)
-            await ultroid_bot.send_message(
-                "botfather", f"✨ Hello ✨!! I'm Assistant Bot of {sir}"
+            await petercordpanda_bot.send_file(
+                "botfather", "PandaVersion/Panda/pandaasis.jpg"
             )
             await asyncio.sleep(2)
-            await ultroid_bot.send_message("botfather", "/setdescription")
+            await petercordpanda_bot.send_message("botfather", "/setabouttext")
             await asyncio.sleep(1)
-            await ultroid_bot.send_message("botfather", UL)
+            await petercordpanda_bot.send_message("botfather", UL)
             await asyncio.sleep(1)
-            await ultroid_bot.send_message(
-                "botfather",
-                f"✨ PowerFul Ultroid Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @TeamUltroid ✨",
+            await petercordpanda_bot.send_message(
+            "botfather", f"🙋 Hello ✨ Saya PandaX_Userbot Assistant {sir}"
             )
             await asyncio.sleep(2)
-            await ultroid_bot.send_message(
-                chat_id, "**Auto Customisation** Done at @BotFather"
+            await petercordpanda_bot.send_message("botfather", "/setdescription")
+            await asyncio.sleep(1)
+            await petercordpanda_bot.send_message("botfather", UL)
+            await asyncio.sleep(1)
+            await petercordpanda_bot.send_message(
+            "botfather",
+            f"PandaX_Userbot Assistant\nPengguna ~ {sir}\n\nBy ~ @diemmmmmmmmmm\nSupport ~ @TEAMSquadUserbotSupport ",
+            )
+            await asyncio.sleep(2)
+            await petercordpanda_bot.send_message(
+                chat_id, "**Kostumisasi Otomatis** Selesai Di @BotFather"
             )
             LOGS.info("Customisation Done")
     except Exception as e:
@@ -258,9 +262,9 @@ async def customize():
 
 
 async def plug(plugin_channels):
-    if not os.path.exists("addons/__init__.py"):
-        with open("addons/__init__.py", "w") as f:
-            f.write("from plugins import *")
+    if not os.path.exists("modules/__init__.py"):
+        with open("modules/__init__.py", "w") as f:
+            f.write("from PandaX_v20 import *")
     for Plug_channel in plugin_channels.split():
         try:
             if Plug_channel.startswith("@"):
@@ -270,19 +274,19 @@ async def plug(plugin_channels):
                     chat = int(Plug_channel)
                 except BaseException:
                     return
-            async for x in ultroid_bot.iter_messages(
+            async for x in petercordpanda_bot.iter_messages(
                 chat, search=".py", filter=InputMessagesFilterDocument, wait_time=10
             ):
                 await asyncio.sleep(0.6)
-                files = await ultroid_bot.download_media(x.media, "./addons/")
+                files = await petercordpanda_bot.download_media(x.media, "./modules/")
                 file = Path(files)
                 plugin = file.stem
                 if "(" not in files:
                     try:
                         load_addons(plugin.replace(".py", ""))
-                        LOGS.info(f"Ultroid - PLUGIN_CHANNEL - Installed - {plugin}")
+                        LOGS.info(f"PandaX - PLUGIN_CHANNEL - Installed - {plugin}")
                     except Exception as e:
-                        LOGS.info(f"Ultroid - PLUGIN_CHANNEL - ERROR - {plugin}")
+                        LOGS.info(f"PandaX - PLUGIN_CHANNEL - ERROR - {plugin}")
                         LOGS.info(str(e))
                         os.remove(files)
                 else:
@@ -295,23 +299,23 @@ async def plug(plugin_channels):
 # some stuffs
 async def ready():
     chat_id = int(udB.get("LOG_CHANNEL"))
-    MSG = f"**Ultroid has been deployed!**\n➖➖➖➖➖➖➖➖➖\n**UserMode**: [{ultroid_bot.me.first_name}](tg://user?id={ultroid_bot.me.id})\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖\n**Support**: @TeamUltroid\n➖➖➖➖➖➖➖➖➖"
+    MSG = f"**PandaX_Userbot Berhasil deployed!**\n➖➖➖➖➖➖➖➖➖\n**UserMode**: [{petercordpanda_bot.me.first_name}](tg://user?id={petercordpanda_bot.me.id})\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖\n**Support**: @TeamSquadUserbotSupport\n➖➖➖➖➖➖➖➖➖"
     BTTS = []
     PHOTO, spam_sent = None, None
     updava = updater()
     prev_spam = udB.get("LAST_UPDATE_LOG_SPAM")
     if prev_spam:
         try:
-            await ultroid_bot.delete_messages(chat_id, int(prev_spam))
+            await petercordpanda_bot.delete_messages(chat_id, int(prev_spam))
         except Exception as E:
             LOGS.info("Error while Deleting Previous Update Message :" + str(E))
     if updava:
         BTTS.append(Button.inline("Update Available", "updtavail"))
 
     if not udB.get("INIT_DEPLOY"):  # Detailed Message at Initial Deploy
-        MSG = """🎇 **Thanks for Deploying Ultroid Userbot!**
+        MSG = """🎇 **Thanks for Deploying PandaX_Userbot!**
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
-        PHOTO = "https://telegra.ph/file/54a917cc9dbb94733ea5f.jpg"
+        PHOTO = "https://telegra.ph//file/a65a4fddaba3a31dc4047.jpg"
         BTTS.append(Button.inline("• Click to Start •", "initft_2"))
         udB.set("INIT_DEPLOY", "Done")
     if BTTS == []:
@@ -320,20 +324,20 @@ async def ready():
         spam_sent = await asst.send_message(chat_id, MSG, file=PHOTO, buttons=BTTS)
     except ValueError as e:
         try:
-            await (await ultroid_bot.send_message(LOG_CHANNEL, str(e))).delete()
+            await (await petercordpanda_bot.send_message(LOG_CHANNEL, str(e))).delete()
             await asst.send_message(LOG_CHANNEL, MSG, file=PHOTO, buttons=BTTS)
         except Exception as g:
             LOGS.info(g)
     except Exception as el:
         LOGS.info(el)
         try:
-            spam_sent = await ultroid_bot.send_message(chat_id, MSG)
+            spam_sent = await petercordpanda_bot.send_message(chat_id, MSG)
         except Exception as ef:
             LOGS.info(ef)
     if spam_sent and not spam_sent.media:
         udB.set("LAST_UPDATE_LOG_SPAM", spam_sent.id)
     try:
         # To Let Them know About New Updates and Changes
-        await ultroid_bot(JoinChannelRequest("@TheUltroid"))
+        await petercordpanda_bot(JoinChannelRequest("@TeamSquadUserbotSupport"))
     except ChannelsTooMuchError:
-        LOGS.info("Join @TheUltroid to know about new Updates...")
+        LOGS.info("Join @TeamSquadUserbotSupport to know about new Updates...")
