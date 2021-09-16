@@ -376,23 +376,33 @@ def load_manager(plugin_name):
 
 
 def load_vc(plugin_name):
-    if plugin_name.startswith("__"):
-        pass
-    else:
-        from . import CallsClient, udB, petercordpanda_bot, vcasst, vcClient
+    if not plugin_name.startswith("__"):
+        from .. import HNDLR, LOGS, asst, udB, petercordpanda_bot, vcClient
+        from ..Panda.core import VC_HELP
 
         path = Path(f"PandaX_v21/{plugin_name}.py")
         name = "PandaX_v21.{}".format(plugin_name)
         spec = util.spec_from_file_location(name, path)
         mod = util.module_from_spec(spec)
         mod.petercordpanda_bot = petercordpanda_bot
-        mod.petercordpanda_bot = petercordpanda_bot
+        mod.petercordpanda = petercordpanda_bot
+        mod.ultroid = petercordpanda_bot
         mod.bot = petercordpanda_bot
         mod.Redis = udB.get
         mod.udB = udB
-        mod.vcasst = vcasst
+        mod.asst = asst
         mod.vcClient = vcClient
-        mod.CallsClient = CallsClient
+        mod.LOGS = LOGS
         spec.loader.exec_module(mod)
-        modules["PandaX_v21" + plugin_name] = mod
-
+        modules["PandaX_v21." + plugin_name] = mod
+        try:
+            VC_HELP.update(
+                {
+                    plugin_name: modules[f"PandaX_v21.{plugin_name}"].__doc__.format(
+                        i=udB["VC_HNDLR"] if udB.get("VC_HNDLR") else HNDLR
+                    )
+                    + "\n"
+                }
+            )
+        except BaseException:
+            pass
