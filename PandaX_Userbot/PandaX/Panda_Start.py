@@ -1,58 +1,14 @@
-# Ultroid - UserBot
-# Copyright (C) 2021 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-from PandaX_Userbot.Panda.database import Var
-from PandaX_Userbot.version import __version__ as ver
-from PandaX_Userbot.version import PandaX_version
-
-LOGS = getLogger("PandaX_Userbot")
-
-if os.path.exists("petercordpanda.log"):
-    try:
-        os.remove("petercordpanda.log")
-    except BaseException:
-        pass
-
-basicConfig(
-    format="%(asctime)s || %(name)s [%(levelname)s] - %(message)s",
-    level=INFO,
-    datefmt="%m/%d/%Y, %H:%M:%S",
-    handlers=[FileHandler("petercordpanda.log"), StreamHandler()],
-)
-
-LOGS.info(
-    """
-                -----------------------------------
-                     ♨ MEMULAI DEPLOYMENT ♨
-                -----------------------------------
-"""
-)
-LOGS.info(f"Panda Version - {ver}")
-LOGS.info(f"Telethon Version - {vers}")
-LOGS.info(f"Panda Version - {PandaX_version}")
 
 
 
-from os import environ
 import os
 import time
 from logging import INFO, FileHandler, StreamHandler, basicConfig, getLogger
 
 import redis
-from decouple import config
-from pyrogram import Client
-from pytgcalls import PyLogs, PyTgCalls
 from telethon import TelegramClient
 from telethon import __version__ as vers
-from telethon.errors.rpcerrorlist import (
-    ApiIdInvalidError,
-    AuthKeyDuplicatedError,
-    PhoneNumberInvalidError,
-)
+from telethon.errors.rpcerrorlist import AuthKeyDuplicatedError, PhoneNumberInvalidError
 from telethon.sessions import StringSession
 
 from PandaX_Userbot.Panda.database import Var
@@ -87,29 +43,15 @@ LOGS.info(f"Panda Version - {PandaX_version}")
 
 
 def connect_redis():
+    Var.REDIS_PASSWORD = Var.REDIS_PASSWORD or Var.REDISPASSWORD
     if Var.REDIS_URI and Var.REDIS_PASSWORD:
-        err = ""
-        if ":" not in Var.REDIS_URI:
-            err += "\nWrong REDIS_URI. Quitting...\n"
-        if "/" in Var.REDIS_URI:
-            err += "Your REDIS_URI should start with redis.xxx. Quitting...\n"
-        if " " in Var.REDIS_URI:
-            err += "Remove space from REDIS_URI\n"
-        if " " in Var.REDIS_PASSWORD:
-            err += "Remove space from REDIS_PASSWORD\n"
-        if "\n" in Var.REDIS_URI:
-            err += "Remove new-line from REDIS_URI\n"
-        if "\n" in Var.REDIS_PASSWORD:
-            err += "Remove new-line from REDIS_PASSWORD\n"
-        if err != "":
-            LOGS.info(err)
-            exit(1)
-        redis_info = Var.REDIS_URI.split(":")
+        return def_redis_connection()
+    elif Var.REDIS_PASSWORD and Var.REDISHOST and Var.REDISPORT and Var.REDISUSER:
+        # for railway.app deploys.
         LOGS.info("Getting Connection With Redis Database")
-        time.sleep(3.5)
         return redis.Redis(
-            host=redis_info[0],
-            port=redis_info[1],
+            host=Var.REDISHOST,
+            port=Var.REDISPORT,
             password=Var.REDIS_PASSWORD,
             decode_responses=True,
         )
@@ -117,16 +59,30 @@ def connect_redis():
         LOGS.info("Getting Connection With Redis Database")
         time.sleep(3.5)
         return connect_qovery_redis()
-        """
-        uri, passw = get_redis_vars()
-        redis_info = uri.split(":")
-        return redis.Redis(
-            host=redis_info[0],
-            port=redis_info[1],
-            password=passw,
-            decode_responses=True,
-        )
-        """
+
+
+def def_redis_connection():
+    redis_info = Var.REDIS_URI
+    redis_pass = Var.REDIS_PASSWORD
+    err = ""
+    if ":" not in redis_info:
+        err += "\nWrong REDIS_URI. Quitting...\n"
+    if "/" in redis_info:
+        err += "Your REDIS_URI should start with redis.xyz. Quitting...\n"
+    redis_info = redis_info.replace("\n", "").replace(" ", "")
+    redis_pass = redis_pass.replace("\n", "").replace(" ", "")
+    if err:
+        LOGS.info(err)
+        exit(1)
+    redis_info = redis_info.split(":")
+    LOGS.info("Getting Connection With Redis Database")
+    time.sleep(3.5)
+    return redis.Redis(
+        host=redis_info[0],
+        port=redis_info[1],
+        password=redis_pass,
+        decode_responses=True,
+    )
 
 
 def redis_connection():
@@ -168,69 +124,38 @@ def session_file():
     return _session
 
 
-def client_connection():
-    try:
-        client = TelegramClient(session_file(), Var.API_ID, Var.API_HASH)
-        bot_client = TelegramClient(None, api_id=Var.API_ID, api_hash=Var.API_HASH)
-    except (AuthKeyDuplicatedError, PhoneNumberInvalidError, EOFError):
-        LOGS.info(
-            "String Session Expired. Please Create New String Session. Quitting..."
-        )
-        exit(1)
-    except ApiIdInvalidError:
-        LOGS.info(
-            "API_ID and API_HASH combination invalid. Please Re-Check. Quitting..."
-        )
-        exit(1)
-    except Exception as ap:
-        LOGS.info(f"ERROR - {ap}")
-        exit(1)
+def client_connection(String=None, only_user=False):
+    if not String:
+        String = session_file()
+    client = TelegramClient(String, Var.API_ID, Var.API_HASH)
+    if only_user:
+        return client
+    bot_client = TelegramClient(None, api_id=Var.API_ID, api_hash=Var.API_HASH)
     return client, bot_client
 
 
-
-PLUGINS = dict(
-    root="PandaX_Userbot",
-    include=[
-        "vc." + Var.VC_PLUGIN,
-        "ping",
-        "sysinfo"
-    ]
-)
-
-
-def vc_connections(udB):
-    VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
+def vc_connection(udB, petercordpanda_bot):
+    VC_SESSION = Var.VC_SESSION if Var.VC_SESSION else udB.get("VC_SESSION")
     if VC_SESSION:
+        if VC_SESSION == Var.SESSION:
+            return petercordpanda_bot
         try:
-            app = Client(VC_SESSION, Var.API_ID, Var.API_HASH, PLUGINS)
-            return app
+            vcClient = TelegramClient(
+                StringSession(VC_SESSION), api_id=Var.API_ID, api_hash=Var.API_HASH
+            ).start()
+            return vcClient
+        except (AuthKeyDuplicatedError, PhoneNumberInvalidError, EOFError):
+            LOGS.info("Your VC_SESSION Expired. Deleting VC_SESSION from redis...")
+            LOGS.info("Renew/Change it to Use Voice/Video Chat from VC Account...")
+            udB.delete("VC_SESSION")
         except Exception as er:
-            LOGS.info(str(er))
-    return app
-
-def vc_connection(udB):
-    VC_SESSION = udB.get("VC_SESSION") or Var.VC_SESSION
-    if VC_SESSION:
-        try:
-            vcasst = Client(
-                ":memory:",
-                api_id=Var.API_ID,
-                api_hash=Var.API_HASH,
-                bot_token=udB.get("BOT_TOKEN"),
-           )
-            vcClient = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH)
-            CallsClient = PyTgCalls(vcClient, log_mode=PyLogs.verbose)
-            return vcasst, vcClient, CallsClient
-        except Exception as er:
-            LOGS.info(str(er))
-    return None, None, None
-
+            LOGS.info("VC_SESSION: {}".format(str(er)))
+    return petercordpanda_bot
 
 
 def connect_qovery_redis():
-    uri = config("REDIS_URI", default=None)
-    passw = config("REDIS_PASSWORD", default=None)
+    uri = Var.REDIS_URI
+    passw = Var.REDIS_PASSWORD
     if not uri and not passw:
         var = ""
         for i in os.environ:
@@ -259,3 +184,20 @@ def connect_qovery_redis():
         decode_responses=True,
     )
     # return uri, passw
+
+
+def where_hosted():
+    if os.getenv("DYNO"):
+        return "heroku"
+    elif os.getenv("RAILWAY_GIT_REPO_NAME"):
+        return "railway"
+    elif os.getenv("KUBERNETES_PORT"):
+        return "qovery"
+    elif os.getenv("HOSTNAME"):
+        return "workflows"
+    elif os.getenv("ANDROID_ROOT"):
+        return "termux"
+    elif os.getenv("WINDOW"):
+        return "win"
+    else:
+        return "local"
