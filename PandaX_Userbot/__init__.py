@@ -7,7 +7,7 @@
 
 from safety.tools import *
 
-from .startup.connections import *
+from .PandaX.PandaStart import *
 
 LOGS = LOGS
 
@@ -38,3 +38,22 @@ Evar = udB.get("SUDO_HNDLR")
 SUDO_HNDLR = Evar if Evar else HNDLR
 
 Hosted_On = where_hosted()
+
+import os
+import time
+from distutils.util import strtobool as sb
+
+StartTime = time.time()
+
+TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./downloads")
+ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
+CMD_HELP = {}
+DB_URI = os.environ.get("DATABASE_URL", None)
+CUSTOM_CMD = os.environ.get("CUSTOM_CMD") or "."
+LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
+BOTLOG = sb(os.environ.get("BOTLOG", "True"))
+G_BAN_LOGGER_GROUP = int(udB.get("LOG_CHANNEL"))
+if G_BAN_LOGGER_GROUP:
+    G_BAN_LOGGER_GROUP = int(udB.get("LOG_CHANNEL"))
+
+
