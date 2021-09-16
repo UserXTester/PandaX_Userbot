@@ -14,7 +14,7 @@ from pathlib import Path
 from time import gmtime, strftime
 from traceback import format_exc
 
-from PandaX_v20 import petercordpanda_version as ult_ver
+from PandaX_v20 import petercordpanda_bot_version as ult_ver
 from telethon import __version__ as telever
 from telethon import events
 from telethon.errors.rpcerrorlist import (
