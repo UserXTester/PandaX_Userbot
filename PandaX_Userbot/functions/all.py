@@ -77,7 +77,7 @@ REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
 parent_id = udB.get("GDRIVE_FOLDER_ID")
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 chatbot_base = "https://api.affiliateplus.xyz/api/chatbot?message={message}&botname=Ultroid&ownername={owner}&user=20"
-
+ultroid_bot = petercordpanda_bot
 telegraph = Telegraph()
 telegraph.create_account(short_name="Panda Cmds List")
 
