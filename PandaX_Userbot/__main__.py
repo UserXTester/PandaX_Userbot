@@ -89,7 +89,7 @@ petercordpanda_bot.loop.run_until_complete(autopilot())
 
 pmbot = udB.get("PMBOT")
 manager = udB.get("MANAGER")
-addons = udB.get("ADDONS") or Var.ADDONS
+modules = udB.get("MODULES") or Var.MODULES
 vcbot = udB.get("VCBOT") or Var.VCBOT
 
 # Railway dont allow Music Bots
