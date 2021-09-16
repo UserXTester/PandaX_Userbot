@@ -1,3 +1,11 @@
+# Ultroid - UserBot
+# Copyright (C) 2021 TeamUltroid
+#
+# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
+# PLease read the GNU Affero General Public License in
+# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
+
+
 import asyncio
 import io
 import json
@@ -5,6 +13,8 @@ import math
 import os
 import random
 import re
+import ssl
+import subprocess
 import sys
 import time
 import traceback
@@ -16,6 +26,7 @@ from sys import executable
 
 import aiofiles
 import aiohttp
+import certifi
 import cloudscraper
 import heroku3
 import httplib2
@@ -37,32 +48,18 @@ from telethon.errors import (
     ChannelPrivateError,
     ChannelPublicGroupNaError,
 )
-from telethon.tl.functions.channels import (
-    GetFullChannelRequest,
-    GetParticipantRequest,
-    GetParticipantsRequest,
-)
+from telethon.helpers import _maybe_await
+from telethon.tl import types
+from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantsRequest
 from telethon.tl.functions.messages import GetFullChatRequest, GetHistoryRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantCreator,
     ChannelParticipantsAdmins,
     MessageActionChannelMigrateFrom,
     MessageEntityMentionName,
 )
-from telethon.utils import get_input_location
+from telethon.utils import get_display_name, get_input_location, resolve_bot_file_id
 from youtube_dl import YoutubeDL
-from youtube_dl.utils import (
-    ContentTooShortError,
-    DownloadError,
-    ExtractorError,
-    GeoRestrictedError,
-    MaxDownloadsReached,
-    PostProcessingError,
-    UnavailableVideoError,
-    XAttrMetadataError,
-)
 
 from .. import *
 from ..Panda.core import *
@@ -70,10 +67,10 @@ from ..Panda.database import Var
 from ..PandaVX import *
 from ..PandaVX._wrappers import *
 from ..utils import *
+from ..version import petercordpanda_version
+from . import DANGER
 from ._FastTelethon import download_file as downloadable
 from ._FastTelethon import upload_file as uploadable
-
-petercordpanda_version = "V-MansiezX.2021"
 
 OAUTH_SCOPE = "https://www.googleapis.com/auth/drive.file"
 REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
@@ -82,7 +79,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 chatbot_base = "https://api.affiliateplus.xyz/api/chatbot?message={message}&botname=Ultroid&ownername={owner}&user=20"
 
 telegraph = Telegraph()
-telegraph.create_account(short_name="PandaX_Userbot Cmds List")
+telegraph.create_account(short_name="Panda Cmds List")
 
 request = cloudscraper.create_scraper()
 
@@ -95,11 +92,64 @@ CMD_WEB = {
     "siasky": 'curl -X POST "https://siasky.net/skynet/skyfile" -F "file=@{}"',
 }
 
-UPSTREAM_REPO_URL = "https://github.com/ilhammansiz/PandaX_Userbot"
+UPSTREAM_REPO_URL = Repo().remotes[0].config_reader.get("url").replace(".git", "")
 
 width_ratio = 0.7
 reqs = "filepanda.txt"
 base_url = "https://randomuser.me/api/"
+
+
+# ~~~~~~~~~~~~~~~~~~~~OFOX API~~~~~~~~~~~~~~~~~~~~
+async def get_ofox(codename):
+    ofox_baseurl = "https://api.orangefox.download/v3/"
+    releases_url = ofox_baseurl + "releases?codename="
+    device_url = ofox_baseurl + "devices/get?codename="
+    releases = await async_searcher(releases_url + codename)
+    device = await async_searcher(device_url + codename)
+    return json_parser(device), json_parser(releases)
+
+
+# ~~~~~~~~~~~~~~~Async Searcher~~~~~~~~~~~~~~~
+async def async_searcher(url, headers=None, params=None):
+    async with aiohttp.ClientSession(headers=headers) as session:
+        async with session.get(url, params=params) as resp:
+            return await resp.text()
+
+
+# ~~~~~~~~~~~~~~~JSON Parser~~~~~~~~~~~~~~~
+def json_parser(data, indent=None):
+    if isinstance(data, str):
+        parsed = json.loads(str(data))
+        if indent:
+            parsed = json.dumps(json.loads(str(data)), indent=indent)
+    elif isinstance(data, dict):
+        parsed = data
+        if indent:
+            parsed = json.dumps(data, indent=indent)
+    else:
+        parsed = {}
+    return parsed
+
+
+# ~~~~~~~~~~~~~~~Saavn Downloader~~~~~~~~~~~~~~~
+async def saavn_dl(query):
+    query = query.replace(" ", "%20")
+    url = f"https://jostapi.herokuapp.com/saavn?query={query}"
+    try:
+        k = (requests.get(url)).json()[0]
+    except BaseException:
+        return None, None, None, None
+    try:
+        title = k["song"]
+        urrl = k["media_url"]
+        img = k["image"]
+        duration = k["duration"]
+        performer = k["primary_artists"]
+    except BaseException:
+        return None, None, None, None
+    song = await fast_download(urrl, filename=title + ".mp3")
+    thumb = await fast_download(img, filename=title + ".jpg")
+    return song, duration, performer, thumb
 
 
 # ---------------YouTube Downloader---------------
@@ -110,14 +160,16 @@ def get_data(types, data):
         for m in data["formats"]:
             id = m["format_id"]
             note = m["format_note"]
-            size = humanbytes(m["filesize"])
-            j = f"{id} {note} {size}"
+            size = m["filesize"]
+            j = f"{id} {note} {humanbytes(size)}"
+            if id == "251":
+                a_size = m["filesize"]
             if note == "tiny":
                 audio.append(j)
             else:
                 if m["acodec"] == "none":
                     id = str(m["format_id"]) + "+" + str(audio[-1].split()[0])
-                    j = f"{id} {note} {size}"
+                    j = f"{id} {note} {humanbytes(size+a_size)}"
                     video.append(j)
                 else:
                     video.append(j)
@@ -149,26 +201,36 @@ def get_buttons(typee, listt):
     return buttons
 
 
-# ---------------Check Admin---------------
+async def dler(ev, url, opts=None, download=False):
+    try:
+        await ev.edit("`Getting Data from YouTube..`")
+        return YoutubeDL(opts).extract_info(url=url, download=download)
+    except Exception as e:
+        await ev.edit(f"{str(type(e))}: {str(e)}")
+        return
 
 
-async def check_if_admin(message):
-    result = await message.client(
-        GetParticipantRequest(
-            channel=message.chat_id,
-            participant=message.sender_id,
-        )
-    )
-    p = result.participant
-    return isinstance(p, ChannelParticipantCreator) or (
-        isinstance(p, ChannelParticipantAdmin)
-    )
+async def get_videos_link(url):
+    id = url[url.index("=") + 1 :]
+    try:
+        html = await async_searcher(url)
+    except BaseException:
+        return []
+    pattern = re.compile(r"watch\?v=\S+?list=" + id)
+    v_ids = re.findall(pattern, html)
+    links = []
+    if v_ids:
+        for z in v_ids:
+            idd = re.search(r"=(.*)\\", str(z)).group(1)
+            links.append(f"https://www.youtube.com/watch?v={idd}")
+    return links
 
 
 # ---------------Updater---------------
 
 
 async def updateme_requirements():
+    """To Update requirements"""
     try:
         process = await asyncio.create_subprocess_shell(
             " ".join(
@@ -183,11 +245,11 @@ async def updateme_requirements():
         return repr(e)
 
 
-async def gen_chlog(repo, diff):
+def gen_chlog(repo, diff):
     ac_br = repo.active_branch.name
     ch_log = tldr_log = ""
     ch = f"<b>Panda {petercordpanda_version} updates for <a href={UPSTREAM_REPO_URL}/tree/{ac_br}>[{ac_br}]</a>:</b>"
-    ch_tl = f"Panda {petercordpanda_version} updates for {ac_br}:"
+    ch_tl = f"panda {petercordpanda_version} updates for {ac_br}:"
     d_form = "%d/%m/%y || %H:%M"
     for c in repo.iter_commits(diff):
         ch_log += f"\n\n💬 <b>{c.count()}</b> 🗓 <b>[{c.committed_datetime.strftime(d_form)}]</b>\n<b><a href={UPSTREAM_REPO_URL.rstrip('/')}/commit/{c}>[{c.summary}]</a></b> 👨‍💻 <code>{c.author}</code>"
@@ -198,20 +260,16 @@ async def gen_chlog(repo, diff):
         return ch_log, tldr_log
 
 
-async def updater():
+def updater():
     off_repo = UPSTREAM_REPO_URL
     try:
         repo = Repo()
     except NoSuchPathError as error:
-        await asst.send_message(
-            int(udB.get("LOG_CHANNEL")), f"{txt}\n`directory {error} is not found`"
-        )
+        LOGS.info(f"`directory {error} is not found`")
         repo.__del__()
         return
     except GitCommandError as error:
-        await asst.send_message(
-            int(udB.get("LOG_CHANNEL")), f"{txt}\n`Early failure! {error}`"
-        )
+        LOGS.info(f"`Early failure! {error}`")
         repo.__del__()
         return
     except InvalidGitRepositoryError:
@@ -228,20 +286,20 @@ async def updater():
         pass
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    changelog, tl_chnglog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
+    changelog, tl_chnglog = gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     if changelog:
-        msg = True
+        return True
     else:
-        msg = False
-    return msg
+        return False
 
 
+# ----------------Fast Upload/Download----------------
 async def uploader(file, name, taime, event, msg):
     with open(file, "rb") as f:
         result = await uploadable(
             client=event.client,
             file=f,
-            name=name,
+            filename=name,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(
                     d,
@@ -274,7 +332,11 @@ async def downloader(filename, file, event, taime, msg):
     return result
 
 
+# ~~~~~~~~~~~~~~~~~~~~DDL Downloader~~~~~~~~~~~~~~~~~~~~
+
+
 async def download_file(link, name):
+    """for files, without progress callback with aiohttp"""
     async with aiohttp.ClientSession() as ses:
         async with ses.get(link) as re_ses:
             file = await aiofiles.open(name, "wb")
@@ -283,16 +345,33 @@ async def download_file(link, name):
     return name
 
 
-def make_html_telegraph(title, author, text):
-    client = TelegraphPoster(use_api=True)
-    client.create_api_token(title)
-    page = client.post(
-        title=title,
-        author=author,
-        author_url="https://t.me/TEAMSquadUserbotSupport",
-        text=text,
+async def fast_download(download_url, filename=None, progress_callback=None):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(download_url, timeout=None) as response:
+            if not filename:
+                filename = download_url.rpartition("/")[-1]
+            total_size = int(response.headers.get("content-length", 0)) or None
+            downloaded_size = 0
+            with open(filename, "wb") as f:
+                async for chunk in response.content.iter_chunked(1024):
+                    if chunk:
+                        f.write(chunk)
+                        downloaded_size += len(chunk)
+                    if progress_callback:
+                        await _maybe_await(
+                            progress_callback(downloaded_size, total_size)
+                        )
+            return filename
+
+
+async def dloader(e, host, file):
+    selected = CMD_WEB[host].format(file)
+    process = await asyncio.create_subprocess_shell(
+        selected, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
-    return page["url"]
+    stdout, stderr = await process.communicate()
+    os.remove(file)
+    return await e.edit(f"`{stdout.decode()}`")
 
 
 # ------------------Logo Gen Helpers----------------
@@ -312,9 +391,6 @@ def find_font_size(text, font, image, target_width_ratio):
         tested_font_size / (observed_width / image.width) * target_width_ratio
     )
     return round(estimated_font_size)
-
-
-# ------------------Logo Gen Helpers----------------
 
 
 def make_logo(imgpath, text, funt, **args):
@@ -346,28 +422,9 @@ def make_logo(imgpath, text, funt, **args):
     return f"{file_name} Generated Successfully!"
 
 
-async def get_user_id(ids):
-    if str(ids).isdigit():
-        userid = int(ids)
-    else:
-        try:
-            userid = (await petercordpanda_bot.get_entity(ids)).id
-        except Exception as exc:
-            return str(exc)
-    return userid
-
-
-async def dloader(e, host, file):
-    selected = CMD_WEB[host].format(file)
-    process = await asyncio.create_subprocess_shell(
-        selected, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-    )
-    stdout, stderr = await process.communicate()
-    os.remove(file)
-    return await e.edit(f"`{stdout.decode()}`")
-
-
+# ------------------Lock Unlock----------------
 def unlucks(unluck):
+    """Used in locks.py file"""
     if unluck == "msgs":
         rights = types.ChatBannedRights(
             until_date=None,
@@ -376,51 +433,53 @@ def unlucks(unluck):
             pin_messages=False,
             change_info=False,
         )
-    if unluck == "media":
+    elif unluck == "media":
         rights = types.ChatBannedRights(
             until_date=None,
             send_media=False,
         )
-    if unluck == "sticker":
+    elif unluck == "sticker":
         rights = types.ChatBannedRights(
             until_date=None,
             send_stickers=False,
         )
-    if unluck == "gif":
+    elif unluck == "gif":
         rights = types.ChatBannedRights(
             until_date=None,
             send_gifs=False,
         )
-    if unluck == "games":
+    elif unluck == "games":
         rights = types.ChatBannedRights(
             until_date=None,
             send_games=False,
         )
-    if unluck == "inlines":
+    elif unluck == "inlines":
         rights = types.ChatBannedRights(
             until_date=None,
             send_inline=False,
         )
-    if unluck == "polls":
+    elif unluck == "polls":
         rights = types.ChatBannedRights(
             until_date=None,
             send_polls=False,
         )
-    if unluck == "invites":
+    elif unluck == "invites":
         rights = types.ChatBannedRights(
             until_date=None,
             invite_users=False,
         )
-    if unluck == "pin":
+    elif unluck == "pin":
         rights = types.ChatBannedRights(
             until_date=None,
             pin_messages=False,
         )
-    if unluck == "changeinfo":
+    elif unluck == "changeinfo":
         rights = types.ChatBannedRights(
             until_date=None,
             change_info=False,
         )
+    else:
+        return None
     return rights
 
 
@@ -433,55 +492,58 @@ def lucks(luck):
             pin_messages=True,
             change_info=True,
         )
-    if luck == "media":
+    elif luck == "media":
         rights = types.ChatBannedRights(
             until_date=None,
             send_media=True,
         )
-    if luck == "sticker":
+    elif luck == "sticker":
         rights = types.ChatBannedRights(
             until_date=None,
             send_stickers=True,
         )
-    if luck == "gif":
+    elif luck == "gif":
         rights = types.ChatBannedRights(
             until_date=None,
             send_gifs=True,
         )
-    if luck == "games":
+    elif luck == "games":
         rights = types.ChatBannedRights(
             until_date=None,
             send_games=True,
         )
-    if luck == "inlines":
+    elif luck == "inlines":
         rights = types.ChatBannedRights(
             until_date=None,
             send_inline=True,
         )
-    if luck == "polls":
+    elif luck == "polls":
         rights = types.ChatBannedRights(
             until_date=None,
             send_polls=True,
         )
-    if luck == "invites":
+    elif luck == "invites":
         rights = types.ChatBannedRights(
             until_date=None,
             invite_users=True,
         )
-    if luck == "pin":
+    elif luck == "pin":
         rights = types.ChatBannedRights(
             until_date=None,
             pin_messages=True,
         )
-    if luck == "changeinfo":
+    elif luck == "changeinfo":
         rights = types.ChatBannedRights(
             until_date=None,
             change_info=True,
         )
+    else:
+        return None
     return rights
 
 
 async def ban_time(event, time_str):
+    """Simplify ban time from text"""
     if any(time_str.endswith(unit) for unit in ("s", "m", "h", "d")):
         unit = time_str[-1]
         time_int = time_str[:-1]
@@ -501,12 +563,595 @@ async def ban_time(event, time_str):
     else:
         return await event.edit(
             "Invalid time type specified. Expected s, m,h, or d, got: {}".format(
-                time_int[-1]
+                time_str[-1]
             )
         )
 
 
-# gdrive
+# ----------------- Load \\ Unloader ----------------
+
+
+def un_plug(shortname):
+    try:
+        try:
+            for client in [petercordpanda_bot, asst]:
+                for i in LOADED[shortname]:
+                    client.remove_event_handler(i)
+            try:
+                del LOADED[shortname]
+                del LIST[shortname]
+                MODULES.remove(shortname)
+            except BaseException:
+                pass
+
+        except BaseException:
+            name = f"modules.{shortname}"
+
+            for i in reversed(range(len(petercordpanda_bot._event_builders))):
+                ev, cb = petercordpanda_bot._event_builders[i]
+                if cb.__module__ == name:
+                    del petercordpanda_bot._event_builders[i]
+                    try:
+                        del LOADED[shortname]
+                        del LIST[shortname]
+                        MODULES.remove(shortname)
+                    except KeyError:
+                        pass
+    except Exception as er:
+        LOGS.info(er)
+
+
+async def safeinstall(event):
+    ok = await eor(event, "`Installing...`")
+    if event.reply_to_msg_id:
+        try:
+            downloaded_file_name = await ok.client.download_media(
+                await event.get_reply_message(), "modules/"
+            )
+            n = event.text
+            q = n[9:]
+            if q != "f":
+                xx = open(downloaded_file_name, "r")
+                yy = xx.read()
+                xx.close()
+                try:
+                    for dan in DANGER:
+                        if re.search(dan, yy):
+                            os.remove(downloaded_file_name)
+                            return await ok.edit(
+                                f"**Installation Aborted.**\n**Reason:** Occurance of `{dan}` in `{downloaded_file_name}`.\n\nIf you trust the provider and/or know what you're doing, use `{HNDLR}install f` to force install.",
+                            )
+                except BaseException:
+                    pass
+            if "(" not in downloaded_file_name:
+                path1 = Path(downloaded_file_name)
+                shortname = path1.stem
+                load_addons(shortname.replace(".py", ""))
+                try:
+                    plug = shortname.replace(".py", "")
+                    if plug in HELP:
+                        output = "**Plugin** - `{}`\n".format(plug)
+                        for i in HELP[plug]:
+                            output += i
+                        output += "\n© @TeamSquadUserbotSupport"
+                        await eod(
+                            ok,
+                            f"✓ `Panda - Installed`: `{plug}` ✓\n\n{output}",
+                            time=10,
+                        )
+                    elif plug in CMD_HELP:
+                        kk = f"Plugin Name-{plug}\n\n✘ Commands Available-\n\n"
+                        kk += str(CMD_HELP[plug])
+                        await eod(
+                            ok, f"✓ `Panda - Installed`: `{plug}` ✓\n\n{kk}", time=10
+                        )
+                    else:
+                        try:
+                            x = f"Plugin Name-{plug}\n\n✘ Commands Available-\n\n"
+                            for d in LIST[plug]:
+                                x += HNDLR + d
+                                x += "\n"
+                            await eod(
+                                ok, f"✓ `Panda - Installed`: `{plug}` ✓\n\n`{x}`"
+                            )
+                        except BaseException:
+                            await eod(
+                                ok, f"✓ `Panda - Installed`: `{plug}` ✓", time=3
+                            )
+                except Exception as e:
+                    await ok.edit(str(e))
+            else:
+                os.remove(downloaded_file_name)
+                await eod(ok, "**ERROR**\nPlugin might have been pre-installed.")
+        except Exception as e:
+            await eod(ok, "**ERROR\n**" + str(e))
+            os.remove(downloaded_file_name)
+    else:
+        await eod(ok, f"Please use `{HNDLR}install` as reply to a .py file.")
+
+
+async def allcmds(event):
+    x = str(LIST)
+    xx = (
+        x.replace(",", "\n")
+        .replace("[", """\n """)
+        .replace("]", "\n\n")
+        .replace("':", """ Plugin\n 🗒 Daftar Perintah PandaX_Userbot""")
+        .replace("'", "")
+        .replace("{", "")
+        .replace("}", "")
+    )
+    t = telegraph.create_page(title="Panda All Cmds", content=[f"{xx}"])
+    w = t["url"]
+    await eod(event, f"All Panda Cmds : [Click Here]({w})", link_preview=False)
+
+
+# ------------------Some Small Funcs----------------
+
+
+def time_formatter(milliseconds):
+    tmp = ""
+    minutes, seconds = divmod(int(milliseconds / 1000), 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+    weeks, days = divmod(days, 7)
+    tmp = (
+        ((str(weeks) + "w:") if weeks else "")
+        + ((str(days) + "d:") if days else "")
+        + ((str(hours) + "h:") if hours else "")
+        + ((str(minutes) + "m:") if minutes else "")
+        + ((str(seconds) + "s") if seconds else "")
+    )
+    if tmp != "":
+        if tmp.endswith(":"):
+            return tmp[:-1]
+        else:
+            return tmp
+    else:
+        return "0 s"
+
+
+def humanbytes(size):
+    if size in [None, ""]:
+        return "0 B"
+    for unit in ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]:
+        if size < 1024:
+            break
+        size /= 1024
+    return f"{size:.2f} {unit}"
+
+
+async def progress(current, total, event, start, type_of_ps, file_name=None):
+    now = time.time()
+    diff = now - start
+    if round(diff % 10.00) == 0 or current == total:
+        percentage = current * 100 / total
+        speed = current / diff
+        time_to_completion = round((total - current) / speed) * 1000
+        progress_str = "`[{0}{1}] {2}%`\n\n".format(
+            "".join(["●" for i in range(math.floor(percentage / 5))]),
+            "".join(["" for i in range(20 - math.floor(percentage / 5))]),
+            round(percentage, 2),
+        )
+        tmp = (
+            progress_str
+            + "`{0} of {1}`\n\n`✦ Speed: {2}/s`\n\n`✦ ETA: {3}`\n\n".format(
+                humanbytes(current),
+                humanbytes(total),
+                humanbytes(speed),
+                time_formatter(time_to_completion),
+            )
+        )
+        try:
+            if file_name:
+                await event.edit(
+                    "`✦ {}`\n\n`File Name: {}`\n\n{}".format(type_of_ps, file_name, tmp)
+                )
+            else:
+                await event.edit("`✦ {}`\n\n{}".format(type_of_ps, tmp))
+        except BaseException:
+            pass
+
+
+def dani_ck(filroid):
+    if os.path.exists(filroid):
+        no = 1
+        while True:
+            ult = "{0}_{2}{1}".format(*os.path.splitext(filroid) + (no,))
+            if os.path.exists(ult):
+                no += 1
+            else:
+                return ult
+    return filroid
+
+
+def ReTrieveFile(input_file_name):
+    RMBG_API = udB.get("RMBG_API")
+    headers = {"X-API-Key": RMBG_API}
+    files = {"image_file": (input_file_name, open(input_file_name, "rb"))}
+    r = requests.post(
+        "https://api.remove.bg/v1.0/removebg",
+        headers=headers,
+        files=files,
+        allow_redirects=True,
+        stream=True,
+    )
+    return r
+
+
+async def get_paste(data, extension="txt"):
+    ssl_context = ssl.create_default_context(cafile=certifi.where())
+    json = {"content": data, "extension": extension}
+    async with aiohttp.ClientSession() as ses:
+        async with ses.post(
+            "https://spaceb.in/api/v1/documents/", json=json, ssl=ssl_context
+        ) as out:
+            key = await out.json()
+    try:
+        return True, key["payload"]["id"]
+    except KeyError:
+        if "the length must be between 2 and 400000." in key["error"]:
+            return await get_paste(data[-400000:], extension=extension)
+        return False, key["error"]
+    except Exception as e:
+        LOGS.info(e)
+        return None, str(e)
+
+
+def get_all_files(path):
+    filelist = []
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            filelist.append(os.path.join(root, file))
+    return sorted(filelist)
+
+
+def get_chatbot_reply(event, message):
+    req_link = chatbot_base.format(
+        message=message,
+        owner=(petercordpanda_bot.me.first_name or "petercordpanda user"),
+    )
+    try:
+        data = requests.get(req_link)
+        if data.status_code == 200:
+            return (data.json())["message"]
+        else:
+            LOGS.info("**ERROR:**\n`API down, report this to `@TeamSquadUserbotSupport.")
+    except Exception as e:
+        LOGS.info("**ERROR:**`{str(e)}`")
+
+
+def autopicsearch(query):
+    query = query.replace(" ", "-")
+    link = f"https://unsplash.com/s/photos/{query}"
+    extra = requests.get(link)
+    res = bs(extra.content, "html.parser", from_encoding="utf-8")
+    results = res.find_all("a", "_2Mc8_")
+    return results
+
+
+async def randomchannel(tochat, channel, range1, range2, caption=None):
+    do = random.randrange(range1, range2)
+    async for x in ultroid_bot.iter_messages(channel, add_offset=do, limit=1):
+        try:
+            if not caption:
+                caption = x.text
+            await ultroid_bot.send_message(tochat, caption, file=x.media)
+        except BaseException:
+            pass
+
+
+async def bash(cmd):
+    process = await asyncio.create_subprocess_shell(
+        cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    stdout, stderr = await process.communicate()
+    err = stderr.decode().strip()
+    out = stdout.decode().strip()
+    return out, err
+
+
+def text_set(text):
+    lines = []
+    if len(text) <= 55:
+        lines.append(text)
+    else:
+        all_lines = text.split("\n")
+        for line in all_lines:
+            if len(line) <= 55:
+                lines.append(line)
+            else:
+                k = int(len(line) / 55)
+                for z in range(1, k + 2):
+                    lines.append(line[((z - 1) * 55) : (z * 55)])
+    return lines[:25]
+
+
+# ------------------System\\Heroku stuff----------------
+
+
+async def restart(ult):
+    if Var.HEROKU_APP_NAME and Var.HEROKU_API:
+        try:
+            Heroku = heroku3.from_key(Var.HEROKU_API)
+            app = Heroku.apps()[Var.HEROKU_APP_NAME]
+            await ult.edit("`Restarting your app, please wait for a minute!`")
+            app.restart()
+        except BaseException:
+            return await eor(
+                ult,
+                "`HEROKU_API` or `HEROKU_APP_NAME` is wrong! Kindly re-check in config vars.",
+            )
+    else:
+        execl(executable, executable, "-m", "PandaX_Userbot")
+
+
+async def shutdown(ult, dynotype="petercordpanda"):
+    ult = await eor(ult, "Shutting Down")
+    if Var.HEROKU_APP_NAME and Var.HEROKU_API:
+        try:
+            Heroku = heroku3.from_key(Var.HEROKU_API)
+            app = Heroku.apps()[Var.HEROKU_APP_NAME]
+            await ult.edit("`Shutting Down your app, please wait for a minute!`")
+            app.process_formation()[dynotype].scale(0)
+        except BaseException as e:
+            LOGS.info(e)
+            return await ult.edit(
+                "`HEROKU_API` and `HEROKU_APP_NAME` is wrong! Kindly re-check in config vars."
+            )
+    else:
+        exit(1)
+
+
+async def heroku_logs(event):
+    xx = await eor(event, "`Processing...`")
+    if not (Var.HEROKU_API and Var.HEROKU_APP_NAME):
+        return await xx.edit("Please set `HEROKU_APP_NAME` and `HEROKU_API` in vars.")
+    try:
+        app = (heroku3.from_key(Var.HEROKU_API)).app(Var.HEROKU_APP_NAME)
+    except BaseException as se:
+        LOGS.info(se)
+        return await xx.edit(
+            "`HEROKU_API` and `HEROKU_APP_NAME` is wrong! Kindly re-check in config vars."
+        )
+    await xx.edit("`Downloading Logs...`")
+    ok = app.get_log()
+    with open("petercordpanda-heroku.log", "w") as log:
+        log.write(ok)
+    await event.client.send_file(
+        event.chat_id,
+        file="petercordpanda-heroku.log",
+        thumb="PandaVersion/Panda/Logo.jpg",
+        caption=f"**Panda Heroku Logs.**",
+    )
+    os.remove("petercordpanda-heroku.log")
+    await xx.delete()
+
+
+async def def_logs(ult):
+    await ult.client.send_file(
+        ult.chat_id,
+        file="petercordpanda.log",
+        thumb="PandaVersion/Panda/Logo.jpg",
+        caption=f"**PandaX_Userbot Logs.**",
+    )
+
+
+# ---------------- Calculator Fucn---------------
+
+
+async def calcc(cmd, event):
+    wtf = f"print({cmd})"
+    old_stderr = sys.stderr
+    old_stdout = sys.stdout
+    redirected_output = sys.stdout = io.StringIO()
+    redirected_error = sys.stderr = io.StringIO()
+    stdout, stderr, exc = None, None, None
+    try:
+        await aexecc(wtf, event)
+    except Exception:
+        exc = traceback.format_exc()
+    stdout = redirected_output.getvalue()
+    stderr = redirected_error.getvalue()
+    sys.stdout = old_stdout
+    sys.stderr = old_stderr
+    evaluation = ""
+    if exc:
+        evaluation = exc
+    elif stderr:
+        evaluation = stderr
+    elif stdout:
+        evaluation = stdout
+    else:
+        evaluation = "Success"
+    return evaluation
+
+
+async def aexecc(code, event):
+    exec(f"async def __aexecc(event): " + "".join(f"\n {l}" for l in code.split("\n")))
+    return await locals()["__aexecc"](event)
+
+
+# ---------------- Random User Gen ----------------
+
+
+def get_random_user_data():
+    from faker import Faker
+
+    cc = Faker().credit_card_full().split("\n")
+    card = (
+        cc[0]
+        + "\n"
+        + "**CARD_ID:** "
+        + cc[2]
+        + "\n"
+        + f"**{cc[3].split(':')[0]}:**"
+        + cc[3].split(":")[1]
+    )
+    d = requests.get(base_url).json()
+    data_ = d["results"][0]
+    _g = data_["gender"]
+    gender = "🤵🏻‍♂" if _g == "male" else "🤵🏻‍♀"
+    name = data_["name"]
+    loc = data_["location"]
+    dob = data_["dob"]
+    msg = """
+{} **Name:** {}.{} {}
+
+**Street:** {} {}
+**City:** {}
+**State:** {}
+**Country:** {}
+**Postal Code:** {}
+
+**Email:** {}
+**Phone:** {}
+**Card:** {}
+
+**Birthday:** {}
+""".format(
+        gender,
+        name["title"],
+        name["first"],
+        name["last"],
+        loc["street"]["number"],
+        loc["street"]["name"],
+        loc["city"],
+        loc["state"],
+        loc["country"],
+        loc["postcode"],
+        data_["email"],
+        data_["phone"],
+        card,
+        dob["date"][:10],
+    )
+    pic = data_["picture"]["large"]
+    return msg, pic
+
+
+# ------------------Media Funcns----------------
+
+
+def make_html_telegraph(title, author, text):
+    client = TelegraphPoster(use_api=True)
+    client.create_api_token(title)
+    page = client.post(
+        title=title,
+        author=author,
+        author_url="https://t.me/TeamSquadUserbotSupport",
+        text=text,
+    )
+    return page["url"]
+
+
+def local_mediainfo(file):
+    try:
+        file = file.split(".")[-1].lower()
+    except IndexError:
+        pass
+    if file in ["jpg", "png", "tgs", "webp"]:
+        return "stream"
+    elif file in ["mp3", "flac"]:
+        return "audio"
+    elif file in ["txt", "docx"]:
+        return "doc"
+    else:
+        try:
+            l = resolve_bot_file_id(file)
+            return l
+        except ValueError:
+            return "doc"
+
+
+def mediainfo(media):
+    xx = str((str(media)).split("(", maxsplit=1)[0])
+    m = ""
+    if xx == "MessageMediaPhoto":
+        m = "pic"
+    elif xx == "MessageMediaDocument":
+        mim = media.document.mime_type
+        if mim == "application/x-tgsticker":
+            m = "sticker animated"
+        elif "image" in mim:
+            if mim == "image/webp":
+                m = "sticker"
+            elif mim == "image/gif":
+                m = "gif as doc"
+            else:
+                m = "pic as doc"
+        elif "video" in mim:
+            if "DocumentAttributeAnimated" in str(media):
+                m = "gif"
+            elif "DocumentAttributeVideo" in str(media):
+                i = str(media.document.attributes[0])
+                if "supports_streaming=True" in i:
+                    m = "video"
+                m = "video as doc"
+            else:
+                m = "video"
+        elif "audio" in mim:
+            m = "audio"
+        else:
+            m = "document"
+    elif xx == "MessageMediaWebPage":
+        m = "web"
+    return m
+
+
+# ------ Audio \\ Video tools funcn --------#
+
+
+# https://github.com/1Danish-00/CompressorBot/blob/main/helper/funcn.py#L104
+
+
+def genss(file):
+    process = subprocess.Popen(
+        ["mediainfo", file, "--Output=JSON"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    stdout, stderr = process.communicate()
+    out = stdout.decode().strip()
+    z = json.loads(out)
+    p = z["media"]["track"][0]["Duration"]
+    return int(p.split(".")[-2])
+
+
+def duration_s(file, stime):
+    tsec = genss(file)
+    x = round(tsec / 5)
+    y = round(tsec / 5 + int(stime))
+    pin = stdr(x)
+    if y < tsec:
+        pon = stdr(y)
+    else:
+        pon = stdr(tsec)
+    return pin, pon
+
+
+def stdr(seconds):
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    if len(str(minutes)) == 1:
+        minutes = "0" + str(minutes)
+    if len(str(hours)) == 1:
+        hours = "0" + str(hours)
+    if len(str(seconds)) == 1:
+        seconds = "0" + str(seconds)
+    dur = (
+        ((str(hours) + ":") if hours else "00:")
+        + ((str(minutes) + ":") if minutes else "00:")
+        + ((str(seconds)) if seconds else "")
+    )
+    return dur
+
+
+# ------------------Gdrive Helpers----------------
+
+# From Uniborg.
+# https://github.com/SpEcHiDe/UniBorg/blob/adb3bd311f642b2719606c384c43afd89029e4f3/stdplugins/gDrive.py
 
 
 def list_files(http):
@@ -643,7 +1288,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     media_body = MediaFileUpload(file_path, mimetype=mime_type, resumable=True)
     body = {
         "title": file_name,
-        "description": "Uploaded using PetercordPanda Userbot",
+        "description": "Uploaded using PandaX_Userbot",
         "mimeType": mime_type,
     }
     if parent_id is not None:
@@ -669,17 +1314,17 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
             speed = round(uploaded / diff, 2)
             eta = round((t_size - uploaded) / speed)
             progress_str = "`{0}{1} {2}%`".format(
-                "".join(["♨●♨" for i in range(math.floor(percentage / 5))]),
+                "".join(["●" for i in range(math.floor(percentage / 5))]),
                 "".join(["" for i in range(20 - math.floor(percentage / 5))]),
                 round(percentage, 2),
             )
             current_message = (
-                f"`♨✦♨ Uploading to G-Drive`\n\n"
-                + f"`♨✦♨ File Name:` `{file_name}`\n\n"
+                f"`✦ Uploading to G-Drive`\n\n"
+                + f"`✦ File Name:` `{file_name}`\n\n"
                 + f"{progress_str}\n\n"
-                + f"`♨✦♨ Uploaded:` `{humanbytes(uploaded)} of {humanbytes(t_size)}`\n"
-                + f"`♨✦♨ Speed:` `{humanbytes(speed)}`\n"
-                + f"`♨✦♨ ETA:` `{time_formatter(eta*1000)}`"
+                + f"`✦ Uploaded:` `{humanbytes(uploaded)} of {humanbytes(t_size)}`\n"
+                + f"`✦ Speed:` `{humanbytes(speed)}`\n"
+                + f"`✦ ETA:` `{time_formatter(eta*1000)}`"
             )
             if display_message != current_message:
                 try:
@@ -694,167 +1339,105 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     return download_url
 
 
-# Gdrive End
+# ------------------GoGoAnime Scrapper----------------
+
+# Base Credits - TG@Madepranav
 
 
-def dani_ck(filroid):
-    if os.path.exists(filroid):
-        no = 1
-        while True:
-            ult = "{0}_{2}{1}".format(*os.path.splitext(filroid) + (no,))
-            if os.path.exists(ult):
-                no += 1
-            else:
-                return ult
-    return filroid
+def airing_eps():
+    resp = requests.get("https://gogoanime.ai/").content
+    soup = bs(resp, "html.parser")
+    anime = soup.find("nav", {"class": "menu_series cron"}).find("ul")
+    air = "**Currently airing anime.**\n\n"
+    c = 1
+    for link in anime.find_all("a"):
+        airing_link = link.get("href")
+        name = link.get("title")
+        link = airing_link.split("/")
+        if c == 21:
+            break
+        air += f"**{c}.** [{name}]({airing_link})\n"
+        c += 1
+    return air
 
 
-def un_plug(shortname):
-    try:
-        try:
-            for i in LOADED[shortname]:
-                petercordpanda_bot.remove_event_handler(i)
-            try:
-                del LOADED[shortname]
-                del LIST[shortname]
-                MODULES.remove(shortname)
-            except BaseException:
-                pass
-
-        except BaseException:
-            name = f"modules.{shortname}"
-
-            for i in reversed(range(len(petercordpanda_bot._event_builders))):
-                ev, cb = petercordpanda_bot._event_builders[i]
-                if cb.__module__ == name:
-                    del petercordpanda_bot._event_builders[i]
-                    try:
-                        del LOADED[shortname]
-                        del LIST[shortname]
-                        MODULES.remove(shortname)
-                    except KeyError:
-                        pass
-    except BaseException:
-        raise ValueError
-
-
-async def dler(ev, url):
-    try:
-        await ev.edit("`Fetching data, please wait..`")
-        ytdl_data = YoutubeDL().extract_info(url=url, download=False)
-    except DownloadError as DE:
-        return await ev.edit(f"`{str(DE)}`")
-    except ContentTooShortError:
-        return await ev.edit("`The download content was too short.`")
-    except GeoRestrictedError:
-        return await ev.edit(
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`",
+def get_anime_src_res(search_str):
+    query = """
+    query ($id: Int,$search: String) {
+      Media (id: $id, type: ANIME,search: $search) {
+        id
+        title {
+          romaji
+          english
+        }
+        description (asHtml: false)
+        startDate{
+            year
+          }
+          episodes
+          chapters
+          volumes
+          season
+          type
+          format
+          status
+          duration
+          averageScore
+          genres
+          bannerImage
+      }
+    }
+    """
+    response = (
+        requests.post(
+            "https://graphql.anilist.co",
+            json={"query": query, "variables": {"search": search_str}},
         )
-    except MaxDownloadsReached:
-        return await ev.edit("`Max-downloads limit has been reached.`")
-    except PostProcessingError:
-        return await ev.edit("`There was an error during post processing.`")
-    except UnavailableVideoError:
-        return await ev.edit("`Media is not available in the requested format.`")
-    except XAttrMetadataError as XAME:
-        return await ev.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
-    except ExtractorError:
-        return await ev.edit("`There was an error during info extraction.`")
-    except BrokenPipeError as x:
-        return await ev.edit(f"`{str(x)}`")
-    except Exception as e:
-        return await ev.edit(f"{str(type(e))}: {str(e)}")
-    return ytdl_data
-
-
-def time_formatter(milliseconds: int) -> str:
-    """Inputs time in milliseconds, to get beautified time,
-    as string"""
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-    days, hours = divmod(hours, 24)
-    tmp = (
-        ((str(days) + " day(s), ") if days else "")
-        + ((str(hours) + " hour(s), ") if hours else "")
-        + ((str(minutes) + " minute(s), ") if minutes else "")
-        + ((str(seconds) + " second(s), ") if seconds else "")
-        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
-    )
-    return tmp[:-2]
-
-
-def humanbytes(size):
-    if not size:
-        return "0 B"
-    power = 2 ** 10
-    raised_to_pow = 0
-    dict_power_n = {0: "B", 1: "K", 2: "M", 3: "G", 4: "T", 5: "P"}
-    while size > power:
-        size /= power
-        raised_to_pow += 1
-    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
-
-
-async def progress(current, total, event, start, type_of_ps, file_name=None):
-    now = time.time()
-    diff = now - start
-    if round(diff % 10.00) == 0 or current == total:
-        percentage = current * 100 / total
-        speed = current / diff
-        time_to_completion = round((total - current) / speed) * 1000
-        progress_str = "`[{0}{1}] {2}%`\n\n".format(
-            "".join(["♨●♨" for i in range(math.floor(percentage / 5))]),
-            "".join(["" for i in range(20 - math.floor(percentage / 5))]),
-            round(percentage, 2),
-        )
-        tmp = (
-            progress_str
-            + "`{0} of {1}`\n\n`♨✦♨ Speed: {2}/s`\n\n`💐✦💐ETA: {3}`\n\n".format(
-                humanbytes(current),
-                humanbytes(total),
-                humanbytes(speed),
-                time_formatter(time_to_completion),
-            )
-        )
-        if file_name:
-            await event.edit(
-                "`♨✦♨ {}`\n\n`File Name: {}`\n\n{}".format(type_of_ps, file_name, tmp)
-            )
+    ).text
+    tjson = json.loads(response)
+    res = list(tjson.keys())
+    if "errors" in res:
+        return f"**Error** : `{tjson['errors'][0]['message']}`"
+    else:
+        tjson = tjson["data"]["Media"]
+        if "bannerImage" in tjson.keys():
+            banner = tjson["bannerImage"]
         else:
-            await event.edit("`♨✦♨ {}`\n\n{}".format(type_of_ps, tmp))
+            banner = None
+        title = tjson["title"]["romaji"]
+        year = tjson["startDate"]["year"]
+        episodes = tjson["episodes"]
+        link = f"https://anilist.co/anime/{tjson['id']}"
+        ltitle = f"[{title}]({link})"
+        info = f"**Type**: {tjson['format']}"
+        info += f"\n**Genres**: "
+        for g in tjson["genres"]:
+            info += g + " "
+        info += f"\n**Status**: {tjson['status']}"
+        info += f"\n**Episodes**: {tjson['episodes']}"
+        info += f"\n**Year**: {tjson['startDate']['year']}"
+        info += f"\n**Score**: {tjson['averageScore']}"
+        info += f"\n**Duration**: {tjson['duration']} min\n"
+        temp = f"{tjson['description']}"
+        info += "__" + (re.sub("<br>", "\n", temp)).strip() + "__"
+        return banner, ltitle, year, episodes, info
 
 
-async def restart(ult):
-    if Var.HEROKU_APP_NAME and Var.HEROKU_API:
-        try:
-            Heroku = heroku3.from_key(Var.HEROKU_API)
-            app = Heroku.apps()[Var.HEROKU_APP_NAME]
-            await ult.edit("`Restarting your app, please wait for a minute!`")
-            app.restart()
-        except BaseException:
-            return await eor(
-                ult,
-                "`HEROKU_API` or `HEROKU_APP_NAME` is wrong! Kindly re-check in config vars.",
-            )
+# -----------------Random Stuff--------------
+
+
+async def get_user_id(ids, client=ultroid_bot):
+    """Get User Id from text"""
+    if str(ids).isdigit() or str(ids).startswith("-"):
+        if str(ids).startswith("-100"):
+            userid = int(str(ids).replace("-100", ""))
+        elif str(ids).startswith("-"):
+            userid = int(str(ids).replace("-", ""))
+        else:
+            userid = int(ids)
     else:
-        execl(executable, executable, "-m", "PandaX_Userbot")
-
-
-async def shutdown(ult, dynotype="petercordpanda"):
-    ult = await eor(ult, "Shutting Down")
-    if Var.HEROKU_APP_NAME and Var.HEROKU_API:
-        try:
-            Heroku = heroku3.from_key(Var.HEROKU_API)
-            app = Heroku.apps()[Var.HEROKU_APP_NAME]
-        except BaseException:
-            return await ult.edit(
-                "`HEROKU_API` and `HEROKU_APP_NAME` is wrong! Kindly re-check in config vars."
-            )
-        await ult.edit("`Shutting Down your app, please wait for a minute!`")
-        app.process_formation()[dynotype].scale(0)
-    else:
-        sys.exit(0)
+        userid = (await client.get_entity(ids)).id
+    return userid
 
 
 async def get_user_info(event):
@@ -884,20 +1467,6 @@ async def get_user_info(event):
         except (TypeError, ValueError):
             return None, None
     return user_obj, extra
-
-
-def ReTrieveFile(input_file_name):
-    RMBG_API = udB.get("RMBG_API")
-    headers = {"X-API-Key": RMBG_API}
-    files = {"image_file": (input_file_name, open(input_file_name, "rb"))}
-    r = requests.post(
-        "https://api.remove.bg/v1.0/removebg",
-        headers=headers,
-        files=files,
-        allow_redirects=True,
-        stream=True,
-    )
-    return r
 
 
 async def resize_photo(photo):
@@ -981,20 +1550,17 @@ async def get_full_user(event):
 def make_mention(user):
     if user.username:
         return f"@{user.username}"
-    else:
-        return inline_mention(user)
+    return inline_mention(user)
 
 
 def inline_mention(user):
-    full_name = user_full_name(user) or "No Name"
+    full_name = user_full_name(user)
+    if not isinstance(user, types.User):
+        return full_name
     return f"[{full_name}](tg://user?id={user.id})"
 
 
-def user_full_name(user):
-    names = [user.first_name, user.last_name]
-    names = [i for i in list(names) if i]
-    full_name = " ".join(names)
-    return full_name
+user_full_name = get_display_name
 
 
 async def get_chatinfo(event):
@@ -1013,10 +1579,10 @@ async def get_chatinfo(event):
         else:
             chat = event.chat_id
     try:
-        chat_info = await petercordpanda_bot(GetFullChatRequest(chat))
+        chat_info = await event.client(GetFullChatRequest(chat))
     except BaseException:
         try:
-            chat_info = await petercordpanda_bot(GetFullChannelRequest(chat))
+            chat_info = await event.client(GetFullChannelRequest(chat))
         except ChannelInvalidError:
             await eor(event, "`Invalid channel/group`")
             return None
@@ -1035,7 +1601,7 @@ async def get_chatinfo(event):
 
 
 async def fetch_info(chat, event):
-    chat_obj_info = await petercordpanda_bot.get_entity(chat.full_chat.id)
+    chat_obj_info = await event.client.get_entity(chat.full_chat.id)
     broadcast = (
         chat_obj_info.broadcast if hasattr(chat_obj_info, "broadcast") else False
     )
@@ -1043,7 +1609,7 @@ async def fetch_info(chat, event):
     chat_title = chat_obj_info.title
     warn_emoji = emojize(":warning:")
     try:
-        msg_info = await petercordpanda_bot(
+        msg_info = await ultroid_bot(
             GetHistoryRequest(
                 peer=chat_obj_info.id,
                 offset_id=0,
@@ -1157,7 +1723,7 @@ async def fetch_info(chat, event):
 
     if admins is None:
         try:
-            participants_admins = await petercordpanda_bot(
+            participants_admins = await event.client(
                 GetParticipantsRequest(
                     channel=chat.full_chat.id,
                     filter=ChannelParticipantsAdmins(),
@@ -1247,442 +1813,4 @@ async def fetch_info(chat, event):
     return caption
 
 
-async def safeinstall(event):
-    if event.reply_to_msg_id:
-        ok = await eor(event, "`Installing...`")
-        try:
-            downloaded_file_name = await ok.client.download_media(
-                await event.get_reply_message(), "modules/"
-            )
-            n = event.text
-            q = n[9:]
-            if q != "f":
-                xx = open(downloaded_file_name, "r")
-                yy = xx.read()
-                xx.close()
-                try:
-                    for dan in DANGER:
-                        if dan in yy:
-                            os.remove(downloaded_file_name)
-                            return await ok.edit(
-                                f"**Installation Aborted.**\n**Reason:** Occurance of `{dan}` in `{downloaded_file_name}`.\n\nIf you trust the provider and/or know what you're doing, use `{HNDLR}install f` to force install.",
-                            )
-                except BaseException:
-                    pass
-            if "(" not in downloaded_file_name:
-                path1 = Path(downloaded_file_name)
-                shortname = path1.stem
-                load_modules(shortname.replace(".py", ""))
-                try:
-                    plug = shortname.replace(".py", "")
-                    if plug in HELP:
-                        output = "**Plugin** - `{}`\n".format(plug)
-                        for i in HELP[plug]:
-                            output += i
-                        output += "\n© @TEAMSquadUserbotSupport"
-                        await ok.edit(
-                            f"✓ `PandaX_Userbot - Installed`: `{plug}` ✓\n\n{output}"
-                        )
-                        await asyncio.sleep(9)
-                        await ok.delete()
-                    elif plug in CMD_HELP:
-                        kk = f"Plugin Name-{plug}\n\n♨ Commands Available-\n\n"
-                        kk += str(CMD_HELP[plug])
-                        await ok.edit(
-                            f"✓ `PandaX_Userbot - Installed`: `{plug}` ✓\n\n{kk}"
-                        )
-                        await asyncio.sleep(9)
-                        await ok.delete()
-                    else:
-                        try:
-                            x = f"Plugin Name-{plug}\n\n♨ Commands Available-\n\n"
-                            for d in LIST[plug]:
-                                x += HNDLR + d
-                                x += "\n"
-                            await ok.edit(
-                                f"♨ `PandaX_Userbot - Installed`: `{plug}` ♨\n\n`{x}`"
-                            )
-                            await asyncio.sleep(5)
-                            await ok.delete()
-                        except BaseException:
-                            await ok.edit(f"✓ `PetercordPanda - Installed`: `{plug}` ✓")
-                            await asyncio.sleep(3)
-                            await ok.delete()
-                except Exception as e:
-                    await ok.edit(str(e))
-            else:
-                os.remove(downloaded_file_name)
-                await ok.edit("**ERROR**\nPlugin might have been pre-installed.")
-                await asyncio.sleep(4)
-                await ok.delete()
-        except Exception as e:
-            await ok.edit("**ERROR\n**" + str(e))
-            os.remove(downloaded_file_name)
-            await asyncio.sleep(4)
-            await ok.delete()
-    else:
-        await ok.edit(f"Please use `{HNDLR}install` as reply to a .py file.")
-        await asyncio.sleep(4)
-        await ok.delete()
-
-
-async def allcmds(event):
-    x = str(LIST)
-    xx = (
-        x.replace(",", "\n")
-        .replace("[", """\n """)
-        .replace("]", "\n\n")
-        .replace("':", """ Plugin\n ♨ Commands Available-""")
-        .replace("'", "")
-        .replace("{", "")
-        .replace("}", "")
-    )
-    t = telegraph.create_page(title="PandaX_Userbot All Cmds", content=[f"{xx}"])
-    w = t["url"]
-    await eod(
-        event, f"All ♨ PandaX_Userbot Cmds : [Click Here]({w})", link_preview=False
-    )
-
-
-def autopicsearch(query):
-    query = query.replace(" ", "-")
-    link = f"https://unsplash.com/s/photos/{query}"
-    extra = requests.get(link)
-    res = bs(extra.content, "html.parser", from_encoding="utf-8")
-    results = res.find_all("a", "_2Mc8_")
-    return results
-
-
-async def randomchannel(tochat, channel, range1, range2, caption=None):
-    do = random.randrange(range1, range2)
-    async for x in petercordpanda_bot.iter_messages(channel, add_offset=do, limit=1):
-        try:
-            if not caption:
-                caption = x.text
-            await petercordpanda_bot.send_message(tochat, caption, file=x.media)
-        except BaseException:
-            pass
-
-
-async def bash(cmd):
-    process = await asyncio.create_subprocess_shell(
-        cmd,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-    )
-    stdout, stderr = await process.communicate()
-    err = stderr.decode().strip()
-    out = stdout.decode().strip()
-    return out, err
-
-
-async def calcc(cmd, event):
-    wtf = f"print({cmd})"
-    old_stderr = sys.stderr
-    old_stdout = sys.stdout
-    redirected_output = sys.stdout = io.StringIO()
-    redirected_error = sys.stderr = io.StringIO()
-    stdout, stderr, exc = None, None, None
-    try:
-        await aexecc(wtf, event)
-    except Exception:
-        exc = traceback.format_exc()
-    stdout = redirected_output.getvalue()
-    stderr = redirected_error.getvalue()
-    sys.stdout = old_stdout
-    sys.stderr = old_stderr
-    evaluation = ""
-    if exc:
-        evaluation = exc
-    elif stderr:
-        evaluation = stderr
-    elif stdout:
-        evaluation = stdout
-    else:
-        evaluation = "Success"
-    return evaluation
-
-
-async def aexecc(code, event):
-    exec(f"async def __aexecc(event): " + "".join(f"\n {l}" for l in code.split("\n")))
-    return await locals()["__aexecc"](event)
-
-
-def mediainfo(media):
-    xx = str((str(media)).split("(", maxsplit=1)[0])
-    m = ""
-    if xx == "MessageMediaPhoto":
-        m = "pic"
-    elif xx == "MessageMediaDocument":
-        mim = media.document.mime_type
-        if mim == "application/x-tgsticker":
-            m = "sticker animated"
-        elif "image" in mim:
-            if mim == "image/webp":
-                m = "sticker"
-            elif mim == "image/gif":
-                m = "gif as doc"
-            else:
-                m = "pic as doc"
-        elif "video" in mim:
-            if "DocumentAttributeAnimated" in str(media):
-                m = "gif"
-            elif "DocumentAttributeVideo" in str(media):
-                i = str(media.document.attributes[0])
-                if "supports_streaming=True" in i:
-                    m = "video"
-                m = "video as doc"
-            else:
-                m = "video"
-        elif "audio" in mim:
-            m = "audio"
-        else:
-            m = "document"
-    elif xx == "MessageMediaWebPage":
-        m = "web"
-    return m
-
-
-def get_random_user_data():
-    from faker import Faker
-
-    cc = Faker().credit_card_full().split("\n")
-    card = (
-        cc[0]
-        + "\n"
-        + "**CARD_ID:** "
-        + cc[2]
-        + "\n"
-        + f"**{cc[3].split(':')[0]}:**"
-        + cc[3].split(":")[1]
-    )
-    d = requests.get(base_url).json()
-    data_ = d["results"][0]
-    _g = data_["gender"]
-    gender = "🤵🏻‍♂" if _g == "male" else "🤵🏻‍♀"
-    name = data_["name"]
-    loc = data_["location"]
-    dob = data_["dob"]
-    msg = """
-{} **Name:** {}.{} {}
-**Street:** {} {}
-**City:** {}
-**State:** {}
-**Country:** {}
-**Postal Code:** {}
-**Email:** {}
-**Phone:** {}
-**Card:** {}
-**Birthday:** {}
-""".format(
-        gender,
-        name["title"],
-        name["first"],
-        name["last"],
-        loc["street"]["number"],
-        loc["street"]["name"],
-        loc["city"],
-        loc["state"],
-        loc["country"],
-        loc["postcode"],
-        data_["email"],
-        data_["phone"],
-        card,
-        dob["date"][:10],
-    )
-    pic = data_["picture"]["large"]
-    return msg, pic
-
-
-# GoGoAnime Scrapper, Base Credits - TG@Madepranav
-
-
-def airing_eps():
-    resp = requests.get("https://gogoanime.ai/").content
-    soup = bs(resp, "html.parser")
-    anime = soup.find("nav", {"class": "menu_series cron"}).find("ul")
-    air = "**Currently airing anime.**\n\n"
-    c = 1
-    for link in anime.find_all("a"):
-        airing_link = link.get("href")
-        name = link.get("title")
-        link = airing_link.split("/")
-        if c == 21:
-            break
-        air += f"**{c}.** `{name}`\n"
-        c += 1
-    return air
-
-
-async def heroku_logs(event):
-    xx = await eor(event, "`Processing...`")
-    if not (Var.HEROKU_API and Var.HEROKU_APP_NAME):
-        return await xx.edit("Please set `HEROKU_APP_NAME` and `HEROKU_API` in vars.")
-    try:
-        app = (heroku3.from_key(Var.HEROKU_API)).app(Var.HEROKU_APP_NAME)
-    except BaseException:
-        return await xx.edit(
-            "`HEROKU_API` and `HEROKU_APP_NAME` is wrong! Kindly re-check in config vars."
-        )
-    await xx.edit("`Downloading Logs...`")
-    ok = app.get_log()
-    with open("petercordpanda-heroku.log", "w") as log:
-        log.write(ok)
-    url = None
-    try:
-        key = (
-            requests.post("https://nekobin.com/api/documents", json={"content": ok})
-            .json()
-            .get("result")
-            .get("key")
-        )
-        url = f"https://nekobin.com/raw/{key}"
-    except BaseException:
-        key = (
-            requests.post("https://del.dog/documents", data=ok.encode("UTF-8"))
-            .json()
-            .get("key")
-        )
-        url = f"https://del.dog/raw/{key}"
-    await petercordpanda_bot.send_file(
-        event.chat_id,
-        file="petercordpanda-heroku.log",
-        thumb="PandaVersion/Panda/PandaBlanck.jpg",
-        caption=f"**♨ PandaX_Userbot ♨ Heroku Logs.**\nPasted [here]({url}) too!",
-    )
-    os.remove("petercordpanda-heroku.log")
-    await xx.delete()
-
-
-async def def_logs(ult):
-    xx = await eor(ult, "`Processing...`")
-    with open("petercordpanda.log") as f:
-        ok = f.read()
-    url = None
-    try:
-        key = (
-            requests.post("https://nekobin.com/api/documents", json={"content": ok})
-            .json()
-            .get("result")
-            .get("key")
-        )
-        url = f"https://nekobin.com/raw/{key}"
-    except BaseException:
-        key = (
-            requests.post("https://del.dog/documents", data=ok.encode("UTF-8"))
-            .json()
-            .get("key")
-        )
-        url = f"https://del.dog/raw/{key}"
-    await petercordpanda_bot.send_file(
-        ult.chat_id,
-        file="petercordpanda.log",
-        thumb="PandaVersion/Panda/PandaBlanck.jpg",
-        caption=f"**PandaX_Userbot Logs.**\nPasted [here]({url}) too!",
-    )
-    await xx.edit("Done")
-    await xx.delete()
-
-
-def get_paste(data):
-    try:
-        key = (
-            requests.post("https://nekobin.com/api/documents", json={"content": data})
-            .json()
-            .get("result")
-            .get("key")
-        )
-        return "neko", key
-    except BaseException:
-        key = (
-            requests.post("https://del.dog/documents", data=data.encode("UTF-8"))
-            .json()
-            .get("key")
-        )
-        return "dog", key
-
-
-def get_all_files(path):
-    filelist = []
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            filelist.append(os.path.join(root, file))
-    return sorted(filelist)
-
-
-def get_anime_src_res(search_str):
-    query = """
-    query ($id: Int,$search: String) {
-      Media (id: $id, type: ANIME,search: $search) {
-        id
-        title {
-          romaji
-          english
-        }
-        description (asHtml: false)
-        startDate{
-            year
-          }
-          episodes
-          chapters
-          volumes
-          season
-          type
-          format
-          status
-          duration
-          averageScore
-          genres
-          bannerImage
-      }
-    }
-    """
-    response = (
-        requests.post(
-            "https://graphql.anilist.co",
-            json={"query": query, "variables": {"search": search_str}},
-        )
-    ).text
-    tjson = json.loads(response)
-    res = list(tjson.keys())
-    if "errors" in res:
-        return f"**Error** : `{tjson['errors'][0]['message']}`"
-    else:
-        tjson = tjson["data"]["Media"]
-        if "bannerImage" in tjson.keys():
-            banner = tjson["bannerImage"]
-        else:
-            banner = None
-        title = tjson["title"]["romaji"]
-        year = tjson["startDate"]["year"]
-        episodes = tjson["episodes"]
-        link = f"https://anilist.co/anime/{tjson['id']}"
-        ltitle = f"[{title}]({link})"
-        info = f"**Type**: {tjson['format']}"
-        info += f"\n**Genres**: "
-        for g in tjson["genres"]:
-            info += g + " "
-        info += f"\n**Status**: {tjson['status']}"
-        info += f"\n**Episodes**: {tjson['episodes']}"
-        info += f"\n**Year**: {tjson['startDate']['year']}"
-        info += f"\n**Score**: {tjson['averageScore']}"
-        info += f"\n**Duration**: {tjson['duration']} min\n"
-        temp = f"{tjson['description']}"
-        info += "__" + (re.sub("<br>", "\n", temp)).strip() + "__"
-        return banner, ltitle, year, episodes, info
-
-
-
-
-def get_chatbot_reply(event, message):
-    req_link = chatbot_base.format(
-        message=message, owner=(event.sender.first_name or "SakuraUser")
-    )
-    try:
-        data = requests.get(req_link)
-        if data.status_code == 200:
-            return (data.json())["message"]
-        else:
-            LOGS.info("**ERROR:**\n`API down, report this to `@VeezSupportGroup.")
-    except Exception:
-        LOGS.info("**ERROR:**`{str(e)}`")
+# ---------------- End ------------------#
