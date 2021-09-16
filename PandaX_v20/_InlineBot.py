@@ -442,6 +442,7 @@ async def setting(event):
             ],
             [
                 Button.inline("📒Exra Panda📒", data="ilham"),
+                Button.inline("🎵 Voice Chat 🎵", data="vc_helper"),
             ],
             [
                 Button.inline("⫷ ʙᴀᴄᴋ ⫸", data="open"),
