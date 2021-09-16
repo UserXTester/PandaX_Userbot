@@ -60,7 +60,7 @@ LOGS.info("Initialising...")
 
 # log in
 BOT_TOKEN = udB.get("BOT_TOKEN")
-LOGS.info("Starting Ultroid...")
+LOGS.info("Starting PandaX...")
 try:
     asst.start(bot_token=BOT_TOKEN)
     petercordpanda_bot.start()
@@ -69,7 +69,7 @@ try:
     LOGS.info("Done, startup completed")
     LOGS.info("Assistant - Started")
 except (AuthKeyDuplicatedError, PhoneNumberInvalidError, EOFError):
-    LOGS.info("Session String expired. Please create a new one! Ultroid is stopping...")
+    LOGS.info("Session String expired. Please create a new one! PandaX is stopping...")
     exit(1)
 except ApiIdInvalidError:
     LOGS.info("Your API ID/API HASH combination is invalid. Kindly recheck.")
