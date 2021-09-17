@@ -1,7 +1,13 @@
 # -------------------------------------------------------#
 
 https://github.com/New-dev0/Telethon/archive/ParleG.zip
-
+redis
+python-decouple==3.3
+TgCrypto
+python-dotenv==0.15.0
+cloudscraper
+aiofiles
+aiohttp
 pytgcalls==3.0.0.dev19
 
 # -------------------------------------------------------#
