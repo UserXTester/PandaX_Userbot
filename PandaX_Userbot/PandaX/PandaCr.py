@@ -283,7 +283,7 @@ async def plug(plugin_channels):
                 plugin = file.stem
                 if "(" not in files:
                     try:
-                        load_addons(plugin.replace(".py", ""))
+                        load_modules(plugin.replace(".py", ""))
                         LOGS.info(f"PandaX - PLUGIN_CHANNEL - Installed - {plugin}")
                     except Exception as e:
                         LOGS.info(f"PandaX - PLUGIN_CHANNEL - ERROR - {plugin}")
