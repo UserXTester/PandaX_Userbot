@@ -395,20 +395,7 @@ async def setting(event):
         ],
     )
 
-@callback("bvck")
-@owner
-async def bvckr(event):
-    xhelps = "**Voice Chat Help Menu for {}**\n**Available Commands:** `{}`\n\n@TeamSquadUserbotSupport".format(
-        OWNER_NAME, len(VC_HELP)
-    )
-    current_page_number = int(upage)
-    buttons = page_num(current_page_number, VC_HELP, "vchelp", "vc")
-    await event.edit(
-        f"{xhelps}",
-        file=_file_to_replace,
-        buttons=buttons,
-        link_preview=False,
-    )
+
 
 @callback("dara")
 @owner
@@ -442,7 +429,7 @@ async def setting(event):
             ],
             [
                 Button.inline("📒Exra Panda📒", data="ilham"),
-                Button.inline("🎵 Voice Chat 🎵", data="vc_helper"),
+                Button.inline("🎸 Voice Chat 🎸", data="vc_helper"),
             ],
             [
                 Button.inline("⫷ ʙᴀᴄᴋ ⫸", data="open"),
@@ -743,6 +730,20 @@ async def backr(event):
         link_preview=False,
     )
 
+@callback("bvck")
+@owner
+async def bvckr(event):
+    xxhelps = "**Voice Chat Help Menu for {}**\n**Available Commands:** `{}`\n\n@TeamSquadUserbotSupport".format(
+        OWNER_NAME, len(VC_HELP)
+    )
+    current_page_number = int(upage)
+    buttons = page_num(current_page_number, VC_HELP, "vchelp", "vc")
+    await event.edit(
+        f"{xxhelps}",
+        file=Panda_Logo,
+        buttons=buttons,
+        link_preview=False,
+    )
 
 @callback("backpanda")
 @owner
