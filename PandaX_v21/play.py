@@ -64,7 +64,7 @@ async def play_music_(event):
             return
         await ultSongs.group_call.start_audio(song)
         await xx.reply(
-            "🎸 <strong>Now playing: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested by: {}</strong>".format(
+            "🎧 <strong>Memutar sekarang: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat Grup:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested Lagu by: {}</strong>".format(
                 link, song_name, duration, chat, from_user
             ),
             file=thumb,
@@ -128,7 +128,7 @@ async def play_music_(event):
                 return
             await ultSongs.group_call.start_audio(song)
             await msg.reply(
-                "🎸 <strong>Now playing: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested by: {}</strong>".format(
+                "🎧 <strong>Now playing: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested by: {}</strong>".format(
                     link, song_name, duration, chat, from_user
                 ),
                 file=thumb,
