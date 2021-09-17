@@ -13,7 +13,6 @@ if os.name == 'nt':
 # For convenience, IMPORT ALL OF THE THINGS (that are constructable by the user).
 from av.audio.fifo import AudioFifo
 from av.audio.format import AudioFormat
-from av.audio.frame import AudioFrame
 from av.audio.layout import AudioLayout
 from av.audio.resampler import AudioResampler
 from av.codec.codec import Codec, codecs_available
