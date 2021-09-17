@@ -9,6 +9,8 @@ ENV TZ=Asia/Jakarta
 
 
 
+RUN git clone https://github.com/ilhammansiz/PandaX_Userbot.git /root/ilhammansiz/
+WORKDIR /root/ilhammansiz/
 
 RUN apt-get autoremove --purge
 RUN pip3 install --upgrade pip setuptools 
@@ -16,9 +18,6 @@ RUN pip3 install --upgrade pip setuptools
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 RUN pip3 install --no-cache-dir -r requirements.txt
 RUN pip3 uninstall av -y && pip3 install av --no-binary av
-
-# changing workdir
-WORKDIR /root/ilhammansiz/
 
 # start the bot
 CMD ["bash", "PandaVersion/Panda/startup.sh"]
