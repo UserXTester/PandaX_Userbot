@@ -1,4 +1,4 @@
-cimport libav as lib
+import libav as lib
 
 
 # Initialise libraries.
