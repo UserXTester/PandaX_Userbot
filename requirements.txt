@@ -72,3 +72,4 @@ future
 wget
 search_engine_parser
 av==8.0.3
+tgcalls==3.0.0.dev4
