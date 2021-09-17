@@ -24,7 +24,7 @@ from threading import Lock, Thread
 from typing import List, Optional
 
 import cv2
-
+import av
 
 
 logger = getLogger(__name__)
@@ -203,7 +203,7 @@ class AudioStream(QueueStream):
         super().__init__(on_end_callback, queue_size)
 
         self.source = source
-        self.__input_container = cv2.open(source)
+        self.__input_container = av.open(source)
         if not len(self.__input_container.streams.audio):
             raise RuntimeError('Cant find audio stream')
 
@@ -217,7 +217,7 @@ class AudioStream(QueueStream):
         audio_rate = codec_context.sample_rate
         rate = REVERSED_AUDIO_SAMPLE_RATE.get(audio_rate, DEFAULT_AUDIO_SAMPLE_RATE)
 
-        self.__audio_resampler = cv2.AudioResampler(format='s16', layout='mono', rate=rate)
+        self.__audio_resampler = av.AudioResampler(format='s16', layout='mono', rate=rate)
         self.__audio_stream_iter = iter(self.__input_container.decode(audio=0))
 
         self.__video_stream = video_stream
