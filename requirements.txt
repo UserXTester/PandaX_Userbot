@@ -72,4 +72,4 @@ future
 wget
 search_engine_parser
 av
-tgcalls==3.0.0.dev4
+tgcalls
