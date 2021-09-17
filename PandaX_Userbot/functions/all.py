@@ -67,7 +67,7 @@ from ..Panda.database import Var
 from ..PandaVX import *
 from ..PandaVX._wrappers import *
 from ..utils import *
-from ..version import petercordpanda_version
+from ..version import PandaX_version as petercordpanda_version
 from . import DANGER
 from ._FastTelethon import download_file as downloadable
 from ._FastTelethon import upload_file as uploadable
