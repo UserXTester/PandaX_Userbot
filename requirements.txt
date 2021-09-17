@@ -68,5 +68,4 @@ python-arq
 future
 wget
 search_engine_parser
-pytgcalls
 pytgcalls==3.0.0.dev19
