@@ -116,7 +116,7 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
-cleanup_cache()
+
 
 if __name__ == "__main__":
     LOGS.info(suc_msg)
