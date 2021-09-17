@@ -36,7 +36,7 @@ if not udB.get("DUAL_HNDLR"):
 
 Evar = udB.get("SUDO_HNDLR")
 SUDO_HNDLR = Evar if Evar else HNDLR
-
+Hosted_On = where_hosted()
 
 
 import os
