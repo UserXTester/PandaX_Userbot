@@ -18,4 +18,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 RUN pip3 uninstall av -y && pip3 install av --no-binary av
 
 # start the bot
-CMD ["bash", "python3 -m PandaX_Userbot"]
+CMD ["bash", "PandaVerison/Panda/panda.sh""]
