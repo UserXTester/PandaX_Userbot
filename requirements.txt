@@ -52,7 +52,6 @@ psutil
 pybase64
 pydictionary
 pypdf2
-pytgcalls
 pytz
 pyyaml
 qrcode
