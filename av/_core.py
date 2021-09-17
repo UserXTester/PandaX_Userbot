@@ -12,7 +12,7 @@ pyav_version = lib.PYAV_VERSION_STR
 pyav_commit = lib.PYAV_COMMIT_STR
 
 
-cdef decode_version(v):
+def decode_version(v):
     if v < 0:
         return (-1, -1, -1)
     cdef int major = (v >> 16) & 0xff
