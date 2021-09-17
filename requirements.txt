@@ -22,4 +22,4 @@ GitPython
 googletrans==4.0.0rc1
 git+https://github.com/ilhammansiz/heroku3.py
 profanitydetector
-
+pytz
