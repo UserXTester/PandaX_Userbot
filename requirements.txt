@@ -68,3 +68,5 @@ python-arq
 future
 wget
 search_engine_parser
+numerize
+Shazamio
