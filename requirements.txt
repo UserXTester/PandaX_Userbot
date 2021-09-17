@@ -4,5 +4,6 @@ pytgcalls==3.0.0.dev19
 redis
 python-decouple==3.3
 python-dotenv==0.15.0
+cloudscraper
 aiofiles
 aiohttp
