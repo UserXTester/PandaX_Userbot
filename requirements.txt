@@ -58,6 +58,5 @@ gdown
 qrcode
 shazamio
 profanitydetector
-ffmpeg-python
 wheel
-python-arq
+
