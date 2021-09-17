@@ -8,7 +8,7 @@ if os.name == 'nt':
 # library that is being wrapped.
 
 # Capture logging (by importing it).
-from av import logging
+
 
 # For convenience, IMPORT ALL OF THE THINGS (that are constructable by the user).
 from av.audio.fifo import AudioFifo
