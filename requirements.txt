@@ -71,4 +71,4 @@ python-arq
 future
 wget
 search_engine_parser
-pytgcalls 2.1.0
+pytgcalls[telethon]
