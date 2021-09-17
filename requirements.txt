@@ -1,11 +1,10 @@
 
 pytgcalls==3.0.0.dev19
 numerize
-Shazamio
 https://github.com/New-dev0/Telethon/archive/New.zip
 redis
 python-decouple==3.3
-TgCrypto
+tgcrypto
 python-dotenv==0.15.0
 cloudscraper
 aiofiles
@@ -64,7 +63,6 @@ shazamio
 profanitydetector
 ffmpeg-python
 wheel
-TgCrypto
 ffmpeg
 python-arq
 future
