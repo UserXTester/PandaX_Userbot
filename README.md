@@ -1,5 +1,4 @@
-PandaX_Userbot==2021-16-09-py3-none-any.whl
-   
+
 <img src="https://media.giphy.com/media/7LM3Nd9MvnWFO/giphy.gif">
    
 
