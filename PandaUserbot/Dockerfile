@@ -2,7 +2,7 @@
 #Petercord Userbot
 #Tentang AKU DAN DIA
 
-FROM  ilhammansiz17/ilham-mansiez-petercord:Petercord-Userbot
+FROM theteamultroid/ultroid:main
 
 # set timezone
 ENV TZ=Asia/Jakarta
@@ -11,9 +11,6 @@ ENV TZ=Asia/Jakarta
 
 RUN git clone https://github.com/ilhammansiz/PandaX_Userbot.git /root/ilhammansiz/
 WORKDIR /root/ilhammansiz/
-
-RUN apt-get autoremove --purge
-RUN pip3 install --upgrade pip setuptools 
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 RUN pip3 install --no-cache-dir -r requirements.txt
