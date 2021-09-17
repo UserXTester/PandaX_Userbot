@@ -71,4 +71,5 @@ python-arq
 future
 wget
 search_engine_parser
-pytgcalls[telethon]
+av==8.0.3
+opencv-python-headless==4.5.3.56
