@@ -9,6 +9,9 @@ cloudscraper
 aiofiles
 aiohttp
 black
+akinator.py
+enhancer
+apscheduler
 isort
 pre-commit
 pyclean
