@@ -5,7 +5,7 @@
 # PLease read the GNU Affero General Public License in
 # <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 
-from safety.tools import *
+
 
 from .PandaX.Panda_Start import *
 
@@ -37,7 +37,7 @@ if not udB.get("DUAL_HNDLR"):
 Evar = udB.get("SUDO_HNDLR")
 SUDO_HNDLR = Evar if Evar else HNDLR
 
-Hosted_On = where_hosted()
+
 
 import os
 import time
