@@ -3,54 +3,68 @@
   "description": "A simple Telegram userbot based on Telethon . Maintained by IlhamMansiez ",
   "logo": "https://telegra.ph/file/3cfda2e8353bb1569cc79.jpg",
   "keywords": [
-        "Telethon",
-        "telegram",
-        "userbot",
-        "python",
-        "panda"
-    ],
-    "repository": "https://github.com/ilhammansiz/PandaX_Userbot",
-    "website": "https://github.com/ilhammansiz/PandaX_Userbot",
-    "success_url": "https://t.me/TeamSquadUserbotSupport",
-    "stack": "container",
-    "env": {
-        "API_ID": {
-            "description": "You api id, from my.telegram.org or @ScrapperRoBot.",
-            "value": "", 
-            "required": false
-        },
-        "API_HASH": {
-            "description": "You api hash, from my.telegram.org or @ScrapperRoBot.",
-            "value": "",
-            "required": false
-        },
-        "SESSION": {
-            "description": "Your session string. Can be added now, or after deploy. (The bot will NOT work without a session string!!)",
-            "value": ""
-        },
-        "REDIS_URI": {
-            "description": "Redis endpoint URL, from redislabs.com",
-            "value": ""
-        },
-        "REDIS_PASSWORD": {
-            "description": "Redis endpoint password, from redislabs.com",
-            "value": ""
-        },
-        "HEROKU_API": {
-            "description": "Heroku API token. Mandatory for Heroku Deploy...",
-            "value": "",
-            "required": false
-        },
-        "HEROKU_APP_NAME": {
-            "description": "Name of your Heroku app, given in the first blank on this page. To be added if deploying to heroku ONLY.",
-            "value": "",
-            "required": false
-        }
+    "plugin",
+    "modular",
+    "productivity"
+  ],
+  "repository": "https://github.com/IlhamMansiez/PetercordPanda",
+  "website": "#TODO",
+  "success_url": "#TODO",
+  "env": {
+    "API_ID": {
+      "description": "Get this value from my.telegram.org! Please do not steal",
+      "value": ""
     },
-    "formation": {
-        "panda": {
-            "quantity": 1,
-            "size": "free"
-        }
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org! Please do not steal",
+      "value": ""
+    },
+    "SESSION": {
+      "description": "Ambil string session TELETHON KETIKA MENGAMBIL KETIK T JANGAN P",
+      "value": "",
+      "required": true
+    },
+    "REDIS_URI": {
+      "description": "Redis endpoint URL, from redislabs.com",
+      "value": ""
+    },
+    "REDIS_PASSWORD": {
+      "description": "Redis end password,from redislabs.com",
+      "value": ""
+    
+    },
+    "HEROKU_API": {
+      "description": "Required for updating the bot and other stuff get it from https://dashboard.heroku.com/account",
+      "value": "",
+      "required": false
+    },
+    "HEROKU_APP_NAME": {
+      "description": "YOUR app name ",
+      "value": "",
+      "required": false
     }
+  },
+  "addons": [{
+    "plan": "heroku-postgresql",
+    "options": {
+      "version": "12"
+    }
+  }],
+  "buildpacks": [{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  }, {
+    "url": "https://github.com/heroku/heroku-buildpack-redis"
+  }, {
+    "url":"https://github.com/heroku/heroku-buildpack-google-chrome"
+  },{
+    "url":"https://github.com/heroku/heroku-buildpack-chromedriver"
+  },{
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  },{
+    "url": "https://github.com/heroku/heroku-buildpack-apt.git"
+  },{
+    "url": "https://github.com/chrismytton/heroku-buildpack-jq"
+  },{
+    "url": "heroku/python"
+  }]
 }
