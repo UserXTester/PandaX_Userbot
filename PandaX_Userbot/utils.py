@@ -377,7 +377,7 @@ def load_manager(plugin_name):
 
 def load_vc(plugin_name):
     if not plugin_name.startswith("__"):
-        from .. import HNDLR, LOGS, asst, udB, petercordpanda_bot, vcClient
+        from . import HNDLR, LOGS, asst, udB, petercordpanda_bot, vcClient
         from ..Panda.core import VC_HELP
 
         path = Path(f"PandaX_v21/{plugin_name}.py")
