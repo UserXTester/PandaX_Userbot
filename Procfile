@@ -1,1 +1,0 @@
-ilhammansiz: bash PandaUserbot/ilhammansiez
