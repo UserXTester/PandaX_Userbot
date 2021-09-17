@@ -72,6 +72,12 @@ RUN apt-get install -y bash \
     zlib1g \
     zlib1g-dev
 
+RUN apt-get autoremove --purge
+RUN chmod +x /usr/local/bin/*
+RUN pip3 install --upgrade pip setuptools 
+RUN if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi 
+RUN if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi 
+RUN rm -r /root/.cache
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 
     # cloning the repo and installing requirements.
