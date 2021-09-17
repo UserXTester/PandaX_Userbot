@@ -61,7 +61,7 @@ aria2p
 gdown
 qrcode
 shazamio
-ProfanityDetector
+profanitydetector
 ffmpeg-python
 wheel
 TgCrypto
