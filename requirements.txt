@@ -1,5 +1,4 @@
 https://github.com/New-dev0/Telethon/archive/Crunch.zip
-telethon-session-sqlalchemy
 pytgcalls==3.0.0.dev19
 redis
 python-decouple==3.3
