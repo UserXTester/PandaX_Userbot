@@ -36,7 +36,7 @@ async def join_(event):
     if not ultSongs.group_call.is_connected:
         await ultSongs.vc_joiner()
 
-@asst_cmd("joinvc$")
+@panda_cmd("joinvc$")
 @owner
 async def join_(event):
     if len(event.text.split()) > 1:
