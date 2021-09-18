@@ -24,7 +24,7 @@ from threading import Lock, Thread
 from typing import List, Optional
 
 import cv2
-
+import av
 
 
 logger = getLogger(__name__)
