@@ -29,7 +29,7 @@ from PandaX_Userbot.functions.all import (
 from PandaX_Userbot.functions.vc_group import check_vcauth
 from PandaX_Userbot.functions.vc_group import get_chats as get_vc
 from PandaX_Userbot.PandaVX import owner_and_sudos, sudoers
-from PandaX_Userbot.PandaVX._assistant import admin_check, in_pattern, asst_cmd, owner
+from PandaX_Userbot.PandaVX._assistant import admin_check, in_pattern, panda_cmd, owner
 from PandaX_Userbot.PandaVX._wrappers import eod, eor
 from PandaX_Userbot.version import __version__ as UltVer
 from telethon import events
