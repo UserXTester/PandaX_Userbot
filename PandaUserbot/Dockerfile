@@ -8,14 +8,16 @@ FROM theteamultroid/ultroid:dev
 
 # set timezone
 ENV TZ=Asia/Jakarta
+
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 
+    # cloning the repo and installing requirements.
+    && git clone -b dev https://github.com/ilhammansiz/PandaX_Userbot.git /root/ilhammansiz/ \
+    && pip3 install --no-cache-dir -r root/TeamUltroid/requirements.txt \
+    && pip3 uninstall av -y && pip3 install av --no-binary av
 
-RUN git clone https://github.com/ilhammansiz/PandaX_Userbot.git /root/ilhammansiz/
+# changing workdir
 WORKDIR /root/ilhammansiz/
-
-RUN pip3 install --no-cache-dir -r root/ilhammansiz/requirements.txt \
-RUN pip3 uninstall av -y && pip3 install av --no-binary av
 
 # start the bot
 CMD ["bash", "PandaVersion/Panda/startup.sh"]
