@@ -17,7 +17,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import get_display_name
 
-from .. import asst, petercordpanda_bot
+from .. import asst, petercordpanda_bot, vcClient
 from . import owner_and_sudos
 
 PETERCORDPANDA_PIC = "https://telegra.ph//file/813db0b898e3df7611c2c.jpg"
@@ -128,10 +128,10 @@ def owner():
     return decorator
 
 
-def asst_cmd(dec):
+def panda_cmd(dec):
     def ult(func):
         pattern = "^/" + dec  # todo - handlers for assistant?
-        asst.add_event_handler(func, NewMessage(incoming=True, pattern=pattern))
+        vcClient.add_event_handler(func, NewMessage(incoming=True, pattern=pattern))
 
     return ult
 
