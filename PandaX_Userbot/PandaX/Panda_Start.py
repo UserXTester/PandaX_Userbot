@@ -166,7 +166,7 @@ def vc_musicbot(udB, petercordpanda_bot):
             return petercordpanda_bot
         try:
             vcmusicbot = TelegramClient(
-                StringSession(VC_SESSION), api_id=Var.API_ID, api_hash=Var.API_HASH
+                "TG_BOT_TOKEN", VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH
             ).start(udB.get("BOT_TOKEN"))
             return vcmusicbot
         except (AuthKeyDuplicatedError, PhoneNumberInvalidError, EOFError):
