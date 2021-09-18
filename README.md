@@ -51,6 +51,6 @@ KLIK DAN PILIH REPO PANDA USERBOT DAN PandaX_Userbot ☺
 *   [TeamUltroid](https://github.com/TeamUltroid)
 *   [TeamUserge](https://github.com/UsergeTeam/Userge)
 *   [CatUserbot](https://github.com/sandy1709/catuserbot)
-*   [av](https://github.com/PyAV-Org/PyAV)
-*   [pytgcalls](https://www.google.com/url?sa=t&source=web&rct=j&url=https://github.com/pytgcalls/pytgcalls
+*   [PyAV](https://github.com/PyAV-Org/PyAV)
+*   [pytgcalls](https://www.google.com/url?sa=t&source=web&rct=j&url=https://github.com/pytgcalls/pytgcalls)
 *   Dan Lainnya
