@@ -16,7 +16,7 @@ from traceback import format_exc
 from pytgcalls.group_call_factory import GroupCallFactory
 from pytgcalls.exceptions import GroupCallNotFoundError
 from telethon.errors.rpcerrorlist import ParticipantJoinMissingError
-from PandaX_Userbot import HNDLR, LOGS, asst, udB, vcClient
+from PandaX_Userbot import HNDLR, LOGS, asst, udB, vcClient, MusicPanda
 from PandaX_Userbot.functions.all import (
     bash,
     downloader,
