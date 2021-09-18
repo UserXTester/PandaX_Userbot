@@ -28,7 +28,7 @@ try:
     import av
 except ModuleNotFoundError:
     os.system(
-        "git clone https://github.com/PyAV-Org/PyAV.git && pip3 uninstall av -y && pip3 install av --no-binary av"
+        "git clone https://github.com/PyAV-Org/PyAV.git && pip3 install av --no-binary av"
     )
 
 start_time = time.time()
