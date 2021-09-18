@@ -36,6 +36,23 @@ async def join_(event):
     if not ultSongs.group_call.is_connected:
         await ultSongs.vc_joiner()
 
+@asst_cmd("joinvc$")
+@owner
+async def join_(event):
+    if len(event.text.split()) > 1:
+        chat = event.text.split()[1]
+        if not chat.startswith("@"):
+            chat = int(chat)
+        try:
+            chat = int("-100" + str((await vcClient.get_entity(chat)).id))
+        except Exception as e:
+            return await eor(event, "**ERROR:**\n{}".format(str(e)))
+    else:
+        chat = event.chat_id
+    ultSongs = Player(chat, event)
+    if not ultSongs.group_call.is_connected:
+        await ultSongs.vc_joiner()
+
 
 @vc_asst("(leavevc|stopvc)")
 async def leaver(event):
