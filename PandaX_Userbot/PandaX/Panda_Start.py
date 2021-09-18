@@ -159,6 +159,24 @@ def vc_connection(udB, petercordpanda_bot):
     return petercordpanda_bot
 
 
+def vc_musicbot(udB, petercordpanda_bot):
+    VC_SESSION = Var.VC_SESSION if Var.VC_SESSION else udB.get("VC_SESSION")
+    if VC_SESSION:
+        if VC_SESSION == Var.SESSION:
+            return petercordpanda_bot
+        try:
+            vcmusicbot = TelegramClient(
+                StringSession(VC_SESSION), api_id=Var.API_ID, api_hash=Var.API_HASH
+            ).start(udB.get("BOT_TOKEN"))
+            return vcmusicbot
+        except (AuthKeyDuplicatedError, PhoneNumberInvalidError, EOFError):
+            LOGS.info("Your VC_SESSION Expired. Deleting VC_SESSION from redis...")
+            LOGS.info("Renew/Change it to Use Voice/Video Chat from VC Asisten Music...")
+            udB.delete("VC_SESSION")
+        except Exception as er:
+            LOGS.info("VC_SESSION: {}".format(str(er)))
+    return petercordpanda_bot
+
 def connect_qovery_redis():
     uri = Var.REDIS_URI
     passw = Var.REDIS_PASSWORD
