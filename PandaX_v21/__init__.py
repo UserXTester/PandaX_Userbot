@@ -40,6 +40,13 @@ from youtubesearchpython import Playlist, ResultMode, Video, VideosSearch
 
 from strings import get_string
 
+try:
+    import av
+except ModuleNotFoundError:
+    os.system(
+        "git clone https://github.com/PyAV-Org/PyAV.git && pip3 uninstall av -y && pip3 install av --no-binary av"
+    )
+
 asstUserName = asst.me.username
 LOG_CHANNEL = int(udB["LOG_CHANNEL"])
 ACTIVE_CALLS, VC_QUEUE = [], {}
