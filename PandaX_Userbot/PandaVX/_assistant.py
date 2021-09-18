@@ -167,7 +167,7 @@ def owner():
             else:
                 try:
                     await event.answer(
-                        f"this is {get_display_name(ultroid.me)}'s bot!!"
+                        f"this is {get_display_name(petercordpanda.me)}'s bot!!"
                     )
                 except BaseException:
                     pass
