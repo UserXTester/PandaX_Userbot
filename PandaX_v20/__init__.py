@@ -23,8 +23,14 @@ except ModuleNotFoundError:
         "git clone https://github.com/1Danish-00/glitch_me.git && pip install -e ./glitch_me"
     )
 
-
-
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/PandaX_UserbotModules modules/"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.system("pip install -r modules/modules.txt")
 
 start_time = time.time()
 petercordpanda_bot_version = "_PandaX_Userbot_"
