@@ -1,7 +1,6 @@
-# -------------------------------------------------------#
 
 https://github.com/New-dev0/Telethon/archive/ParleG.zip
-redis
+redis>=3.3.10
 python-decouple==3.3
 TgCrypto
 python-dotenv==0.15.0
@@ -73,4 +72,3 @@ python-arq
 future
 wget
 search_engine_parser
-# -------------------------------------------------------#
