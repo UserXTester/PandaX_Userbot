@@ -70,4 +70,4 @@ python-arq
 future
 wget
 search_engine_parser
-
+tgcalls==3.0.0.dev4
