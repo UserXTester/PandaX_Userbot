@@ -1,5 +1,5 @@
-
-https://github.com/New-dev0/Telethon/archive/ParleG.zip
+py-Ultroid==2021.9.16
+https://github.com/New-dev0/Telethon/archive/Crunch.zip
 redis>=3.3.10
 python-decouple==3.3
 TgCrypto
