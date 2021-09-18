@@ -7,7 +7,7 @@ python-dotenv==0.15.0
 cloudscraper
 aiofiles
 aiohttp
-pytgcalls==3.0.0.dev19
+pytgcalls
 numerize
 Shazamio
 black
