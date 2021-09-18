@@ -4,7 +4,7 @@
 # PLease read the GNU Affero General Public License in <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
-FROM theteamultroid/ultroid:main
+FROM theteamultroid/ultroid:dev
 
 # set timezone
 ENV TZ=Asia/Jakarta
