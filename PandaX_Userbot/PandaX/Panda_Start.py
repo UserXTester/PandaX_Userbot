@@ -148,7 +148,7 @@ def vc_connection(udB, petercordpanda_bot):
         try:
             vcClient = TelegramClient(
                 StringSession(VC_SESSION), api_id=Var.API_ID, api_hash=Var.API_HASH
-            ).start()
+            ).start(udB.get("BOT_TOKEN"))
             return vcClient
         except (AuthKeyDuplicatedError, PhoneNumberInvalidError, EOFError):
             LOGS.info("Your VC_SESSION Expired. Deleting VC_SESSION from redis...")
