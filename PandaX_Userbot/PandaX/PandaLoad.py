@@ -20,7 +20,7 @@ from PandaX_Userbot.utils import (
 )
 
 
-def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot=none):
+def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot=None):
     # for userbot
     files = sorted(os.listdir("PandaX_v20"))
     for plugin_name in files:
