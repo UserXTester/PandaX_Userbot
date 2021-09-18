@@ -91,13 +91,12 @@ pmbot = udB.get("PMBOT")
 manager = udB.get("MANAGER")
 modules = udB.get("MODULES") or Var.MODULES
 vcbot = udB.get("VCBOT") or Var.VCBOT
-vcmusicbot = udB.get("VCBOT") or Var.VCBOT
 
 # Railway dont allow Music Bots
 if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
-plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, vcmusicbot=vcmusicbot)
+plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot)
 
 
 suc_msg = """
