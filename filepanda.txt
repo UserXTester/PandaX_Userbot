@@ -1,6 +1,18 @@
+
+https://github.com/New-dev0/Telethon/archive/ParleG.zip
+redis>=3.3.10
+python-decouple==3.3
+TgCrypto
+python-dotenv==0.15.0
+cloudscraper
 aiofiles
 aiohttp
+pytgcalls==3.0.0.dev19
+numerize
+Shazamio
 black
+wikipedia
+fonttools
 isort
 pre-commit
 pyclean
@@ -60,5 +72,3 @@ python-arq
 future
 wget
 search_engine_parser
-numerize
-Shazamio
