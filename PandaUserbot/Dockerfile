@@ -15,7 +15,7 @@ RUN git clone https://github.com/ilhammansiz/PandaX_Userbot.git /root/ilhammansi
 WORKDIR /root/ilhammansiz/
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r PandaVersion/Panda/requirements.txt
 RUN pip3 uninstall av -y && pip3 install av --no-binary av
 
 # start the bot
