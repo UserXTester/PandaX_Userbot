@@ -18,20 +18,27 @@ if CL:
     PANDAPIC = CL
 
 
-@ilhammansiz_cmd(pattern="updatet$")
+@ilhammansiz_cmd(pattern="update ?(.*)")
 async def _(e):
     xx = await eor(e, "`Checking for updates...`")
-    m = await updater()
+    m = updater()
     branch = (Repo.init()).active_branch
     if m:
+        if e.pattern_match.group(1):
+            if "fast" in e.pattern_match.group(1) or "soft" in e.pattern_match.group(1):
+                await bash("git pull -f && pip3 install -r PandaVersion/Panda/requirements.txt")
+                call_back()
+                await xx.edit("`Fast Soft Updating...`")
+                execl(sys.executable, "python3", "-m", "PandaX_Userbot")
+                return
         x = await asst.send_file(
             int(udB.get("LOG_CHANNEL")),
-            PANDAPIC,
+            ULTPIC,
             caption="• **Update Available** •",
             force_document=False,
             buttons=Button.inline("Changelogs", data="changes"),
         )
-        Link = (await petercordpanda_bot(GetLink(x.chat_id, x.id))).link
+        Link = x.message_link
         await xx.edit(
             f'<strong><a href="{Link}">[ChangeLogs]</a></strong>',
             parse_mode="html",
@@ -43,7 +50,6 @@ async def _(e):
             parse_mode="html",
             link_preview=False,
         )
-
 
 @ilhammansiz_cmd(
     pattern="update$",
