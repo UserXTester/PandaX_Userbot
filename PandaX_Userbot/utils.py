@@ -406,3 +406,36 @@ def load_vc(plugin_name):
             )
         except BaseException:
             pass
+
+
+def load_vcbot(plugin_name):
+    if not plugin_name.startswith("__"):
+        from . import HNDLR, LOGS, asst, udB, petercordpanda_bot, MusicPanda
+        from .Panda.core import VC_HELP
+
+        path = Path(f"PandaMusicBot/{plugin_name}.py")
+        name = "PandaMusicBot.{}".format(plugin_name)
+        spec = util.spec_from_file_location(name, path)
+        mod = util.module_from_spec(spec)
+        mod.petercordpanda_bot = petercordpanda_bot
+        mod.petercordpanda = petercordpanda_bot
+        mod.ultroid = petercordpanda_bot
+        mod.bot = petercordpanda_bot
+        mod.Redis = udB.get
+        mod.udB = udB
+        mod.asst = asst
+        mod.MusicPanda = MusicPanda
+        mod.LOGS = LOGS
+        spec.loader.exec_module(mod)
+        modules["PandaMusicBot." + plugin_name] = mod
+        try:
+            VC_HELP.update(
+                {
+                    plugin_name: modules[f"PandaMusicBot.{plugin_name}"].__doc__.format(
+                        i=udB["VC_HNDLR"] if udB.get("VC_HNDLR") else HNDLR
+                    )
+                    + "\n"
+                }
+            )
+        except BaseException:
+            pass
