@@ -33,7 +33,7 @@ async def _(e):
                 return
         x = await asst.send_file(
             int(udB.get("LOG_CHANNEL")),
-            ULTPIC,
+            PANDAPIC,
             caption="• **Update Available** •",
             force_document=False,
             buttons=Button.inline("Changelogs", data="changes"),
