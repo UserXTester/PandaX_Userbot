@@ -52,7 +52,7 @@ async def _(e):
         )
 
 @ilhammansiz_cmd(
-    pattern="update$",
+    pattern="restart$",
 )
 async def restartbt(ult):
     ok = await eor(ult, "`Sedang update sabar ya  Panda-userbot...`")
