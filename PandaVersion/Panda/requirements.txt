@@ -9,9 +9,6 @@ cloudscraper
 aiofiles
 aiohttp
 pytgcalls==3.0.0.dev19
-
-# -------------------------------------------------------#
-
 numerize
 Shazamio
 black
