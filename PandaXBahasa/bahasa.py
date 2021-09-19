@@ -6,7 +6,7 @@ from yaml import safe_load
 from PandaX_Userbot import udB
 
 languages = {}
-strings_folder = path.join(path.dirname(path.realpath(__file__)), "strings")
+strings_folder = path.join(path.dirname(path.realpath(__file__)), "bahasa")
 
 for file in listdir(strings_folder):
     if file.endswith(".yml"):
