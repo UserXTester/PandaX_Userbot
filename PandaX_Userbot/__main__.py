@@ -4,7 +4,7 @@
 # This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
 # PLease read the GNU Affero General Public License in
 # <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
+# Editor by ilham mansiz
 
 import os
 import sys
@@ -110,7 +110,7 @@ plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot)
 
 suc_msg = """
             ----------------------------------------------------------------------
-                Berhasil dideploy.....
+                🐼 PandaX_Userbot Telah Aktif Berhasil dideploy.....🐼
             ----------------------------------------------------------------------
 """
 
