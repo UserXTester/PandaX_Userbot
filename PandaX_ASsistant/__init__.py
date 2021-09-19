@@ -3,7 +3,7 @@ from telethon import Button, custom
 from PandaX_Userbot import *
 from PandaX_Userbot.Panda.database import Var
 from PandaX_Userbot.functions.all import *
-from strings import get_languages, get_string
+from PandaXBahasa import get_languages, get_string
 
 OWNER_NAME = petercordpanda_bot.me.first_name
 OWNER_ID = petercordpanda_bot.me.id
