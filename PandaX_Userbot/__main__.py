@@ -87,16 +87,6 @@ except BaseException:
 
 petercordpanda_bot.loop.run_until_complete(autopilot())
 
-try:
-    os.system(
-        "git clone https://github.com/TeamUltroid/Ultroid ultroid/plugins/"
-    )
-except BaseException:
-    pass
-LOGS.info("Installing packages for modules")
-os.system("pip install -r ultroid/plugins/requirements.txt")
-execl(sys.executable, "python3", "-m", "pyUltroid")
-                
 
 
 try:
