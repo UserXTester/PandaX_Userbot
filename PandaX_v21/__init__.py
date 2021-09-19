@@ -38,7 +38,8 @@ from telethon.utils import get_display_name
 from youtube_dl import YoutubeDL
 from youtubesearchpython import Playlist, ResultMode, Video, VideosSearch
 
-from strings import get_string
+from PandaXBahasa import get_string
+
 
 try:
     import av
