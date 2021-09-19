@@ -1,3 +1,4 @@
+-r modules.txt
 pytz
 https://github.com/New-dev0/Telethon/archive/Crunch.zip
 redis>=3.3.10
