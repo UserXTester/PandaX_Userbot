@@ -87,6 +87,15 @@ except BaseException:
 
 petercordpanda_bot.loop.run_until_complete(autopilot())
 
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/PandaX_UserbotModules modules/"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.system("pip install -r modules/modules.txt")
+
 pmbot = udB.get("PMBOT")
 manager = udB.get("MANAGER")
 modules = udB.get("MODULES") or Var.MODULES
@@ -98,14 +107,6 @@ if Hosted_On == "railway" and not udB.get("VCBOT"):
 
 plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot)
 
-try:
-    os.system(
-        "git clone https://github.com/ilhammansiz/PandaX_UserbotModules modules/"
-    )
-except BaseException:
-    pass
-LOGS.info("Installing packages for modules")
-os.system("pip install -r modules/modules.txt")
 
 suc_msg = """
             ----------------------------------------------------------------------
