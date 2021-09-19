@@ -13,7 +13,7 @@
    Play music from channel files at current chat..
 """
 
-from PandaX_v20._InlineBot import SUB
+from PandaX_v20._InlineBot import PANDAX
 from . import *
 
 
@@ -70,6 +70,7 @@ async def play_music_(event):
             file=thumb,
             link_preview=False,
             parse_mode="html",
+            buttons=PANDAX,
         )
         await xx.delete()
         if thumb and os.path.exists(thumb):
