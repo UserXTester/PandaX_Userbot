@@ -1,8 +1,4 @@
 
-httplib2==0.13.1
-youtube_dl
-youtube-search-python
-youtube_search
 pytz
 https://github.com/New-dev0/Telethon/archive/Crunch.zip
 redis>=3.3.10
