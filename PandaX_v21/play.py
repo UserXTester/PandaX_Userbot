@@ -68,9 +68,9 @@ async def play_music_(event):
                 link, song_name, duration, chat, from_user
             ),
             file=thumb,
+            buttons=PANDAX,
             link_preview=False,
             parse_mode="html",
-            buttons=PANDAX,
         )
         await xx.delete()
         if thumb and os.path.exists(thumb):
