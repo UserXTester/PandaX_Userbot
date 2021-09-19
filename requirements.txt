@@ -72,5 +72,4 @@ future
 wget
 search_engine_parser
 tgcalls==3.0.0.dev4
-pytgcalls==3.0.0.dev18
 apscheduler
