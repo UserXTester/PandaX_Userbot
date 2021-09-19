@@ -56,42 +56,40 @@ async def eupload(event):
         "sndplug_(.*)",
     ),
 )
+@owner
 async def send(eve):
     name = (eve.data_match.group(1)).decode("UTF-8")
-    thumb = ""
-    for m in choices(sorted(glob("PandaVersion/Panda/*.jpg"))):
-        thumb += m
+    thumb = "PandaVersion/Panda/Logo.jpg"
+    await eve.answer("■ Sending ■")
     if name.startswith("def"):
-        plug_name = name.replace(f"def_plugin_", "")
+        plug_name = name.replace("def_plugin_", "")
         plugin = f"PandaX_v20/{plug_name}.py"
-        buttons = [
-            [
-                Button.inline(
-                    "« Pᴀsᴛᴇ »",
-                    data=f"pasta-{plugin}",
-                )
-            ],
-            [
-                Button.inline("« Bᴀᴄᴋ", data="back"),
-                Button.inline("••Cʟᴏꜱᴇ••", data="close"),
-            ],
-        ]
-    else:
-        plug_name = name.replace(f"add_plugin_", "")
+        data = "back"
+    elif name.startswith("add"):
+        plug_name = name.replace("add_plugin_", "")
         plugin = f"modules/{plug_name}.py"
-        buttons = [
-            [
-                Button.inline(
-                    "« Pᴀsᴛᴇ »",
-                    data=f"pasta-{plugin}",
-                )
-            ],
-            [
-                Button.inline("« Bᴀᴄᴋ", data="buck"),
-                Button.inline("••Cʟᴏꜱᴇ••", data="close"),
-            ],
-        ]
+        data = "buck"
+    else:
+        plug_name = name.replace("vc_plugin_", "")
+        plugin = f"PandaX_v21/{plug_name}.py"
+        data = "vc_helper"
+    buttons = [
+        [
+            Button.inline(
+                "« Pᴀsᴛᴇ »",
+                data=f"pasta-{plugin}",
+            )
+        ],
+        [
+            Button.inline("« Bᴀᴄᴋ", data=data),
+            Button.inline("••Cʟᴏꜱᴇ••", data="close"),
+        ],
+    ]
     await eve.edit(file=plugin, thumb=thumb, buttons=buttons)
+
+
+
+heroku_api, app_name = Var.HEROKU_API, Var.HEROKU_APP_NAME
 
 
 @callback("updatenow")
@@ -100,17 +98,17 @@ async def update(eve):
     repo = Repo()
     ac_br = repo.active_branch
     ups_rem = repo.remote("upstream")
-    if Var.HEROKU_API:
+    if heroku_api:
         import heroku3
 
         try:
-            heroku = heroku3.from_key(Var.HEROKU_API)
+            heroku = heroku3.from_key(heroku_api)
             heroku_app = None
             heroku_applications = heroku.apps()
         except BaseException:
             return await eve.edit("`Wrong HEROKU_API.`")
         for app in heroku_applications:
-            if app.name == Var.HEROKU_APP_NAME:
+            if app.name == app_name:
                 heroku_app = app
         if not heroku_app:
             await eve.edit("`Wrong HEROKU_APP_NAME.`")
@@ -122,7 +120,7 @@ async def update(eve):
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
-            "https://", "https://api:" + Var.HEROKU_API + "@"
+            "https://", "https://api:" + heroku_api + "@"
         )
         if "heroku" in repo.remotes:
             remote = repo.remote("heroku")
@@ -140,42 +138,36 @@ async def update(eve):
         await eve.edit(
             "`Userbot dyno build in progress, please wait for it to complete.`"
         )
-        try:
-            ups_rem.pull(ac_br)
-        except GitCommandError:
-            repo.git.reset("--hard", "FETCH_HEAD")
-        await updateme_requirements()
-        await eve.edit(
-            "`Successfully Updated!\nBot is restarting... Wait for a second!`"
-        )
+        call_back()
+        await bash("git pull && pip3 install -r requirements.txt")
         execl(sys.executable, sys.executable, "-m", "PandaX_Userbot")
 
 
 @callback("changes")
 @owner
 async def changes(okk):
+    await okk.answer("■ Generating Changelogs...")
     repo = Repo.init()
     ac_br = repo.active_branch
-    changelog, tl_chnglog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    changelog_str = changelog + f"\n\nClick the below button to update!"
+    changelog, tl_chnglog = gen_chlog(repo, f"HEAD..upstream/{ac_br}")
+    changelog_str = changelog + "\n\nClick the below button to update!"
     if len(changelog_str) > 1024:
         await okk.edit(get_string("upd_4"))
         await asyncio.sleep(2)
-        with open(f"petercordpanda_updates.txt", "w+") as file:
+        with open("petercordpanda_updates.txt", "w+") as file:
             file.write(tl_chnglog)
         await okk.edit(
             get_string("upd_5"),
             file="petercordpanda_updates.txt",
             buttons=Button.inline("Update Now", data="updatenow"),
         )
-        remove(f"petercordpanda_updates.txt")
+        remove("petercordpanda_updates.txt")
         return
-    else:
-        await okk.edit(
-            changelog_str,
-            buttons=Button.inline("Update Now", data="updatenow"),
-            parse_mode="html",
-        )
+    await okk.edit(
+        changelog_str,
+        buttons=Button.inline("Update Now", data="updatenow"),
+        parse_mode="html",
+    )
 
 
 @callback(
