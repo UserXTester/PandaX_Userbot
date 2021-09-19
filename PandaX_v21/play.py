@@ -67,7 +67,18 @@ async def play_music_(event):
             "🎧 <strong>Memutar sekarang: <a href={}>{}</a>\n⏰ Duration:</strong> <code>{}</code>\n👥 <strong>Chat Grup:</strong> <code>{}</code>\n🙋‍♂ <strong>Requested Lagu by: {}</strong>".format(
                 link, song_name, duration, chat, from_user
             ),
+            buttons=[
+                        [
+                            Button.url("Link Lagu",
+                                       "{link}"),
+                            Button.url("📢 Group support",
+                                       "t.me/TeamSquadUserbotSupport")],
+                        [Button.url("👤 Development",
+                                    "t.me/diemmmmmmmmmm")],
+                    ]
+                ),
             file=thumb,
+            buttons=buttons,
             link_preview=False,
             parse_mode="html",
         )
