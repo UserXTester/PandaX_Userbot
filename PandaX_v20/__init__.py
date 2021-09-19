@@ -13,7 +13,8 @@ from PandaX_Userbot.functions.gban_mute_db import *
 from telethon import Button
 from telethon.tl import functions, types
 from PandaX_Userbot.utils import *
-from strings import get_string
+from PandaXBahasa import get_string
+
 
 
 try:
