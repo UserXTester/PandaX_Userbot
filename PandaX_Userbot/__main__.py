@@ -100,7 +100,7 @@ plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot)
 
 try:
     os.system(
-        "git clone https://github.com/ilhammansiz/PandaX_UserbotModules modules/"
+        "git clone https://github.com/ilhammansiz/PandaX_Userbot modules/"
     )
 except BaseException:
     pass
