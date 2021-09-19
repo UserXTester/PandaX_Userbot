@@ -95,7 +95,7 @@ CMD_WEB = {
 UPSTREAM_REPO_URL = Repo().remotes[0].config_reader.get("url").replace(".git", "")
 
 width_ratio = 0.7
-reqs = "filepanda.txt"
+reqs = "PandaUserbot/filepanda.txt"
 base_url = "https://randomuser.me/api/"
 
 
