@@ -148,7 +148,7 @@ async def update(eve):
         await eve.edit(
             "`Successfully Updated!\nBot is restarting... Wait for a second!`"
         )
-        execl(sys.executable, sys.executable, "-m", "PandaX_Useebot")
+        execl(sys.executable, sys.executable, "-m", "PandaX_Userbot")
 
 
 @callback("changes")
