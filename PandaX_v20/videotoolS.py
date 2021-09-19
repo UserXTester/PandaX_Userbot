@@ -163,7 +163,7 @@ async def gen_sample(e):
         xxx = await eor(e, "`Trying To Download...`")
         c_time = time.time()
         file = await downloader(
-            "resources/downloads/" + name,
+            "PandaVersion/downloads/" + name,
             vfile,
             xxx,
             c_time,
