@@ -13,7 +13,7 @@
    Play music from channel files at current chat..
 """
 
-
+from PandaX_v20._InlineBot import SUB
 from . import *
 
 
