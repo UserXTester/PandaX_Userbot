@@ -77,7 +77,6 @@ async def play_music_(event):
                                     "t.me/diemmmmmmmmmm")],
                     ]
                 ),
-            file=thumb,
             buttons=buttons,
             link_preview=False,
             parse_mode="html",
