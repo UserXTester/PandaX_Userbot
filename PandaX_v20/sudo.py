@@ -1,13 +1,12 @@
 """
-💐 Commands Available : pilih siapa saja orang yang dapat mengakses userbot milikmu.
 
-• `{i}addsudo`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}addsudo`
    Tambahkan pengguna sudo dengan membalas pengguna atau menggunakan <spasi> id pengguna dengan terpisah(s)
 
-• `{i}delsudo`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}delsudo`
    Hapus pengguna sudo dengan membalas ke pengguna atau menggunakan <spasi> id pengguna dengan terpisah(s)
 
-• `{i}listsudo`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}listsudo`
    Daftar semua anggota sudo.
 """
 
