@@ -296,6 +296,42 @@ async def plug(plugin_channels):
             LOGS.info(str(e))
 
 
+
+async def pandailham(channel_panda):
+    if not os.path.exists("Panda-Userbot/__init__.py"):
+        with open("Panda-Userbot/__init__.py", "w") as f:
+            f.write("from PandaX_v20 import *")
+    for Plug_channel in plugin_channels.split():
+        try:
+            if Plug_channel.startswith("@"):
+                chat = Plug_channel
+            else:
+                try:
+                    chat = int(Plug_channel)
+                except BaseException:
+                    return
+            async for x in petercordpanda_bot.iter_messages(
+                chat, search=".py", filter=InputMessagesFilterDocument, wait_time=10
+            ):
+                await asyncio.sleep(0.6)
+                files = await petercordpanda_bot.download_media(x.media, "./modules/")
+                file = Path(files)
+                plugin = file.stem
+                if "(" not in files:
+                    try:
+                        load_panda(plugin.replace(".py", ""))
+                        LOGS.info(f"PandaX - PLUGIN_CHANNEL - Installed - {plugin}")
+                    except Exception as e:
+                        LOGS.info(f"PandaX - PLUGIN_CHANNEL - ERROR - {plugin}")
+                        LOGS.info(str(e))
+                        os.remove(files)
+                else:
+                    LOGS.info(f"Plugin {plugin} is Pre Installed")
+                    os.remove(files)
+        except Exception as e:
+            LOGS.info(str(e))
+
+
 # some stuffs
 async def ready():
     chat_id = int(udB.get("LOG_CHANNEL"))
