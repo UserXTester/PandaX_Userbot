@@ -1,8 +1,7 @@
 """
-💐 Commands Available -
-•`{i}addprofanity`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}addprofanity`
    If someone sends bad word in a chat, Then bot will delete that message.
-•`{i}remprofanity`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}remprofanity`
    From chat from Profanity list.
 """
 
