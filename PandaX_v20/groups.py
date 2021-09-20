@@ -5,12 +5,11 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
-♨ Commands Available -
-• `{i}setgpic <reply to Photo>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}setgpic <reply to Photo>`
     Set Profile photo of Group.
-• `{i}unbanall`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}unbanall`
     Unban all Members of a group.
-• `{i}rmusers`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}rmusers`
     Remove users specifically.
 """
 from telethon.tl.functions.channels import EditBannedRequest, EditPhotoRequest
