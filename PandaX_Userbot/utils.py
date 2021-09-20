@@ -186,8 +186,8 @@ def load_panda(plugin_name):
                 else:
                     pass
             try:
-                CMD_HELP.append(plugin_name)
-                CMD_HELP.update(plugin_name)
+                doc = modules[f"Panda-Userbot.{plugin_name}"].__doc__
+                CMD_HELP.update({plugin_name})
             except KeyError:
                 pass
             except Exception as e:
