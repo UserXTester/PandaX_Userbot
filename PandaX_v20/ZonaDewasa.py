@@ -7,7 +7,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-
+"""
+• `{i}tetek` 
+   mengirim gambar tetek besar 😂.
+"""
 
 
 import asyncio
@@ -55,7 +58,4 @@ async def butts(event):
     await a.delete()
 
 
-"""
-• `{i}tetek` 
-   mengirim gambar tetek besar 😂.
-"""
+
