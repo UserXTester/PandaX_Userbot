@@ -6,8 +6,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-♨ Commands Available -
-•`{i}megadl <link>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}megadl <link>`
   It Downloads and Upload Files from mega.nz links.
 """
 import time
