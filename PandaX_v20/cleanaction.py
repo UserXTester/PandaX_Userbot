@@ -1,5 +1,4 @@
 """
-💐 Commands Available -
 •`{i}addclean`
     Clean all Upcoming action msg in added chat like someone joined/left/pin etc.
 •`{i}remclean`
