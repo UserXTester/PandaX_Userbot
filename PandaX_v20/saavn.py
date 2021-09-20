@@ -1,6 +1,5 @@
 """
-💐 Commands Available -
-• `{i}saavn <search query>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}saavn <search query>`
     Download songs from Saavn
 """
 
