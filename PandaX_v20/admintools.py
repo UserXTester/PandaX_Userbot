@@ -7,7 +7,6 @@
 
 
 """
-💐 Commands Available -
 
 • `{i}promote <balas ke user/userid/username>`
 • `{i}demote`
