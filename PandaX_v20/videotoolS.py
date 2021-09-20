@@ -6,11 +6,11 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-•`{i}sample <duration in seconds>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}sample <duration in seconds>`
    Creates Short sample of video..
-• `{i}vshots <number of shots>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}vshots <number of shots>`
    Creates screenshot of video..
-• `{i}vtrim <start time> - <end time> in seconds`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}vtrim <start time> - <end time> in seconds`
     Crop a Lengthy video..
 """
 
