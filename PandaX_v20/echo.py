@@ -1,10 +1,9 @@
 """
-💐 Commands Available
-•`{i}addecho <reply to anyone>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}addecho <reply to anyone>`
    Start Auto Echo message of Replied user.
-•`{i}remecho <reply to anyone>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}remecho <reply to anyone>`
    Turn It off
-•`{i}listecho <reply to anyone>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}listecho <reply to anyone>`
    To Get list.
 """
 
