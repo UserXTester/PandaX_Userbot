@@ -1,6 +1,5 @@
 """
-💐 Commands Available -
-• `{i}evaljs <javaScriptCommands>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}evaljs <javaScriptCommands>`
     Evaluate JavaScript code and upload.
 """
 
