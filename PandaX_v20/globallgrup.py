@@ -1,27 +1,26 @@
 """
-💐 Commands Available -
-• `{i}gban <reply user/ username>`
-• `{i}ungban`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gban <reply user/ username>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ungban`
     Ban/Unban pengguna secara global.
-• `{i}gstat <reply to user/userid/username>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gstat <reply to user/userid/username>`
    periksa apakah pengguna di gbanned atau tidak.
-• `{i}listgban`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}listgban`
    list semua pengguna yang di gbanned.
-• `{i}gmute <reply user/ username>`
-• `{i}ungmute`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gmute <reply user/ username>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ungmute`
    Mute/UnMute pengguna secara global.
-• `{i}gkick <reply user/ username>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gkick <reply user/ username>`
    kick pengguna secara global.
-• `{i}gcast <Message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gcast <Message>`
    kirimkan pesan ke semua grup secara global.
-• `{i}gucast <Message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gucast <Message>`
    kirimkan pesan ke semua pengguna di private chat mu secara global.
-•`{i}gpromote <reply to user> <channel/group/all> <rank>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gpromote <reply to user> <channel/group/all> <rank>`
     globally promote user where you are admin.
     You can also set where To promote only groups or only channels or in all.
     Like. `gpromote group boss` ~ it promote repied user in all groups.
     Or. `gpromote @username all sar` ~ it promote the users in all group and channel.
-•`{i}gdemote`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gdemote`
     Same function as gpromote.
 """
 
