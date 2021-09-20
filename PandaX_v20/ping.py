@@ -1,6 +1,5 @@
 """
-💐 Commands Available -
-• `{i}ping`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ping`
    ketik {i}ping untuk melihat kecepatan Panda Userbotmu.
 """
 import time
