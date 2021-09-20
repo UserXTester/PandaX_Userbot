@@ -189,7 +189,6 @@ def load_modules(plugin_name):
             inline_owner,
             owner,
         )
-        from .PandaBase import antiflood_sql as ilham
         from .PandaVX._decorators import ilhammansiz_cmd, ultroid_cmd
         from .PandaVX._supporter import Config, admin_cmd, sudo_cmd, register
         from .PandaVX._wrappers import eod, eor
@@ -242,7 +241,7 @@ def load_modules(plugin_name):
         modules["userbot"] = xxx
         modules["telebot"] = xxx
         modules["fridaybot"] = xxx
-        modules["Panda"] = ilham
+        modules["Panda"] = xxx
         modules["jarvis.utils"] = xxx
         modules["uniborg.util"] = xxx
         modules["telebot.utils"] = xxx
