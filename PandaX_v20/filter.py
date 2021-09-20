@@ -1,10 +1,9 @@
 """
-💐 Commands Available -
-• `{i}addfilter <word><reply to a message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}addfilter <word><reply to a message>`
     add the used word as filter relating to replied message.
-• `{i}remfilter <word>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}remfilter <word>`
     Remove the filtered user..
-• `{i}listfilter`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}listfilter`
     list all filters.
 """
 
