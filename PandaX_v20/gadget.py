@@ -1,6 +1,5 @@
 """
-💐 Commands Available -
-• `{i}gadget <search query>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gadget <search query>`
     Gadget Search from Telegram.
 """
 
