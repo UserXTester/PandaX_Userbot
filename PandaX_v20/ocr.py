@@ -1,6 +1,5 @@
 """
-💐 Commands Available -
-• `{i}ocr <language code><reply to a photo>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ocr <language code><reply to a photo>`
     text recognition service.
 """
 
