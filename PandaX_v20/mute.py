@@ -1,19 +1,18 @@
 """
-💐 Commands Available -
 
-• `{i}mute <balas ke [pesan/id pengguna>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}mute <balas ke [pesan/id pengguna>`
     bisukan pengguna disebuah obrolan.
 
-• `{i}unmute <balas ke pesan/id pengguna>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}unmute <balas ke pesan/id pengguna>`
     unmute pengguna disebuah obrolan.
 
-• `{i}dmute <balas ke pesan/id pengguna>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}dmute <balas ke pesan/id pengguna>`
     hapus pesan dan bisukan pengguna disebuah obrolan.
 
-• `{i}undmute <balas ke pesan/id pengguna>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}undmute <balas ke pesan/id pengguna>`
     unmute pengguna yang di dmuted di sebuah obrolan.
 
-• `{i}tmute <time> <balas ke pesan/gunakan id>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tmute <time> <balas ke pesan/gunakan id>`
     s- detik
     m- menit
     h- jam
