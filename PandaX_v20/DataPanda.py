@@ -8,35 +8,35 @@
 
 
 """
-• `{i}kickme`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}kickme`
     Leaves the group in which it is used.
-• `{i}date`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}date`
     Show Calender.
-• `{i}chatinfo`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}chatinfo`
     Get full info about the group/chat.
-• `{i}listreserved`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}listreserved`
     List all usernames (channels/groups) you own.
-• `{i}stats`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}stats`
     See your profile stats.
-• `{i}paste`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}paste`
     Include long text / Reply to text file.
-• `{i}info <username/userid>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}info <username/userid>`
     Reply to someone's msg.
-• `{i}invite <username/userid>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}invite <username/userid>`
     Add user to the chat.
-• `{i}rmbg <reply to pic>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}rmbg <reply to pic>`
     Remove background from that picture.
-• `{i}telegraph <reply to media/text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}telegraph <reply to media/text>`
     Upload media/text to telegraph.
-• `{i}json <reply to msg>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}json <reply to msg>`
     Get the json encoding of the message.
-• `{i}suggest <reply to message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}suggest <reply to message>`
     Create a Yes/No poll for the replied suggestion.
-• `{i}ipinfo <ip address>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ipinfo <ip address>`
     Get info about that IP address.
-• `{i}cpy <reply to message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}cpy <reply to message>`
    Copy the replied message, with formatting. Expires in 24hrs.
-• `{i}pst`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pst`
    Paste the copied message, with formatting.
 """
 
