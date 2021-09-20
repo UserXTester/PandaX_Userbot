@@ -27,6 +27,7 @@ from .PandaX.PandaCr import (
     ready,
     startup_stuff,
     updater,
+    pandailham,
 )
 from .PandaX.PandaLoad import plugin_loader
 
@@ -117,6 +118,7 @@ suc_msg = """
 """
 
 # for channel plugins
+channels_panda = udB.get("CHANNEL_PANDA")
 plugin_channels = udB.get("PLUGIN_CHANNEL")
 
 petercordpanda_bot.loop.run_until_complete(customize())
