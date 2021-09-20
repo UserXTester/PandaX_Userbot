@@ -1,8 +1,7 @@
 """
-💐 Commands Available -
-•`{i}addnsfw <ban/mute/kick>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}addnsfw <ban/mute/kick>`
    If someone sends 18+ content it will delete and takes action.
-•`{i}remnsfw`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}remnsfw`
    Remove Chat from nsfw filter.
 """
 
