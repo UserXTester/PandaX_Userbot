@@ -320,9 +320,9 @@ async def pandailham(channel_panda):
                 if "(" not in files:
                     try:
                         load_panda(plugin.replace(".py", ""))
-                        LOGS.info(f"PandaX - PLUGIN_CHANNEL - Installed - {plugin}")
+                        LOGS.info(f"PandaX - EXRA PANDA - Installed - {plugin}")
                     except Exception as e:
-                        LOGS.info(f"PandaX - PLUGIN_CHANNEL - ERROR - {plugin}")
+                        LOGS.info(f"PandaX - EXRA PANDA - ERROR - {plugin}")
                         LOGS.info(str(e))
                         os.remove(files)
                 else:
