@@ -1,6 +1,4 @@
 """
-💐 Commands Available -
-
 • `{i}afk <alasan>`
    afk mungkin berarti anda meninggalkan obrolan,
    setelah anda mengaktifkan opsi ini, orang yang tag atau mereply pesan anda akan diberitahu bahwa anda sedang afk,
