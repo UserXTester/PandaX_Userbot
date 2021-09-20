@@ -8,10 +8,6 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
-"""
-• `{i}tetek` 
-   mengirim gambar tetek besar 😂.
-"""
 
 
 import asyncio
@@ -57,3 +53,9 @@ async def butts(event):
     os.remove(pic_loc)
     await event.delete()
     await a.delete()
+
+
+"""
+• `{i}tetek` 
+   mengirim gambar tetek besar 😂.
+"""
