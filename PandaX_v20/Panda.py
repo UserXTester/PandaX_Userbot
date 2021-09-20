@@ -1,66 +1,66 @@
 """
-💐 Commands Available -
-• `{i}mengsad`
+
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}mengsad`
   `liat aja sendiri. `
-• `{i}gabut`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gabut`
   `liat sendiri. `
-• `{i}mantan`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}mantan`
   `mantan ajg. `
-• `{i}galau`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}galau`
   `liat sendiri. `
-• `{i}sedih`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}sedih`
   `liat sendiri. `
-• `{i}fuck`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}fuck`
   `liat sendiri. `
-• `{i}razia`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}razia`
   `liat sendiri. `
-• `{i}raziamasker`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}raziamasker`
   `liat sendiri. `
-• `{i}jalan`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}jalan`
   `liat sendiri. `
-• `{i}pantun`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pantun`
   `liat sendiri. `
-• `{i}mengsad`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}mengsad`
   `liat sendiri. `
-• `{i}ayang`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ayang`
   `liat sendiri. `
-• `{i}yang`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}yang`
   `liat sendiri. `
-• `{i}dino`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}dino`
   `liat sendiri. `
-• `{i}terkadang`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}terkadang`
   `liat sendiri. `
-• `{i}mf`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}mf`
   `liat sendiri. `
-• `{i}berisalam`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}berisalam`
   `salam. `
-• `{i}jawab`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}jawab`
   `jawab salam. `
-• `{i}cinta`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}cinta`
   `liat sendiri. `
-• `{i}melamar`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}melamar`
   `liat sendiri. `
-• `{i}buaya`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}buaya`
   `liat sendiri. `
-• `{i}hua`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}hua`
   `liat sendiri. `
-• `{i}huh`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}huh`
   `liat sendiri. `
-• `{i}nah`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}nah`
   `liat sendiri. `
-• `{i}gblk`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}gblk`
   `liat sendiri. `
-• `{i}G`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}G`
   `liat sendiri. `
-• `{i}angek`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}angek`
   `liat sendiri. `
-• `{i}kntl`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}kntl`
   `liat sendiri. `
-• `{i}tolol`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tolol`
   `liat sendiri. `
-• `{i}colay`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}colay`
   `liat sendiri. `
-• `{i}ange`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ange`
   `liat sendiri. `
 """
 
