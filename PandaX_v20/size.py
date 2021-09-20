@@ -1,8 +1,7 @@
 """
-💐 Commands Available -
-•`{i}size <reply to media>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}size <reply to media>`
    To get size of it.
-•`{i}resize <number> <number>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}resize <number> <number>`
    To resize image on x, y axis.
    eg. `{i}resize 690 960`
 """
