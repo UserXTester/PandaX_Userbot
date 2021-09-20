@@ -1,6 +1,5 @@
 """
-💐 Commands Available -
-•`{i}glitch <replt to media>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}glitch <replt to media>`
     gives a glitchy gif.
 """
 
