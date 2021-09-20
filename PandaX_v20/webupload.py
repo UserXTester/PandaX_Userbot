@@ -1,5 +1,5 @@
 """
-• `{i}webupload`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}webupload`
     Upload files on another server.
 """
 
