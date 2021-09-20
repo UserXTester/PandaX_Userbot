@@ -1,5 +1,4 @@
 """
-💐 Commands Available
 
 • `{i}alive`
    untuk mengetahui apakah bot bekerja atau tidak.
