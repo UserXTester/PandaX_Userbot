@@ -6,3 +6,4 @@ LOADED = {}
 LIST = {}
 VC_HELP = {}
 PANDA_HELP = {}
+CMD_HELP = {}
