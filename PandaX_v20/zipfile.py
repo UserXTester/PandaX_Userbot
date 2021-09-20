@@ -1,11 +1,11 @@
 """
-• `{i}zip <reply to file>
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}zip <reply to file>
     zip the replied file
-• `{i}unzip <reply to zip file>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}unzip <reply to zip file>`
     unzip the replied file.
-• `{i}azip <reply to file>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}azip <reply to file>`
    add file to batch for batch upload zip
-• `{i}dozip`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}dozip`
    upload batch zip the files u added from `{i}azip`
 """
 
