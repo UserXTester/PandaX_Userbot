@@ -1,15 +1,15 @@
 """
 
-• `{i}get var <variable name>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}get var <variable name>`
    Get value of the given variable name.
 
-• `{i}get type <variable name>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}get type <variable name>`
    Get variable type.
 
-• `{i}get redis <key>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}get redis <key>`
    Get redis value of the given key.
 
-• `{i}get keys`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}get keys`
    Get all redis keys.
 """
 
