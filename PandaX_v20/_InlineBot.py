@@ -867,7 +867,7 @@ async def on_vc_plg_callback_query_handler(event):
             help_string += i
     except BaseException:
         pass
-    if help_string == "**Commands Available:**\n\n":
+    if help_string == "**📑 Daftar Perintah PandaX_Userbot:**\n\n":
         reply_pop_up_alert = f"{plugin_name} has no detailed help..."
     else:
         reply_pop_up_alert = help_string
