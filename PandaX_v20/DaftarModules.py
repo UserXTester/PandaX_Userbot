@@ -2,7 +2,7 @@ import asyncio
 from . import *
 from platform import uname
 
-from PandaX_Userbot.PandaVX.core import *
+from PandaX_Userbot.Panda.core import *
 
 
 
