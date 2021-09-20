@@ -1,16 +1,15 @@
 """
-💐 Commands Available -
 
-• `{i}del <reply to message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}del <reply to message>`
     Delete the replied message.
 
-• `{i}edit <new message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}edit <new message>`
     Edit your last message or replied msg.
 
-• `{i}copy <reply to message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}copy <reply to message>`
     Copy replied message / media.
 
-• `{i}reply`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}reply`
     Reply the last sent msg to replied user.
 """
 
