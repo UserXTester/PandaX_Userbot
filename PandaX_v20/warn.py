@@ -6,13 +6,13 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-•`{i}warn <reply to user> <reason>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}warn <reply to user> <reason>`
     Gives Warn.
-•`{i}resetwarn <reply to user>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}resetwarn <reply to user>`
     To reset All Warns.
-•`{i}warns <reply to user>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}warns <reply to user>`
    To Get List of Warnings of a user.
-•`{i}setwarn <warn count> | <ban/mute/kick>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}setwarn <warn count> | <ban/mute/kick>`
    Set Number in warn count for warnings
    After putting " | " mark put action like ban/mute/kick
    Its Default 3 kick
