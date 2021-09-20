@@ -792,6 +792,7 @@ async def opner(event):
             len(PLUGINS),
             len(MODULES),
             len(PANDA),
+            len(VC_HELP)
             len(z),
         ),
         buttons=_main_help_menu,
@@ -906,11 +907,29 @@ async def on_vc_plg_callback_query_handler(event):
 async def on_plug_in_callback_query_handler(event):
     plugin_name = event.data_match.group(1).decode("UTF-8")
     help_string = f"nama plugin : `{plugin_name}`\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
+    plugin_name = event.data_match.group(1).decode("UTF-8")
+    help_string = ""
     try:
         for i in HELP[plugin_name]:
             help_string += i
     except BaseException:
-        pass
+        try:
+            for u in CMD_HELP[plugin_name]:
+                help_string = (
+                    f"nama plugin : {plugin_name}\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
+                )
+                help_string += str(CMD_HELP[plugin_name])
+        except BaseException:
+            try:
+                if plugin_name in LIST:
+                    help_string = (
+                        f"nama plugin : {plugin_name}\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
+                    )
+                    for d in LIST[plugin_name]:
+                        help_string += HNDLR + d
+                        help_string += "\n"
+            except BaseException:
+                pass
     if help_string == "":
         reply_pop_up_alert = f"{plugin_name} tidak memiliki bantuan terperinci."
     else:
