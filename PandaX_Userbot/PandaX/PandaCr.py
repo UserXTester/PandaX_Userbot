@@ -32,7 +32,7 @@ from telethon.tl.types import (
 from .. import *
 from ..Panda.database import Var
 from ..functions.all import updater
-from PandaX_Userbot.utils import load_modules
+from PandaX_Userbot.utils import load_modules, load_panda
 
 
 def startup_stuff():
