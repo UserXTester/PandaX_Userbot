@@ -6,7 +6,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-`{i}write <text or reply to text>`
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}write <text or reply to text>`
    It will write on a paper.
 """
 
