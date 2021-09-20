@@ -22,12 +22,12 @@ async def ult(ult):
                 output += "\n☑ @TEAMSquadUserbotSupport"
                 await eor(ult, output)
             elif plug in CMD_HELP:
-                kk = f"nama plugin-{plug}\n\n📚 Commands Available -\n\n"
+                kk = f"nama plugin-{plug}\n\n📚 Daftar Perintah -\n\n"
                 kk += str(CMD_HELP[plug])
                 await eor(ult, kk)
             else:
                 try:
-                    x = f"nama plugin-{plug}\n\n📚 Commands Available -\n\n"
+                    x = f"nama plugin-{plug}\n\n📚 Daftar Perintah -\n\n"
                     for d in LIST[plug]:
                         x += HNDLR + d
                         x += "\n"
