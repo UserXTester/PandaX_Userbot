@@ -314,7 +314,7 @@ async def pandailham(channel_panda):
                 chat, search=".py", filter=InputMessagesFilterDocument, wait_time=10
             ):
                 await asyncio.sleep(0.6)
-                files = await petercordpanda_bot.download_media(x.media, "./modules/")
+                files = await petercordpanda_bot.download_media(x.media, "./Panda-Userbot/")
                 file = Path(files)
                 plugin = file.stem
                 if "(" not in files:
