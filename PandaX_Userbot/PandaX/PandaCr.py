@@ -301,7 +301,7 @@ async def pandailham(channel_panda):
     if not os.path.exists("Panda-Userbot/__init__.py"):
         with open("Panda-Userbot/__init__.py", "w") as f:
             f.write("from PandaX_v20 import *")
-    for Plug_channel in plugin_channels.split():
+    for Plug_channel in channel_panda.split():
         try:
             if Plug_channel.startswith("@"):
                 chat = Plug_channel
