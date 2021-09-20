@@ -80,7 +80,7 @@ _set_bot () {
     _run_pandapack_git
     cd $PANDA_USERBOTPATH
     _run_panda_git
-    python3 ../setup/updater.py ../filepanda.txt filepanda.txt
+    python3 ../PandaVersion/updater.py ../requirements.txt requirements.txt
     chmod -R 755 bin
     echo "    Starting PandaUserBot    "
     echo "
