@@ -8,7 +8,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-• `{i}tetek` 
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙 `{i}tetek` 
    mengirim gambar tetek besar 😂.
 """
 
