@@ -1,5 +1,4 @@
 """
-💐 Commands Available -
 • `{i}delchat`
     Delete the group this cmd is used in.
 • `{i}getlink`
