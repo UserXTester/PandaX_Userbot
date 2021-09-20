@@ -1,5 +1,4 @@
 """
-♨ Commands Available -
 • `{i}startvc`
     Start Group Call in a group.
 • `{i}stopvc`
