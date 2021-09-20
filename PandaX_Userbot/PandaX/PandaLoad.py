@@ -26,9 +26,9 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
         try:
             if plugin_name.endswith(".py"):
                 load_plugins(plugin_name[:-3])
-                LOGS.info(f"Panda - Official -  Installed - {plugin_name}")
+                LOGS.info(f"Panda - 📗 Plugins PandaX -  Installed - {plugin_name}")
         except Exception as exc:
-            LOGS.info(f"Panda - Official - ERROR - {plugin_name}")
+            LOGS.info(f"PandaX - 📗Plugins PandaX - ERROR - {plugin_name}")
             LOGS.info(str(type(exc)) + ": " + str(exc))
     LOGS.info("-" * 70)
 
@@ -38,9 +38,9 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
         try:
             if plugin_name.endswith(".py"):
                 load_plugins(plugin_name[:-3])
-                LOGS.info(f"Panda - Official -  Installed - {plugin_name}")
+                LOGS.info(f"Panda - 📒EXRA PANA -  Installed - {plugin_name}")
         except Exception as exc:
-            LOGS.info(f"Panda - Official - ERROR - {plugin_name}")
+            LOGS.info(f"Panda - 📒EXRA PANDA - ERROR - {plugin_name}")
             LOGS.info(str(type(exc)) + ": " + str(exc))
     LOGS.info("-" * 70)
 
@@ -50,9 +50,9 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
         try:
             if plugin_name.endswith(".py"):
                 load_assistant(plugin_name[:-3])
-                LOGS.info(f"Panda - Assistant -  Installed - {plugin_name}")
+                LOGS.info(f"Panda - 🔖Assistant -  Installed - {plugin_name}")
         except Exception as exc:
-            LOGS.info(f"Panda - Assistant - ERROR - {plugin_name}")
+            LOGS.info(f"Panda - 🔖Assistant - ERROR - {plugin_name}")
             LOGS.info(str(type(exc)) + ": " + str(exc))
     LOGS.info("-" * 70)
 
@@ -73,9 +73,9 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
             try:
                 if plugin_name.endswith(".py"):
                     load_modules(plugin_name[:-3])
-                    LOGS.info(f"Panda - Modules -  Installed - {plugin_name}")
+                    LOGS.info(f"PandaX - 📙Modules -  Installed - {plugin_name}")
             except Exception as exc:
-                LOGS.info(f"Panda - Modules - ERROR - {plugin_name}")
+                LOGS.info(f"PandaX - 📙Modules - ERROR - {plugin_name}")
                 LOGS.info(str(type(exc)) + ": " + str(exc))
         LOGS.info("-" * 70)
     else:
@@ -88,7 +88,7 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
         for plugin_name in files:
             if plugin_name.endswith(".py"):
                 load_manager(plugin_name[:-3])
-                LOGS.info(f"Panda - Group Manager - Installed - {plugin_name}.")
+                LOGS.info(f"Panda - 🏷Group Manager - Installed - {plugin_name}.")
         LOGS.info("-" * 70)
 
     # chat via assistant
@@ -107,7 +107,7 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
             if plugin_name.endswith(".py"):
                 load_vc(plugin_name[:-3])
             if not plugin_name.startswith("_"):
-                LOGS.info(f"Panda - VC Bot - Installed - {plugin_name}.")
+                LOGS.info(f"Panda - 🎧VC Bot - Installed - {plugin_name}.")
         LOGS.info("-" * 70)
 
     
