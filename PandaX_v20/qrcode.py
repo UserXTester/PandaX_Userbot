@@ -5,12 +5,11 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
-♨ Commands Available -
-•`qrcode <text/reply to text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `qrcode <text/reply to text>`
    Makes qrcode of text
-•`addqr <reply image> <text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `addqr <reply image> <text>`
    Makes qr of text and add it to image.
-•`qrdecode <reply to qrcode>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `qrdecode <reply to qrcode>`
    It decodes the qrcode.
 """
 import os
