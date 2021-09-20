@@ -2,16 +2,16 @@
 
 **DataBase Commands, do not use if you don't know what it is.**
 
-• `{i}setvar key | value`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}setvar key | value`
     Redis Set Value.
     e.g :
     `{i}setvar hi there`
     `{i}setredis hi there | PandaX_Userbot here`
 
-• `{i}delvar key`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}delvar key`
     Delete Key from Redis DB
 
-• `{i}renvar old keyname | new keyname`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}renvar old keyname | new keyname`
     Update Key Name
 """
 
