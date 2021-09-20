@@ -6,8 +6,7 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 """
-♨ Commands Available -
-• `{i}pntrst <link/id>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pntrst <link/id>`
     Download and send pinterest pins.
 """
 
