@@ -123,6 +123,9 @@ plugin_channels = udB.get("PLUGIN_CHANNEL")
 
 petercordpanda_bot.loop.run_until_complete(customize())
 
+if channels_panda:
+    petercordpanda_bot.loop.run_until_complete(pandailham(channels_panda))
+
 if plugin_channels:
     petercordpanda_bot.loop.run_until_complete(plug(plugin_channels))
 
