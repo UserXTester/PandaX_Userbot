@@ -1,7 +1,6 @@
 """
-💐 Commands Available -
 
-• `{i}logo <text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}logo <text>`
    Hasilkan logo dari teks yang diberikan,
    atau balas ke gambar, untuk menulis teks anda di atasnya,
    atau balas ke file font, Untuk menulis dengan font tersebut.
