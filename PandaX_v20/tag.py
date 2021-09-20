@@ -1,25 +1,24 @@
 """
-💐 Commands Available -
 
-• `{i}tagall`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tagall`
     Tag Top 100 Members of chat.
 
-• `{i}tagadmins`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tagadmins`
     Tag Admins of that chat.
 
-• `{i}tagowner`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tagowner`
     Tag Owner of that chat
 
-• `{i}tagbots`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tagbots`
     Tag Bots of that chat.
 
-• `{i}tagrec`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tagrec`
     Tag recently Active Members.
 
-• `{i}tagon`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tagon`
     Tag online Members(work only if privacy off).
 
-• `{i}tagoff`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tagoff`
     Tag Offline Members(work only if privacy off).
 """
 
