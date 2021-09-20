@@ -1,11 +1,11 @@
 """
-• `{i}yta <(youtube) link>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}yta <(youtube) link>`
    Download audio from the link.
-• `{i}ytv <(youtube) link>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ytv <(youtube) link>`
    Download video  from the link.
-• `{i}ytsa <(youtube) search query>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ytsa <(youtube) search query>`
    Search and download audio from youtube.
-• `{i}ytsv <(youtube) search query>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ytsv <(youtube) search query>`
    Search and download video from youtube.
 """
 
