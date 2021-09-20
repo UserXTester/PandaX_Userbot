@@ -792,7 +792,7 @@ async def opner(event):
             len(PLUGINS),
             len(MODULES),
             len(PANDA),
-            len(VC_HELP)
+            len(VC_HELP),
             len(z),
         ),
         buttons=_main_help_menu,
