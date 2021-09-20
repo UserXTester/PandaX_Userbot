@@ -1,16 +1,15 @@
 """
-💐 Commands Available -
-• `{i}pdf <page num> <reply to pdf file>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pdf <page num> <reply to pdf file>`
     Extract nd Send page as a Image.(note-: For Extraction all pages just use .pdf)
     You Can use multi pages too like `{i}pdf 1-7`
-• `{i}pdtext <page num> <reply to pdf file>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pdtext <page num> <reply to pdf file>`
     Extract Text From the Pdf.(note-: For Extraction all text just use .pdtext)
     You Can use multi pages too like `{i}pdf 1-7`
-• `{i}pdscan <reply to image>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pdscan <reply to image>`
     It scan, crop nd send img as pdf.
-• `{i}pdsave <reply to image/pdf>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pdsave <reply to image/pdf>`
     It scan, crop nd save file to merge u can merge many pages as a single pdf.
-• `{i}pdsend `
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}pdsend `
     Merge nd send the Pdf to collected from .pdsave.
 """
 
