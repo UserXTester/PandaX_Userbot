@@ -1,6 +1,5 @@
 """
-💐 Commands Available
-• `{i}autocorrect`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙 `{i}autocorrect`
     To on/off Autocorrect Feature.
 """
 
