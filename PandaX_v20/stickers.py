@@ -1,26 +1,26 @@
 """
-💐 Commands Available -
-• `{i}destroy <reply to animated sticker>`
+
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}destroy <reply to animated sticker>`
     To destroy the sticker.
-• `{i}tiny <reply to media>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}tiny <reply to media>`
     To create Tiny stickers.
-• `{i}convert <gif/img/sticker>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}convert <gif/img/sticker>`
     Reply to sticker to convert into gif or image.
-• `{i}kang <reply to image/sticker>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}kang <reply to image/sticker>`
     Kang the sticker (add to your pack).
-• `{i}packkang <pack name>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}packkang <pack name>`
     Kang the Complete sticker set (with custom name).
-• `{i}round <reply to any media>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}round <reply to any media>`
     To extract round sticker.
-• `{i}waifu <text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}waifu <text>`
     paste text on random stickers.
-• `{i}uta <search query>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}uta <search query>`
     Inline song search and downloader.
-• `{i}stic <emoji>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}stic <emoji>`
     Get random stickers from emoji.
-• `{i}frog <text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}frog <text>`
     make text stickers.
-• `{i}tweet <text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}tweet <text>`
     make twitter posts.
 """
 
