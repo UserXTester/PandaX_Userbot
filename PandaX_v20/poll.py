@@ -1,11 +1,10 @@
 """
-💐 Commands Available -
-• `{i}poll <question> ; <option> ; <option>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}poll <question> ; <option> ; <option>`
     Get the Anonymous Poll with Given Options
-• `{i}poll <question> ; <option> ; <option> | <type>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}poll <question> ; <option> ; <option> | <type>`
     Get the poll specified with desired type!
     type should be any of  `public`,  `multiple` or `quiz`
-• `{i}poll <question> ; <option> ; <option> | quiz_<answerno>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}poll <question> ; <option> ; <option> | quiz_<answerno>`
     Get the quiz poll where answerno is the number of option which is correct
 """
 
