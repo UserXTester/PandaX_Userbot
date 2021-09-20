@@ -1,21 +1,21 @@
 """
-💐 Commands Available : berikut beberapa fungsi yg tersedia.
-• `{i}circle`
+
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}circle`
    Balas ke audio lagu atau gif untuk mendapatkan catatan video.
-• `{i}ls`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ls`
    Dapatkan semua file di dalam direktori.
    
-• `{i}bots`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}bots`
    Menunjukkan jumlah bot dalam obrolan saat ini dengan tautan permanen mereka.
-• `{i}hl <a link>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}hl <a link>`
    Sematkan tautan dengan spasi putih sebagai pesan.
-• `{i}id`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}id`
    Balas ke stiker untuk mendapatkan id nya.
    Balas ke pengguna untuk mendapatkan id nya.
    Dapatkan id obrolan tanpa harus membalas ke pesan.
-• `{i}sg <balas ke pengguna><username/id>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}sg <balas ke pengguna><username/id>`
    Dapatkan histori nama dari pengguna yang dibalas.
-• `{i}tr <kode bahasa> <(balas ke) pesan>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}tr <kode bahasa> <(balas ke) pesan>`
    Terjemahkan kalimat kedalam bahasa yang ditentukan.
 """
 
