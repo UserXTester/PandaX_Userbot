@@ -1,22 +1,22 @@
 """
 ---- Welcomes ----
-• `{i}setwelcome <message/reply to message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}setwelcome <message/reply to message>`
     Set welcome message in the current chat.
 
-• `{i}clearwelcome`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}clearwelcome`
     Delete the welcome in the current chat.
 
-• `{i}getwelcome`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}getwelcome`
     Get the welcome message in the current chat.
 
 ---- GoodByes ----
-• `{i}setgoodbye <message/reply to message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙:`{i}setgoodbye <message/reply to message>`
     Set goodbye message in the current chat.
 
-• `{i}cleargoodbye`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}cleargoodbye`
     Delete the goodbye in the current chat.
 
-• `{i}getgoodbye`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}getgoodbye`
     Get the goodbye message in the current chat.
 
 """
