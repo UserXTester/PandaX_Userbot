@@ -9,33 +9,33 @@
 
 
 """
-📚 Commands Available -
 
-• `{i}a` or `{i}approve`
+
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}a` or `{i}approve`
    untuk menyetujui orang yang ingin melakukan pm.
 
-• `{i}da` or `{i}disapprove`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}da` or `{i}disapprove`
    untuk menolak orang yang ingin melakukan pm.
 
-• `{i}block`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}block`
    untuk memblokir orang yang pm kamu.
 
-• `{i}unblock`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}unblock`
    untuk unblokir orang yang pm kamu.
 
-• `{i}nologpm`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}nologpm`
    untuk mengentikan log dari pengguna tersebut.
 
-• `{i}logpm`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}logpm`
    mulai logging kembali dari pengguna tersebut.
 
-• `{i}startarchive`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}startarchive`
    saya akan mulai menambahkan pm baru ke arsip.
 
-• `{i}stoparchive`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}stoparchive`
    saya akan berhenti menambahkan pm baru ke arsip.
 
-• `{i}cleararchive`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}cleararchive`
    mengeluarkan semua obrolan dari arsip.
 """
 
