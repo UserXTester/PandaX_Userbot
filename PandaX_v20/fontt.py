@@ -1,7 +1,7 @@
 """
-• `{i}font <font name> <text>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}font <font name> <text>`
     Generate different fonts for the text.
-• `{i}font`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}font`
     To get list of fonts
 """
 
