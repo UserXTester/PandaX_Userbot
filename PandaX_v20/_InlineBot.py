@@ -910,7 +910,7 @@ async def on_plug_in_callback_query_handler(event):
     plugin_name = event.data_match.group(1).decode("UTF-8")
     help_string = ""
     try:
-        for i in PANDA_HELP[plugin_name]:
+        for i in CMD_HELP[plugin_name]:
             help_string += i
     except BaseException:
         try:
@@ -921,11 +921,11 @@ async def on_plug_in_callback_query_handler(event):
                 help_string += str(CMD_HELP[plugin_name])
         except BaseException:
             try:
-                if plugin_name in LIST:
+                if plugin_name in CMD_HELP:
                     help_string = (
                         f"nama plugin : {plugin_name}\n\n📑 Daftar Perintah PandaX_Userbot\n\n"
                     )
-                    for d in LIST[plugin_name]:
+                    for d in CMD_HELP[plugin_name]:
                         help_string += HNDLR + d
                         help_string += "\n"
             except BaseException:
