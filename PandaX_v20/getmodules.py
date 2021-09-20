@@ -1,6 +1,6 @@
 """
-💐 Commands Available -
-• `{i}getmodules <raw link to code>`
+
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}getmodules <raw link to code>`
     Load Plugins from the given raw link.
 """
 import requests
