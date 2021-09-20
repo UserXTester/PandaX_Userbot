@@ -3,7 +3,7 @@
 # 
 
 """
-• `{i}update`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}update`
    perintah untuk memeriksa pembaruan userbot dan memperbarui nya ke versi terbaru.
 """
 
