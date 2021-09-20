@@ -1,12 +1,11 @@
 """
-💐 Commands Available -
-• `{i}ftyping <time/dalam detik>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}ftyping <time/dalam detik>`
   `lakukan aksi palsu mengetik didalam grup. `
-• `{i}faudio <time/in secs>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}faudio <time/in secs>`
   `lakukan aksi palsu merekam voice note didalam grup. `
-• `{i}fvideo <time/in secs>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}fvideo <time/in secs>`
   `lakukan aksi palsu merekam video didalam grup. `
-• `{i}fgame <time/in secs>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}fgame <time/in secs>`
   `lakukan aksi palsu bermain game didalam grup. `
 """
 
