@@ -1,5 +1,4 @@
 """
-💐 Commands Available -
 
 • `{i}blacklist <word/all words with a space>`
     blacklist the choosen word in that chat.
