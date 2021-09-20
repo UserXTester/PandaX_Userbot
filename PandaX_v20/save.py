@@ -1,8 +1,7 @@
 """
-💐 Commands Available -
-• `{i}save <reply message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}save <reply message>`
     Save that replied msg to ur saved messages box.
-• `{i}fsave <reply message>`
+•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}fsave <reply message>`
     Forward that replied msg to ur saved messages.
 """
 from . import *
