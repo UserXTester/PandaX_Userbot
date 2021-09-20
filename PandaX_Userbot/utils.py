@@ -99,7 +99,7 @@ def load_panda(plugin_name):
         spec.loader.exec_module(mod)
     else:
         from . import HNDLR, LOGS, asst, udB, petercordpanda_bot
-        from .Panda.core import HELP, PANDA
+        from .Panda.core import HELP, MODULES
         from .Panda.database import Var
         from .PandaVX import _supporter as xxx
         from .PandaVX._assistant import (
@@ -111,7 +111,9 @@ def load_panda(plugin_name):
             owner,
         )
         from .PandaVX._decorators import ilhammansiz_cmd, ultroid_cmd
+        from .PandaVX._supporter import Config, admin_cmd, sudo_cmd, register
         from .PandaVX._wrappers import eod, eor
+        from PandaX_Userbot import CUSTOM_CMD
 
         path = Path(f"Panda-Userbot/{plugin_name}.py")
         name = "Panda-Userbot.{}".format(plugin_name)
@@ -121,30 +123,58 @@ def load_panda(plugin_name):
         mod.tgbot = asst
         mod.petercordpanda_bot = petercordpanda_bot
         mod.ultroid_bot = petercordpanda_bot
+        mod.ub = petercordpanda_bot
         mod.bot = petercordpanda_bot
         mod.petercordpanda = petercordpanda_bot
+        mod.borg = petercordpanda_bot
+        mod.telebot = petercordpanda_bot
+        mod.jarvis = petercordpanda_bot
+        mod.friday = petercordpanda_bot
         mod.owner = owner()
         mod.in_owner = inline_owner()
         mod.inline = inline()
-        mod.in_pattern = in_pattern
         mod.eod = eod
         mod.edit_delete = eod
         mod.LOGS = LOGS
+        mod.in_pattern = in_pattern
         mod.hndlr = HNDLR
+        mod.handler = HNDLR
         mod.HNDLR = HNDLR
+        mod.CMD_HNDLR = HNDLR
+        mod.CUSTOM_CMD = HNDLR
+        mod.Config = Config
         mod.Var = Var
         mod.eor = eor
         mod.edit_or_reply = eor
         mod.asst_cmd = asst_cmd
         mod.ilhammansiz_cmd = ilhammansiz_cmd
         mod.ultroid_cmd = ultroid_cmd
+        mod.register = register
         mod.on_cmd = ultroid_cmd
         mod.callback = callback
         mod.Redis = udB.get
+        mod.admin_cmd = admin_cmd
+        mod.sudo_cmd = sudo_cmd
+        modules["ub"] = xxx
+        modules["var"] = xxx
+        modules["jarvis"] = xxx
         modules["support"] = xxx
         modules["userbot"] = xxx
+        modules["telebot"] = xxx
+        modules["fridaybot"] = xxx
+        modules["Panda"] = xxx
+        modules["jarvis.utils"] = xxx
+        modules["uniborg.util"] = xxx
+        modules["telebot.utils"] = xxx
         modules["userbot.utils"] = xxx
+        modules["..core.managers"] = xxx
+        modules["userbot.events"] = xxx
+        modules["userbot.plugins"] = xxx
+        modules["jarvis.jconfig"] = xxx
         modules["userbot.config"] = xxx
+        modules["fridaybot.utils"] = xxx
+        modules["fridaybot.Config"] = xxx
+        modules["userbot.uniborgConfig"] = xxx
         spec.loader.exec_module(mod)
         modules["Panda-Userbot." + plugin_name] = mod
         if not plugin_name.startswith("_"):
