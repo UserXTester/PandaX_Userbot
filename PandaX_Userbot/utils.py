@@ -99,7 +99,7 @@ def load_panda(plugin_name):
         spec.loader.exec_module(mod)
     else:
         from . import HNDLR, LOGS, asst, udB, petercordpanda_bot
-        from .Panda.core import HELP, PANDA
+        from .Panda.core import PANDA_HELP, PANDA
         from .Panda.database import Var
         from .PandaVX import _supporter as xxx
         from .PandaVX._assistant import (
@@ -187,7 +187,7 @@ def load_panda(plugin_name):
                     pass
             try:
                 doc = modules[f"Panda-Userbot.{plugin_name}"].__doc__
-                HELP.update({f"{plugin_name}": doc.format(i=HNDLR)})
+                PANDA_HELP.update({f"{plugin_name}": doc.format(i=HNDLR)})
             except KeyError:
                 pass
             except Exception as e:
