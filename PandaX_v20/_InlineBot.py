@@ -910,7 +910,7 @@ async def on_plug_in_callback_query_handler(event):
     plugin_name = event.data_match.group(1).decode("UTF-8")
     help_string = ""
     try:
-        for i in HELP[plugin_name]:
+        for i in PANDA_HELP[plugin_name]:
             help_string += i
     except BaseException:
         try:
