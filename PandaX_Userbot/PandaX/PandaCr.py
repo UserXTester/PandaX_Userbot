@@ -298,8 +298,8 @@ async def plug(plugin_channels):
 
 
 async def pandailham(channel_panda):
-    if not os.path.exists("Panda-Userbot/__init__.py"):
-        with open("Panda-Userbot/__init__.py", "w") as f:
+    if not os.path.exists("toxic/__init__.py"):
+        with open("toxic/__init__.py", "w") as f:
             f.write("from PandaX_v20 import *")
     for Plug_channel in channel_panda.split():
         try:
@@ -314,7 +314,7 @@ async def pandailham(channel_panda):
                 chat, search=".py", filter=InputMessagesFilterDocument, wait_time=10
             ):
                 await asyncio.sleep(0.6)
-                files = await petercordpanda_bot.download_media(x.media, "./Panda-Userbot/")
+                files = await petercordpanda_bot.download_media(x.media, "./toxic/")
                 file = Path(files)
                 plugin = file.stem
                 if "(" not in files:
