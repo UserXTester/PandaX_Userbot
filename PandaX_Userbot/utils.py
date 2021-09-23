@@ -101,7 +101,7 @@ def load_panda(plugin_name):
         spec.loader.exec_module(mod)
     else:
         from . import HNDLR, LOGS, asst, udB, petercordpanda_bot
-        from .Panda.core import HELP, PANDA
+        from .Panda.core import HELP, PANDA, CMD_HELP
         from .Panda.database import Var
         from .PandaVX import _supporter as xxx
         from .PandaVX._assistant import (
