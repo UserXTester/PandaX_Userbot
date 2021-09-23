@@ -36,12 +36,12 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
     if toxic == "True" or not toxic:
         try:
             os.system(
-                "git clone https://github.com/ilhammansiz/PandaToxic_userBot.git Toxic/TutuToxic/"
+                "git clone https://github.com/ilhammansiz/PandaToxic_userBot.git Toxic/"
             )
         except BaseException:
             pass
         """
-        LOGS.info("Installing packages for modules")
+        LOGS.info("Installing packages for toxic")
         os.system("pip install -r Toxic/panda.txt")
         """
         files = sorted(os.listdir("Toxic/TutuToxic"))
@@ -56,7 +56,7 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
         LOGS.info("-" * 70)
     else:
         pass
-        # os.system("cp PandaX_v20/__init__.py Toxic/TutuToxic/")
+        # os.system("cp PandaX_v20/__init__.py Toxic/")
 
 
     # for assistant
