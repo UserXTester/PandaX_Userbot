@@ -16,6 +16,7 @@ class Var:
     HEROKU_API = config("HEROKU_API", default=None)
     VC_SESSION = config("VC_SESSION", default=None)
     MODULES = config("MODULES", default="True")
+    TOXIC = config("TOXIC", default="True")
     VCBOT = config("VCBOT", default="True")
     REDISPASSWORD = config("REDISPASSWORD", default=None)
     REDISHOST = config("REDISHOST", default=None)
