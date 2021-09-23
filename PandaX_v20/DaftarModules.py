@@ -17,7 +17,7 @@ EMOJI_HELP = "🐼"
 @ilhammansiz_cmd(pattern="daftarmodules ?(.*)")
 async def help(rambot):
     """ For .help command,"""
-    args = rambot.pattern_match.group(1).lower()
+    args = rambot.pattern_match.group(1)
     if args:
         if args in CMD_HELP:
             await rambot.edit(str(CMD_HELP[args]))
