@@ -94,14 +94,14 @@ def load_panda(plugin_name):
     if plugin_name.startswith("__"):
         pass
     elif plugin_name.endswith("_"):
-        path = Path(f"Panda-Userbot/{plugin_name}.py")
+        path = Path(f"toxic/{plugin_name}.py")
         name = "Panda-Userbot.{}".format(plugin_name)
         spec = util.spec_from_file_location(name, path)
         mod = util.module_from_spec(spec)
         spec.loader.exec_module(mod)
     else:
         from . import HNDLR, LOGS, asst, udB, petercordpanda_bot
-        from .Panda.core import CMD_HELP, PANDA
+        from .Panda.core import HELP, PANDA
         from .Panda.database import Var
         from .PandaVX import _supporter as xxx
         from .PandaVX._assistant import (
@@ -117,8 +117,8 @@ def load_panda(plugin_name):
         from .PandaVX._wrappers import eod, eor
         from PandaX_Userbot import CUSTOM_CMD
 
-        path = Path(f"Panda-Userbot/{plugin_name}.py")
-        name = "Panda-Userbot.{}".format(plugin_name)
+        path = Path(f"toxic/{plugin_name}.py")
+        name = "toxic.{}".format(plugin_name)
         spec = util.spec_from_file_location(name, path)
         mod = util.module_from_spec(spec)
         mod.asst = asst
@@ -179,7 +179,7 @@ def load_panda(plugin_name):
         modules["fridaybot.Config"] = xxx
         modules["userbot.uniborgConfig"] = xxx
         spec.loader.exec_module(mod)
-        modules["Panda-Userbot." + plugin_name] = mod
+        modules["toxic." + plugin_name] = mod
         if not plugin_name.startswith("_"):
             try:
                 PANDA.append(plugin_name)
@@ -189,8 +189,8 @@ def load_panda(plugin_name):
                 else:
                     pass
             try:
-                doc = modules[f"Panda-Userbot.{plugin_name}"].__doc__
-                CMD_HELP.update({f"{plugin_name}": doc.format(i=HNDLR)})
+                doc = modules[f"toxic.{plugin_name}"].__doc__
+                HELP.update({f"{plugin_name}": doc.format(i=HNDLR)})
             except KeyError:
                 pass
             except Exception as e:
