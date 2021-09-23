@@ -12,6 +12,7 @@ from PandaX_Userbot.PandaVX._wrappers import eod, eor
 from .. import udB, petercordpanda_bot, LOGSPAMMER
 from ..Panda.core import LIST
 from ..Panda.database import Var
+from speedtest import Speedtest
 
 REPO_NAME = "PandaToxic_Kentot"
 ALIVE_LOGO = udB.get("ALIVE_PIC")
