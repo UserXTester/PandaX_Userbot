@@ -1,5 +1,6 @@
 import asyncio
-from . import *
+from PandaX_Userbot.PandaVX._supporter import register
+
 from platform import uname
 
 from PandaX_Userbot.Panda.core import *
