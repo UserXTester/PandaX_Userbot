@@ -14,6 +14,7 @@ from ..Panda.core import LIST
 from ..Panda.database import Var
 from speedtest import Speedtest
 
+EMOJI_HELP = "🐼"
 REPO_NAME = "PandaToxic_Kentot"
 ALIVE_LOGO = udB.get("ALIVE_PIC")
 CMD_HELP = {}
