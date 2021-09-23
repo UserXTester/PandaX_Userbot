@@ -29,7 +29,7 @@
   `liat sendiri. `
 •`{i}terkadang`
   `liat sendiri. `
-•𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{i}mf`
+•`{i}mf`
   `liat sendiri. `
 •`{i}berisalam`
   `salam. `
