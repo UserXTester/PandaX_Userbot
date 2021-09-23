@@ -36,7 +36,7 @@ from PandaX_Userbot.utils import load_modules, load_panda
 
 
 def startup_stuff():
-    x = ["PandaVersion/auths", "PandaVersion/downloads", "modules", "PandaX_v21/downloads"]
+    x = ["PandaVersion/auths", "PandaVersion/downloads", "modules", "toxic", "PandaX_v21/downloads"]
     for x in x:
         if not os.path.isdir(x):
             os.mkdir(x)
