@@ -141,6 +141,7 @@ def load_panda(plugin_name):
         mod.handler = HNDLR
         mod.HNDLR = HNDLR
         mod.CMD_HNDLR = HNDLR
+        mod.CMD_HELP = CMD_HELP
         mod.CUSTOM_CMD = HNDLR
         mod.Config = Config
         mod.Var = Var
