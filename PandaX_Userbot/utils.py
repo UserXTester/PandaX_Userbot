@@ -95,7 +95,7 @@ def load_panda(plugin_name):
         pass
     elif plugin_name.endswith("_"):
         path = Path(f"toxic/{plugin_name}.py")
-        name = "Panda-Userbot.{}".format(plugin_name)
+        name = "toxic.{}".format(plugin_name)
         spec = util.spec_from_file_location(name, path)
         mod = util.module_from_spec(spec)
         spec.loader.exec_module(mod)
