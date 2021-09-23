@@ -44,7 +44,7 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
         LOGS.info("Installing packages for toxic")
         os.system("pip install -r Toxic/panda.txt")
         """
-        files = sorted(os.listdir("Toxic/TutuToxic"))
+        files = sorted(os.listdir("Toxic"))
         for plugin_name in files:
             try:
                 if plugin_name.endswith(".py"):
