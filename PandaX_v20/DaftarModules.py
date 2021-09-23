@@ -4,8 +4,7 @@ from platform import uname
 
 from PandaX_Userbot.Panda.core import *
 
-import asyncio
-from platform import uname
+
 
 modules = CMD_HELP
 
