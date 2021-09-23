@@ -102,13 +102,14 @@ os.system("pip install -r modules/modules.txt")
 pmbot = udB.get("PMBOT")
 manager = udB.get("MANAGER")
 modules = udB.get("MODULES") or Var.MODULES
+toxic = udB.get("TOXIC") or Var.TOXIC
 vcbot = udB.get("VCBOT") or Var.VCBOT
 
 # Railway dont allow Music Bots
 if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
-plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot)
+plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
 
 
 suc_msg = """
