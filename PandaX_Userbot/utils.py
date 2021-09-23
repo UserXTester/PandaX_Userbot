@@ -34,6 +34,7 @@ def load_plugins(plugin_name):
             owner,
         )
         from .PandaVX._decorators import ilhammansiz_cmd, ultroid_cmd
+        from .PandaVX._supporter import Config, admin_cmd, sudo_cmd, register
         from .PandaVX._wrappers import eod, eor
 
         path = Path(f"PandaX_v20/{plugin_name}.py")
@@ -41,6 +42,7 @@ def load_plugins(plugin_name):
         spec = util.spec_from_file_location(name, path)
         mod = util.module_from_spec(spec)
         mod.asst = asst
+        mod.register = register
         mod.tgbot = asst
         mod.petercordpanda_bot = petercordpanda_bot
         mod.bot = petercordpanda_bot
