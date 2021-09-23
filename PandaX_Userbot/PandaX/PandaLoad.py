@@ -19,7 +19,7 @@ from PandaX_Userbot.utils import (
 )
 
 
-def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot=None):
+def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot=None, toxic=None):
     # for userbot
     files = sorted(os.listdir("PandaX_v20"))
     for plugin_name in files:
@@ -33,16 +33,31 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
     LOGS.info("-" * 70)
 
    # for userbot
-    files = sorted(os.listdir("Panda-Userbot"))
-    for plugin_name in files:
+    if toxic == "True" or not toxic:
         try:
-            if plugin_name.endswith(".py"):
-                load_plugins(plugin_name[:-3])
-                LOGS.info(f"Panda - 📒EXRA PANA -  Installed - {plugin_name}")
-        except Exception as exc:
-            LOGS.info(f"Panda - 📒EXRA PANDA - ERROR - {plugin_name}")
-            LOGS.info(str(type(exc)) + ": " + str(exc))
-    LOGS.info("-" * 70)
+            os.system(
+                "git clone https://github.com/ilhammansiz/PandaToxic_userBot.git Toxic/TutuToxic/"
+            )
+        except BaseException:
+            pass
+        """
+        LOGS.info("Installing packages for modules")
+        os.system("pip install -r Toxic/panda.txt")
+        """
+        files = sorted(os.listdir("Toxic/TutuToxic"))
+        for plugin_name in files:
+            try:
+                if plugin_name.endswith(".py"):
+                    load_panda(plugin_name[:-3])
+                    LOGS.info(f"PandaX - 📙Toxic -  Installed - {plugin_name}")
+            except Exception as exc:
+                LOGS.info(f"PandaX - 📙Toxic - ERROR - {plugin_name}")
+                LOGS.info(str(type(exc)) + ": " + str(exc))
+        LOGS.info("-" * 70)
+    else:
+        pass
+        # os.system("cp PandaX_v20/__init__.py Toxic/TutuToxic/")
+
 
     # for assistant
     files = sorted(os.listdir("PandaX_ASsistant"))
