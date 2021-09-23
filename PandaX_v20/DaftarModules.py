@@ -14,7 +14,7 @@ DEFAULTUSER = str(OWNER_NAME) if OWNER_NAME else uname().node
 REPO_NAME = "PandaToxic_Kentot"
 EMOJI_HELP = "🐼"
 
-@register(outgoing=True, pattern="^.daftarmodules(?: |$)(.*)")
+@ilhammansiz_cmd(pattern="daftarmodules ?(.*)")
 async def help(rambot):
     """ For .help command,"""
     args = rambot.pattern_match.group(1).lower()
