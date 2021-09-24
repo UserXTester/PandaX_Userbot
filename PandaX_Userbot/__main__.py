@@ -31,6 +31,8 @@ from .PandaX.PandaCr import (
 )
 from .PandaX.PandaLoad import plugin_loader
 from .vc.loading import ALL_MODULES
+from importlib import import_module
+
 # Option to Auto Update On Restarts..
 if udB.get("UPDATE_ON_RESTART") and updater() and os.path.exists(".git"):
     os.system("git pull -f && pip3 install --no-cache-dir -r requirements.txt")
@@ -109,7 +111,11 @@ vcbot = udB.get("VCBOT") or Var.VCBOT
 if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
-plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
+plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot)
+
+for module_name in ALL_MODULES:
+    imported_module = import_module("toxic." + module_name)
+
 
 
 suc_msg = """
