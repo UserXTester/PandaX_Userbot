@@ -1,20 +1,40 @@
-""" Init file which loads all of the modules """
-from PandaX_Userbot import LOGS
-from PandaX_Userbot import app
+# Ultroid - UserBot
+# Copyright (C) 2021 TeamUltroid
+#
+# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
+# PLease read the GNU Affero General Public License in
+# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 
+from safety.tools import *
 
-def __list_all_modules():
-    from os.path import dirname, basename, isfile
-    import glob
+from .startup.connections import *
 
-    mod_paths = glob.glob(dirname(__file__) + "/*.py")
-    all_modules = [
-        basename(f)[:-3] for f in mod_paths
-        if isfile(f) and f.endswith(".py") and not f.endswith("__init__.py")
-    ]
-    return all_modules
+LOGS = LOGS
 
+udB = redis_connection()
 
-ALL_MODULES = sorted(__list_all_modules())
-LOGS.info("Modules to load: %s", str(ALL_MODULES))
-__all__ = ALL_MODULES + ["ALL_MODULES"]
+ultroid_bot, asst = client_connection()
+
+vcClient = vc_connection(udB, ultroid_bot)
+
+if not udB.get("HNDLR"):
+    udB.set("HNDLR", ".")
+
+if not udB.get("SUDO"):
+    udB.set("SUDO", "False")
+
+if not udB.get("SUDOS"):
+    udB.set("SUDOS", "777000")
+
+if not udB.get("BLACKLIST_CHATS"):
+    udB.set("BLACKLIST_CHATS", "[]")
+
+HNDLR = udB.get("HNDLR")
+
+if not udB.get("DUAL_HNDLR"):
+    udB.set("DUAL_HNDLR", "/")
+
+Evar = udB.get("SUDO_HNDLR")
+SUDO_HNDLR = Evar if Evar else HNDLR
+
+Hosted_On = where_hosted()
