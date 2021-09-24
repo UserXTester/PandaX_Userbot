@@ -111,10 +111,8 @@ vcbot = udB.get("VCBOT") or Var.VCBOT
 if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
-plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot)
+plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
 
-for module_name in ALL_MODULES:
-    imported_module = import_module("toxic." + module_name)
 
 
 
