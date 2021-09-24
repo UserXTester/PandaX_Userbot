@@ -1,65 +1,44 @@
-# Ultroid - UserBot
-# Copyright (C) 2021 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
+DEVLIST = [
+    719195224,  # @xditya
+    1322549723,  # @danish_00
+    1444249738,  # @KarbonCopy
+    1903729401,  # @its_buddhhu
+    1303895686,  # @Sipak_OP
+    611816596,  # @Arnab431
+    1318486004,  # @sppidy
+    803243487,  # @hellboi_atul
+    1152902819,  # @Anonymous_Machinee
+]
 
-
-
-from .PandaX.Panda_Start import *
-
-LOGS = LOGS
-
-udB = redis_connection()
-
-petercordpanda_bot, asst = client_connection()
-
-vcClient = vc_connection(udB, petercordpanda_bot)
-MusicPanda = vc_musicbot(udB, petercordpanda_bot)
-
-
-if not udB.get("CHANNEL_PANDA"):
-    udB.set("CHANNEL_PANDA", "@pluginspandabot")
-
-
-if not udB.get("HNDLR"):
-    udB.set("HNDLR", ".")
-
-if not udB.get("SUDO"):
-    udB.set("SUDO", "False")
-
-if not udB.get("SUDOS"):
-    udB.set("SUDOS", "777000")
-
-if not udB.get("BLACKLIST_CHATS"):
-    udB.set("BLACKLIST_CHATS", "[]")
-
-HNDLR = udB.get("HNDLR")
-
-if not udB.get("DUAL_HNDLR"):
-    udB.set("DUAL_HNDLR", "/")
-
-Evar = udB.get("SUDO_HNDLR")
-SUDO_HNDLR = Evar if Evar else HNDLR
-Hosted_On = where_hosted()
-
-
-import os
-import time
-from distutils.util import strtobool as sb
-
-StartTime = time.time()
-
-TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./downloads")
-ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
-CMD_HELP = {}
-DB_URI = os.environ.get("DATABASE_URL", None)
-CUSTOM_CMD = os.environ.get("CUSTOM_CMD") or "."
-LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
-BOTLOG = sb(os.environ.get("BOTLOG", "True"))
-G_BAN_LOGGER_GROUP = int(udB.get("LOG_CHANNEL"))
-if G_BAN_LOGGER_GROUP:
-    G_BAN_LOGGER_GROUP = int(udB.get("LOG_CHANNEL"))
-
-
+stickers = [
+    "CAADAQADeAIAAm_BZBQh8owdViocCAI",
+    "CAADAQADegIAAm_BZBQ6j8GpKtnrSgI",
+    "CAADAQADfAIAAm_BZBQpqC84n9JNXgI",
+    "CAADAQADfgIAAm_BZBSxLmTyuHvlzgI",
+    "CAADAQADgAIAAm_BZBQ3TZaueMkS-gI",
+    "CAADAQADggIAAm_BZBTPcbJMorVVsQI",
+    "CAADAQADhAIAAm_BZBR3lnMZRdsYxAI",
+    "CAADAQADhgIAAm_BZBQGQRx4iaM4pQI",
+    "CAADAQADiAIAAm_BZBRRF-cjJi_QywI",
+    "CAADAQADigIAAm_BZBQQJwfzkqLM0wI",
+    "CAADAQADjAIAAm_BZBQSl5GSAT0viwI",
+    "CAADAQADjgIAAm_BZBQ2xU688gfHhQI",
+    "CAADAQADkAIAAm_BZBRGuPNgVvkoHQI",
+    "CAADAQADpgIAAm_BZBQAAZr0SJ5EKtQC",
+    "CAADAQADkgIAAm_BZBTvuxuayqvjhgI",
+    "CAADAQADlAIAAm_BZBSMZdWN2Yew1AI",
+    "CAADAQADlQIAAm_BZBRXyadiwWGNkwI",
+    "CAADAQADmAIAAm_BZBQDoB15A1jS1AI",
+    "CAADAQADmgIAAm_BZBTnOLQ8_d72vgI",
+    "CAADAQADmwIAAm_BZBTve1kgdG0Y5gI",
+    "CAADAQADnAIAAm_BZBQUMyFiylJSqQI",
+    "CAADAQADnQIAAm_BZBSMAe2V4pwhNgI",
+    "CAADAQADngIAAm_BZBQ06D92QL_vywI",
+    "CAADAQADnwIAAm_BZBRw7UAbr6vtEgI",
+    "CAADAQADoAIAAm_BZBRkv9DnGPXh_wI",
+    "CAADAQADoQIAAm_BZBQwI2NgQdyKlwI",
+    "CAADAQADogIAAm_BZBRPHJF3XChVLgI",
+    "CAADAQADowIAAm_BZBThpas7rZD6DAI",
+    "CAADAQADpAIAAm_BZBQcC2DpZcCw1wI",
+    "CAADAQADpQIAAm_BZBQKruTcEU4ntwI",
+]
