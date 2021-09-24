@@ -30,7 +30,7 @@ from .PandaX.PandaCr import (
     pandailham,
 )
 from .PandaX.PandaLoad import plugin_loader
-
+from .vc.loading import ALL_MODULES
 # Option to Auto Update On Restarts..
 if udB.get("UPDATE_ON_RESTART") and updater() and os.path.exists(".git"):
     os.system("git pull -f && pip3 install --no-cache-dir -r requirements.txt")
