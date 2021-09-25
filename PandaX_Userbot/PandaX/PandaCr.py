@@ -298,7 +298,7 @@ async def plug(plugin_channels):
 
 
 async def pandailham(channel_panda):
-    if not os.path.exists("toxic/__init__.py"):
+    if not os.path.exists("PandaToxic/Toxic/__init__.py"):
         with open("toxic/__init__.py", "w") as f:
             f.write("from PandaX_v20 import *")
     for Plug_channel in channel_panda.split():
