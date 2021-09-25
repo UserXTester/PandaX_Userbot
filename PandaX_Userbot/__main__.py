@@ -135,7 +135,7 @@ if plugin_channels:
     petercordpanda_bot.loop.run_until_complete(plug(plugin_channels))
 
 LOGS.info(
-    f" V7.0 [AKTIF NGENTOT!!!!]")
+    f"{suc_msg} V7.0 [AKTIF NGENTOT!!!!]")
 
 
 
