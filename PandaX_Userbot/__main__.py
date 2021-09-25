@@ -104,7 +104,7 @@ os.system("pip install -r modules/modules.txt")
 pmbot = udB.get("PMBOT")
 manager = udB.get("MANAGER")
 modules = udB.get("MODULES") or Var.MODULES
-toxic = udB.get("TOXIC") or Var.TOXIC
+toxic = udB.get("PANDA") or Var.PANDA
 vcbot = udB.get("VCBOT") or Var.VCBOT
 
 # Railway dont allow Music Bots
