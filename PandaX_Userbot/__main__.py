@@ -134,8 +134,6 @@ if channels_panda:
 if plugin_channels:
     petercordpanda_bot.loop.run_until_complete(plug(plugin_channels))
 
-if not udB.get("LOG_OFF"):
-    petercordpanda_bot.loop.run_until_complete(ready())
 
 
 
