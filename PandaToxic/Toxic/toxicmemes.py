@@ -5,8 +5,8 @@ from telethon import events
 
 import asyncio
 
-from userbot.events import register
-from userbot import CMD_HELP, bot, ALIVE_NAME
+from PandaToxic.events import register
+from PandaToxic import CMD_HELP, bot, ALIVE_NAME
 from collections import deque
 from telethon.errors.rpcerrorlist import MessageIdInvalidError
 import random
