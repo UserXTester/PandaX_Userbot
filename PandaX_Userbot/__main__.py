@@ -9,7 +9,7 @@
 import os
 import sys
 import traceback
-
+from sys import argv
 from telethon.errors.rpcerrorlist import (
     AccessTokenExpiredError,
     ApiIdInvalidError,
@@ -134,6 +134,8 @@ if channels_panda:
 if plugin_channels:
     petercordpanda_bot.loop.run_until_complete(plug(plugin_channels))
 
+LOGS.info(
+    f" V7.0 [AKTIF NGENTOT!!!!]")
 
 
 
