@@ -1,8 +1,8 @@
 
 
 from time import sleep
-from userbot import CMD_HELP, bot
-from userbot.events import register
+from PandaToxic import CMD_HELP, bot
+from PandaToxic.events import register
 from telethon import events
 import asyncio
 
