@@ -56,10 +56,17 @@ G
 Usage: Liat Sendiri.
 
 .p
+Usage: Liat Sendiri
 .l
+Usage: Liat Sendiri
 .gjm
+Usage: Liat Sendiri
 .gjn
+Usage: Liat Sendiri
 .gjb
+Usage: Liat Sendiri
 .yb
+Usage: Liat Sendiri
 .gjk
+Usage: Liat Sendiri
 """
