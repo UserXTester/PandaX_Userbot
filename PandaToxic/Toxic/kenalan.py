@@ -1,5 +1,5 @@
 from time import sleep
-from userbot.events import register
+from PandaToxic.events import register
 
 
 @register(outgoing=True, pattern='^.r(?: |$)(.*)')
