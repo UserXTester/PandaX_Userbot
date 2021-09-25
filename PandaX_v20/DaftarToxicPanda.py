@@ -1,72 +1,79 @@
 """
-P
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: P
 Usage: Untuk Memberi salam.
 
-L
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: L
 Usage: Untuk Menjawab Salam.
 
-K
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: K
 Usage: Untuk mengontoli mereka.
 
-N
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: N
 Usage: Kalo kesel coba aja.
 
-B
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: B
 Usage: Buat Ngatain Yang Suka Bacot.
 
-M
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: M
 Usage: Tersedak meledek.
 
-Y
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: Y
 Usage: Buat yang males adu bacot.
 
-C
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: C
 Usage: Buat menghujat.
 
-S
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: S
 Usage: Haha sokap.
-V
+
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: V
 Usage: Hujat Orang caper.
 
-J
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: J
 Usage: Hujat Jamet.
 
-A
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: A
 Usage: Hujat yang gapunya muka.
 
-X
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: X
 Usage: Ngatain Grup wkwk.
 
-Z
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: Z
 Usage: teruntuk petarung.
 
-H
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: H
 Usage: Coba dewek ah.
 
-.atg
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .atg
 Usage: Istighfar 1.
 
-.ast
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .ast
 Usage: Istighfar 2.
 
-O
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: O
 Usage: Ngatain org norak.
 
-G
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: G
 Usage: Liat Sendiri.
 
-.p
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .p
 Usage: Liat Sendiri
-.l
+
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .l
 Usage: Liat Sendiri
-.gjm
+
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .gjm
 Usage: Liat Sendiri
-.gjn
+
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .gjn
 Usage: Liat Sendiri
-.gjb
+
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .gjb
 Usage: Liat Sendiri
-.yb
+
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .yb
 Usage: Liat Sendiri
-.gjk
+
+𝘾𝙤𝙢𝙢𝙖𝙣𝙙: .gjk
 Usage: Liat Sendiri
 """
