@@ -62,6 +62,4 @@ Usage: Liat Sendiri.
 .gjb
 .yb
 .gjk
-
-
 """
