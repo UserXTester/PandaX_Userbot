@@ -1,7 +1,7 @@
 # 
 from time import sleep
-from userbot import ALIVE_NAME, CMD_HELP, IG_ALIVE, REPO_NAME, GROUP_LINK, bot
-from userbot.events import register
+from PandaToxic import ALIVE_NAME, CMD_HELP, IG_ALIVE, REPO_NAME, GROUP_LINK, bot
+from PandaToxic.events import register
 from telethon import events
 import asyncio
 
