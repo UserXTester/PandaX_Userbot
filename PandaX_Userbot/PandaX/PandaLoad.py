@@ -33,31 +33,16 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
     LOGS.info("-" * 70)
 
    # for userbot
-    if toxic == "True" or not toxic:
+    files = sorted(os.listdir("PandaToxic/Toxic"))
+    for plugin_name in files:
         try:
-            os.system(
-                "git clone https://github.com/ilhammansiz/PandaToxic_userBot.git Toxic/"
-            )
-        except BaseException:
-            pass
-        """
-        LOGS.info("Installing packages for toxic")
-        os.system("pip install -r Toxic/panda.txt")
-        """
-        files = sorted(os.listdir("Toxic"))
-        for plugin_name in files:
-            try:
-                if plugin_name.endswith(".py"):
-                    load_panda(plugin_name[:-3])
-                    LOGS.info(f"PandaX - 📙Toxic -  Installed - {plugin_name}")
-            except Exception as exc:
-                LOGS.info(f"PandaX - 📙Toxic - ERROR - {plugin_name}")
-                LOGS.info(str(type(exc)) + ": " + str(exc))
-        LOGS.info("-" * 70)
-    else:
-        pass
-        # os.system("cp PandaX_v20/__init__.py Toxic/")
-
+            if plugin_name.endswith(".py"):
+                load_panda(plugin_name[:-3])
+                LOGS.info(f"Panda - 📗 Plugins PandaX -  Installed - {plugin_name}")
+        except Exception as exc:
+            LOGS.info(f"PandaX - 📗Plugins PandaX - ERROR - {plugin_name}")
+            LOGS.info(str(type(exc)) + ": " + str(exc))
+    LOGS.info("-" * 70)
 
     # for assistant
     files = sorted(os.listdir("PandaX_ASsistant"))
