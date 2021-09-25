@@ -196,7 +196,7 @@ async def inline_handler(event):
             OWNER_NAME,
             len(PLUGINS),
             len(MODULES),
-            len(PANDA),
+            len(PANDA_HELP),
             len(VC_HELP),
             len(z),
         ),
@@ -255,7 +255,7 @@ async def setting(event):
             OWNER_NAME,
             len(PLUGINS),
             len(MODULES),
-            len(PANDA),
+            len(PANDA_HELP),
             len(VC_HELP),
             cmd,
         ),
@@ -284,7 +284,7 @@ async def setting(event):
             OWNER_NAME,
             len(PLUGINS),
             len(MODULES),
-            len(PANDA),
+            len(PANDA_HELP),
             len(VC_HELP),
             cmd,
         ),
@@ -322,7 +322,7 @@ async def setting(event):
             OWNER_ID,
             len(PLUGINS),
             len(MODULES),
-            len(PANDA),
+            len(PANDA_HELP),
             len(VC_HELP),
             cmd,
         ),
@@ -377,7 +377,7 @@ async def setting(event):
             OWNER_NAME,
             len(PLUGINS),
             len(MODULES),
-            len(PANDA),
+            len(PANDA_HELP),
             len(VC_HELP),
             cmd,
         ),
@@ -422,7 +422,7 @@ async def setting(event):
             OWNER_NAME,
             len(PLUGINS),
             len(MODULES),
-            len(PANDA),
+            len(PANDA_HELP),
             len(VC_HELP),
             cmd,
         ),
@@ -602,10 +602,10 @@ async def on_plug_in_callback_query_handler(event):
 @owner
 async def on_vc_callback_query_handler(event):
     xhelps = "**PandaToxic Bot Help Menu for {}**\n**😵:** `{}`\n\n@TeamSquadUserbotSupport".format(
-        OWNER_NAME, len(PANDA)
+        OWNER_NAME, len(PANDA_HELP)
     )
     try:
-        buttons = page_num(0, PANDA, "ilhammansiz", "panda")
+        buttons = page_num(0, PANDA_HELP, "ilhammansiz", "panda")
     except ZeroDivisionError:
         return await event.answer("Toxic not Active.")
     await event.edit(f"{xhelps}", buttons=buttons, link_preview=False)
@@ -653,7 +653,7 @@ async def on_plug_in_callback_query_handler(event):
 @owner
 async def on_plug_in_callback_query_handler(event):
     current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-    buttons = page_num(current_page_number + 1, PANDA, "ilhammansiz", "panda")
+    buttons = page_num(current_page_number + 1, PANDA_HELP, "ilhammansiz", "panda")
     await event.edit(buttons=buttons, link_preview=False)
 
 
@@ -700,7 +700,7 @@ async def on_vc_callback_query_handler(event):
 @owner
 async def on_plug_in_callback_query_handler(event):
     current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-    buttons = page_num(current_page_number - 1, PANDA, "ilhammansiz", "panda")
+    buttons = page_num(current_page_number - 1, PANDA_HELP, "ilhammansiz", "panda")
     await event.edit(buttons=buttons, link_preview=False)
 
 
@@ -760,7 +760,7 @@ async def bvckr(event):
 @callback("backpanda")
 @owner
 async def backr(event):
-    phelps = helpspanda.format(OWNER_NAME, len(PANDA))
+    phelps = helpspanda.format(OWNER_NAME, len(PANDA_HELP))
     current_page_number = int(upage)
     buttons = page_num(current_page_number, PANDA, "ilhammansiz", "panda")
     await event.edit(
@@ -797,7 +797,7 @@ async def opner(event):
             OWNER_NAME,
             len(PLUGINS),
             len(MODULES),
-            len(PANDA),
+            len(PANDA_HELP),
             len(VC_HELP),
             len(z),
         ),
@@ -916,7 +916,7 @@ async def on_plug_in_callback_query_handler(event):
     plugin_name = event.data_match.group(1).decode("UTF-8")
     help_string = ""
     try:
-        for i in CMD_HELP[plugin_name]:
+        for i in PANDA_HELP[plugin_name]:
             help_string += i
     except BaseException:
         try:
