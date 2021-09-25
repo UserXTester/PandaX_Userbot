@@ -15,7 +15,7 @@ from traceback import format_exc
 
 from telethon import events
 
-from userbot import LOGSPAMMER, bot
+from PandaToxic import LOGSPAMMER, bot
 
 
 def register(**args):
