@@ -335,7 +335,7 @@ async def pandailham(channel_panda):
 # some stuffs
 async def ready():
     chat_id = int(udB.get("LOG_CHANNEL"))
-    MSG = f"**PandaX_Userbot Berhasil deployed!**\n➖➖➖➖➖➖➖➖➖\n**UserMode**: [{petercordpanda_bot.me.first_name}](tg://user?id={petercordpanda_bot.me.id})\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖\n**Support**: @TeamSquadUserbotSupport\n➖➖➖➖➖➖➖➖➖"
+    MSG = f"**PandaX_Userbot Berhasil Diaktifkan**\n➖➖➖➖➖➖➖➖➖\n**Pengguna**: [{petercordpanda_bot.me.first_name}](tg://user?id={petercordpanda_bot.me.id})\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖\n**Support**: @TeamSquadUserbotSupport\n➖➖➖➖➖➖➖➖➖"
     BTTS = []
     PHOTO, spam_sent = None, None
     updava = updater()
