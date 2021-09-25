@@ -762,7 +762,7 @@ async def bvckr(event):
 async def backr(event):
     phelps = helpspanda.format(OWNER_NAME, len(PANDA_HELP))
     current_page_number = int(upage)
-    buttons = page_num(current_page_number, PANDA, "ilhammansiz", "panda")
+    buttons = page_num(current_page_number, PANDA_HELP, "ilhammansiz", "panda")
     await event.edit(
         f"{phelps}",
         file=Panda_Logo,
