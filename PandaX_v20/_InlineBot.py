@@ -434,8 +434,8 @@ async def setting(event):
                 Button.inline("📗 𝐌𝐨𝐝𝐮𝐥𝐞𝐬 📗", data="frrr"),
             ],
             [
-                Button.inline("📒Exra Panda📒", data="ilham"),
-                Button.inline("🎸 Voice Chat 🎸", data="vc_helper"),
+                Button.inline("😜 PandaToxic 😜", data="ilham"),
+                Button.inline("🎧 Voice Chat 🎧", data="vc_helper"),
             ],
             [
                 Button.inline("⫷ ʙᴀᴄᴋ ⫸", data="open"),
@@ -600,10 +600,16 @@ async def on_plug_in_callback_query_handler(event):
 
 @callback("ilham")
 @owner
-async def on_plug_in_callback_query_handler(event):
-    phelps = helpspanda.format(OWNER_NAME, len(PANDA))
-    buttons = page_num(0, PANDA, "ilhammansiz", "panda")
-    await event.edit(f"{phelps}", buttons=buttons, link_preview=False)
+async def on_vc_callback_query_handler(event):
+    xhelps = "**PandaToxic Bot Help Menu for {}**\n**😵:** `{}`\n\n@TeamSquadUserbotSupport".format(
+        OWNER_NAME, len(PANDA)
+    )
+    try:
+        buttons = page_num(0, PANDA, "ilhammansiz", "panda")
+    except ZeroDivisionError:
+        return await event.answer("Toxic not Active.")
+    await event.edit(f"{xhelps}", buttons=buttons, link_preview=False)
+
 
 
 @callback("frrr")
