@@ -137,6 +137,7 @@ if plugin_channels:
 
 
 
-if __name__ == "__main__":
-    LOGS.info(suc_msg)
+if len(argv) not in (1, 3, 4):
+    petercordpanda_bot.disconnect()
+else:
     petercordpanda_bot.run_until_disconnected()
