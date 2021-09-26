@@ -115,7 +115,7 @@ botvc = udB.get("SESSION_NAME") or Var.SESSION_NAME
 if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
-plugin_loader(modules=modules, pmbot=pmbot, manager=manager, toxic=toxic)
+plugin_loader(modules=modules, pmbot=pmbot, manager=manager, toxic=toxic, vcbot=vcbot)
 
 def pycli():
     client.start()
