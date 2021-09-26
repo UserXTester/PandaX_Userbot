@@ -15,7 +15,7 @@ from telethon import TelegramClient
 from telethon import __version__ as vers
 from telethon.errors.rpcerrorlist import AuthKeyDuplicatedError, PhoneNumberInvalidError
 from telethon.sessions import StringSession
-
+from pyrogram import Client
 from PandaX_Userbot.Panda.database import Var
 from PandaX_Userbot.version import __version__ as ver
 from PandaX_Userbot.version import PandaX_version
@@ -181,8 +181,8 @@ def vc_bot(udB):
     SESSION_NAME = udB.get("SESSION_NAME") or Var.SESSION_NAME
     if SESSION_NAME:
         try:
-            client = Client(Var.SESSION_NAME, Var.API_ID, Var.API_HASH)
-            return client
+            ilham = Client(Var.SESSION_NAME, Var.API_ID, Var.API_HASH)
+            return ilham
         except Exception as er:
             LOGS.info(str(er))
     return None
