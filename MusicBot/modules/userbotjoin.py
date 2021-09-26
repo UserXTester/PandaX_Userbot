@@ -18,9 +18,9 @@
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant
 import asyncio
-from GeezProject.helpers.decorators import authorized_users_only, errors
-from GeezProject.services.callsmusic.callsmusic import client as USER
-from GeezProject.config import SUDO_USERS
+from MusicBot.helpers.decorators import authorized_users_only, errors
+from MusicBot.services.callsmusic.callsmusic import client as USER
+from MusicBot.config import SUDO_USERS
 
 
 @Client.on_message(filters.command(["userbotjoin"]) & ~filters.private & ~filters.bot)
@@ -113,7 +113,7 @@ async def addcchannel(client, message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "GeezProject"
+        user.first_name = "PandaX-Music"
 
     try:
         await USER.join_chat(invitelink)
