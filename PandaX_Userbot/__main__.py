@@ -18,6 +18,7 @@ from telethon.errors.rpcerrorlist import (
     PhoneNumberInvalidError,
 )
 
+from MusicBot.services.callsmusic import run
 from pyrogram import idle
 from . import *
 from .Panda.database import Var
@@ -108,6 +109,7 @@ manager = udB.get("MANAGER")
 modules = udB.get("MODULES") or Var.MODULES
 toxic = udB.get("PANDA") or Var.PANDA
 vcbot = udB.get("VCBOT") or Var.VCBOT
+botvc = udB.get("SESSION_NAME") or Var.SESSION_NAME
 
 # Railway dont allow Music Bots
 if Hosted_On == "railway" and not udB.get("VCBOT"):
@@ -116,9 +118,9 @@ if Hosted_On == "railway" and not udB.get("VCBOT"):
 plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
 
 def pycli():
-    vcasst.start()
+    client.start()
     multiprocessing.Process(target=idle).start()
-    CallsClient.run()
+    run()
 
 
 
@@ -143,12 +145,15 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
-LOGS.info(suc_msg)
 
-if len(argv) not in (1, 3, 4):
-    petercordpanda_bot.disconnect()
-else:
-    petercordpanda_bot.run_until_disconnected()
-
+if __name__ == "__main__":
+    if botvc:
+        if client and run:
+            multiprocessing.Process(target=pycli).start()
+        LOGS.info(suc_msg)
+        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
+    else:
+        LOGS.info(suc_msg)
+        petercordpanda_bot.run_until_disconnected()
 
 
