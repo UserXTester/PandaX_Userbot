@@ -17,8 +17,6 @@ from telethon.errors.rpcerrorlist import (
     PhoneNumberInvalidError,
 )
 
-from PandaX_Userbot.session import bot as pandabot
-from MusicBot.services.callsmusic import run
 
 from . import *
 from .Panda.database import Var
@@ -144,9 +142,6 @@ except BaseException:
     pass
 LOGS.info("Installing packages for modules")
 os.system("pip install -r modules/panda.txt")
-
-pandabot.start()
-run()
 
 if __name__ == "__main__":
     LOGS.info(suc_msg)
