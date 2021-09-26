@@ -10,8 +10,8 @@ from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
 
-from Musicbot.services.callsmusic.callsmusic import client as geez
-from Musicbot.config import SUDO_USERS
+from MusicBot.services.callsmusic.callsmusic import client as geez
+from MusicBot.config import SUDO_USERS
 
 @Client.on_message(filters.command(["gcast"]))
 async def broadcast(_, message: Message):
