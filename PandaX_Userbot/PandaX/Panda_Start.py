@@ -177,7 +177,6 @@ def vc_musicbot(udB, petercordpanda_bot):
     return petercordpanda_bot
 
 
-def vc_bot(udB):
             bot = Client(
                 ":memory:",
                 api_id=Var.API_ID,
