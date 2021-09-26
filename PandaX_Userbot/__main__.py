@@ -6,6 +6,7 @@
 # <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 # Editor by ilham mansiz
 
+import multiprocessing
 import os
 import sys
 import traceback
@@ -107,6 +108,7 @@ manager = udB.get("MANAGER")
 modules = udB.get("MODULES") or Var.MODULES
 toxic = udB.get("TOXIC") or Var.TOXIC
 vcbot = udB.get("VCBOT") or Var.VCBOT
+botvc = udB.get("SESSION_NAME") or Var.SESSION_NAME
 
 # Railway dont allow Music Bots
 if Hosted_On == "railway" and not udB.get("VCBOT"):
@@ -114,6 +116,19 @@ if Hosted_On == "railway" and not udB.get("VCBOT"):
 
 plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
 
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/PandaToxic_userBot music/"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.system("pip install -r music/panda.txt")
+
+def pycli():
+    pandabot.start()
+    multiprocessing.Process(target=idle).start()
+    run()
 
 suc_msg = """
             ----------------------------------------------------------------------
@@ -133,18 +148,7 @@ if channels_panda:
 if plugin_channels:
     petercordpanda_bot.loop.run_until_complete(plug(plugin_channels))
 
-try:
-    os.system(
-        "git clone https://github.com/ilhammansiz/PandaToxic_userBot music/"
-    )
-except BaseException:
-    pass
-LOGS.info("Installing packages for modules")
-os.system("pip install -r music/panda.txt")
 
-
-pandabot.start()
-run()
 
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
@@ -152,5 +156,11 @@ if not udB.get("LOG_OFF"):
 
 
 if __name__ == "__main__":
-    LOGS.info(suc_msg)
-    petercordpanda_bot.run_until_disconnected()
+    if botvc:
+        if pandabot and run:
+            multiprocessing.Process(target=pycli).start()
+        LOGS.info(suc_msg)
+        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
+    else:
+        LOGS.info(suc_msg)
+        petercordpanda_bot.run_until_disconnected()
