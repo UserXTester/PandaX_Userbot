@@ -18,6 +18,7 @@ from telethon.errors.rpcerrorlist import (
     PhoneNumberInvalidError,
 )
 
+from pyrogram import idle
 from . import *
 from .Panda.database import Var
 from .PandaX.PandaCr import (
@@ -114,6 +115,10 @@ if Hosted_On == "railway" and not udB.get("VCBOT"):
 
 plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
 
+def pycli():
+    vcasst.start()
+    multiprocessing.Process(target=idle).start()
+    CallsClient.run()
 
 
 
