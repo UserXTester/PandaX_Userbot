@@ -16,16 +16,16 @@
 
 
 from asyncio import QueueEmpty
-from GeezProject.config import que
+from MusicBot.config import que
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from GeezProject.function.admins import set
-from GeezProject.helpers.channelmusic import get_chat_id
-from GeezProject.helpers.decorators import authorized_users_only, errors
-from GeezProject.helpers.filters import command, other_filters
-from GeezProject.services.callsmusic import callsmusic
-from GeezProject.services.queues import queues
+from MusicBot.function.admins import set
+from MusicBot.helpers.channelmusic import get_chat_id
+from MusicBot.helpers.decorators import authorized_users_only, errors
+from MusicBot.helpers.filters import command, other_filters
+from MusicBot.services.callsmusic import callsmusic
+from MusicBot.services.queues import queues
 
 
 @Client.on_message(filters.command(["channelpause","cpause"]) & filters.group & ~filters.edited)
