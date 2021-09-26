@@ -17,6 +17,9 @@ from telethon.errors.rpcerrorlist import (
     PhoneNumberInvalidError,
 )
 
+from PandaX_Userbot.PandaBase.session import bot as pandabot
+from MusicBot.services.callsmusic import run
+
 from . import *
 from .Panda.database import Var
 from .PandaX.PandaCr import (
@@ -129,6 +132,19 @@ if channels_panda:
 
 if plugin_channels:
     petercordpanda_bot.loop.run_until_complete(plug(plugin_channels))
+
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/PandaToxic_userBot music/"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.system("pip install -r music/panda.txt")
+
+
+pandabot.start()
+run()
 
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
