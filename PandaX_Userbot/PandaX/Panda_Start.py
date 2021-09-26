@@ -177,17 +177,13 @@ def vc_musicbot(udB, petercordpanda_bot):
     return petercordpanda_bot
 
 
-            bot = Client(
-                ":memory:",
-                api_id=Var.API_ID,
-                api_hash=Var.API_HASH,
-                bot_token=udB.get("BOT_TOKEN"),
-                plugins=dict(root="MusicBot.modules"),
-            )
-            return bot
-        except Exception as er:
-            LOGS.info(str(er))
-    return None
+bot = Client(
+    ":memory:",
+    Var.API_ID,
+    Var.API_HASH,
+    bot_token=udB.get("BOT_TOKEN"),
+    plugins=dict(root="MusicBot.modules"),
+)
 
 
 
