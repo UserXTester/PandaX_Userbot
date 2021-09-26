@@ -6,7 +6,7 @@
 # <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 # Editor by ilham mansiz
 
-
+import multiprocessing
 import os
 import sys
 import traceback
