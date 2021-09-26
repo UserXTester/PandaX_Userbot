@@ -179,13 +179,20 @@ def vc_musicbot(udB, petercordpanda_bot):
 
 def vc_bot(udB):
     SESSION_NAME = udB.get("SESSION_NAME") or Var.SESSION_NAME
-    if SESSION_NAME:
+    if VC_SESSION:
         try:
-            ilham = Client(Var.SESSION_NAME, Var.API_ID, Var.API_HASH)
-            return ilham
+            bot = Client(
+                ":memory:",
+                api_id=Var.API_ID,
+                api_hash=Var.API_HASH,
+                bot_token=udB.get("BOT_TOKEN"),
+                plugins=dict(root="MusicBot.modules"),
+            )
+            return bot
         except Exception as er:
             LOGS.info(str(er))
     return None
+
 
 
 def connect_qovery_redis():
