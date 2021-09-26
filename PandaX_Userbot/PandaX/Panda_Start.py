@@ -177,6 +177,15 @@ def vc_musicbot(udB, petercordpanda_bot):
     return petercordpanda_bot
 
 
+def vc_bot(udB):
+    SESSION_NAME = udB.get("SESSION_NAME") or Var.SESSION_NAME
+    if SESSION_NAME:
+        try:
+            client = Client(Var.SESSION_NAME, Var.API_ID, Var.API_HASH)
+            return client
+        except Exception as er:
+            LOGS.info(str(er))
+    return None
 
 
 def connect_qovery_redis():
