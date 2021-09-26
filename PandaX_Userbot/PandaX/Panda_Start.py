@@ -177,14 +177,6 @@ def vc_musicbot(udB, petercordpanda_bot):
     return petercordpanda_bot
 
 
-bot = Client(
-    ":memory:",
-    Var.API_ID,
-    Var.API_HASH,
-    bot_token=udB.get("BOT_TOKEN"),
-    plugins=dict(root="MusicBot.modules"),
-)
-
 
 
 def connect_qovery_redis():
