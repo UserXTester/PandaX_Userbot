@@ -125,10 +125,6 @@ except BaseException:
 LOGS.info("Installing packages for modules")
 os.system("pip install -r music/panda.txt")
 
-def pycli():
-    pandabot.start()
-    multiprocessing.Process(target=idle).start()
-    run()
 
 suc_msg = """
             ----------------------------------------------------------------------
@@ -153,14 +149,9 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
-
+pandabot.start()
+run()
 
 if __name__ == "__main__":
-    if botvc:
-        if pandabot and run:
-            multiprocessing.Process(target=pycli).start()
-        LOGS.info(suc_msg)
-        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
-    else:
         LOGS.info(suc_msg)
         petercordpanda_bot.run_until_disconnected()
