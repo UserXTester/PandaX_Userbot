@@ -178,9 +178,6 @@ def vc_musicbot(udB, petercordpanda_bot):
 
 
 def vc_bot(udB):
-    SESSION_NAME = udB.get("SESSION_NAME") or Var.SESSION_NAME
-    if SESSION_NAME:
-        try:
             bot = Client(
                 ":memory:",
                 api_id=Var.API_ID,
