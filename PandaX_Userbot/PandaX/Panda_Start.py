@@ -5,8 +5,7 @@
 # PLease read the GNU Affero General Public License in
 # <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 
-
-
+import config
 import os
 import time
 from logging import INFO, FileHandler, StreamHandler, basicConfig, getLogger
@@ -176,6 +175,18 @@ def vc_musicbot(udB, petercordpanda_bot):
         except Exception as er:
             LOGS.info("VC_SESSION: {}".format(str(er)))
     return petercordpanda_bot
+
+
+def vc_connection(udB):
+    SESSION_NAME = udB.get("SESSION_NAME") or Var.SESSION_NAME
+    if SESSION_NAME:
+        try:
+            client = Client(Var.SESSION_NAME, Var.API_ID, Var.API_HASH)
+            return client
+        except Exception as er:
+            LOGS.info(str(er))
+    return None
+
 
 def connect_qovery_redis():
     uri = Var.REDIS_URI
