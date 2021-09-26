@@ -32,30 +32,30 @@ from pyrogram.types import Voice
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
-from GeezProject.modules.play import generate_cover
-from GeezProject.modules.play import arq
-from GeezProject.modules.play import cb_admin_check
-from GeezProject.modules.play import transcode
-from GeezProject.modules.play import convert_seconds
-from GeezProject.modules.play import time_to_seconds
-from GeezProject.modules.play import changeImageSize
-from GeezProject.config import BOT_NAME as bn
-from GeezProject.config import DURATION_LIMIT
-from GeezProject.config import UPDATES_CHANNEL as updateschannel
-from GeezProject.config import que
-from GeezProject.function.admins import admins as a
-from GeezProject.helpers.errors import DurationLimitError
-from GeezProject.helpers.decorators import errors
-from GeezProject.helpers.admins import get_administrators
-from GeezProject.helpers.channelmusic import get_chat_id
-from GeezProject.helpers.decorators import authorized_users_only
-from GeezProject.helpers.filters import command, other_filters
-from GeezProject.helpers.gets import get_file_name
-from GeezProject.services.callsmusic import callsmusic
-from GeezProject.services.callsmusic.callsmusic import client as USER
-from GeezProject.services.converter.converter import convert
-from GeezProject.services.downloaders import youtube
-from GeezProject.services.queues import queues
+from MusicBot.modules.play import generate_cover
+from MusicBot.modules.play import arq
+from MusicBot.modules.play import cb_admin_check
+from MusicBot.modules.play import transcode
+from MusicBot.modules.play import convert_seconds
+from MusicBot.modules.play import time_to_seconds
+from MusicBot.modules.play import changeImageSize
+from MusicBot.config import BOT_NAME as bn
+from MusicBot.config import DURATION_LIMIT
+from MusicBot.config import UPDATES_CHANNEL as updateschannel
+from MusicBot.config import que
+from MusicBot.function.admins import admins as a
+from MusicBot.helpers.errors import DurationLimitError
+from MusicBot.helpers.decorators import errors
+from MusicBot.helpers.admins import get_administrators
+from MusicBot.helpers.channelmusic import get_chat_id
+from MusicBot.helpers.decorators import authorized_users_only
+from MusicBot.helpers.filters import command, other_filters
+from MusicBot.helpers.gets import get_file_name
+from MusicBot.services.callsmusic import callsmusic
+from MusicBot.services.callsmusic.callsmusic import client as USER
+from MusicBot.services.converter.converter import convert
+from MusicBot.services.downloaders import youtube
+from MusicBot.services.queues import queues
 
 chat_id = None
 
@@ -470,7 +470,7 @@ async def play(_, message: Message):
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
+        thumb_name = "https://telegra.ph/file/695cb726224d2a7037399.jpg"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
