@@ -16,10 +16,10 @@
 
 from pyrogram import Client
 import asyncio
-from GeezProject.config import SUDO_USERS, PMPERMIT, OWNER, PROJECT_NAME, UPDATES_CHANNEL, SUPPORT_GROUP
+from MusicBot.config import SUDO_USERS, PMPERMIT, OWNER, PROJECT_NAME, UPDATES_CHANNEL, SUPPORT_GROUP
 from pyrogram import filters
 from pyrogram.types import Message
-from GeezProject.services.callsmusic.callsmusic import client as USER
+from MusicBot.services.callsmusic.callsmusic import client as USER
 
 PMSET =True
 pchats = []
