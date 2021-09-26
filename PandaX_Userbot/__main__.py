@@ -145,7 +145,5 @@ if len(argv) not in (1, 3, 4):
 else:
     petercordpanda_bot.run_until_disconnected()
 
-
-if __name__ == "__main__":
 pandabot.start()
 run()
