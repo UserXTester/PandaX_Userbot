@@ -165,15 +165,11 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
+LOGS.info(suc_msg)
 
-if __name__ == "__main__":
-    if botvc:
-        if client and run:
-            multiprocessing.Process(target=pycli).start()
-        LOGS.info(suc_msg)
-        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
-    else:
-        LOGS.info(suc_msg)
-        petercordpanda_bot.run_until_disconnected()
 
+if len(argv) not in (1, 3, 4):
+    petercordpanda_bot.disconnect()
+else:
+    petercordpanda_bot.run_until_disconnected()
 
