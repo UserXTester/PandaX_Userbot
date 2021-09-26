@@ -17,12 +17,11 @@
 
 from pyrogram import Client
 from pytgcalls import PyTgCalls
-
+from PandaX_Userbot import client
 import config
 from MusicBot.config import API_HASH, API_ID, SESSION_NAME
 from MusicBot.services.queues import queues
 
-client = Client(config.SESSION_NAME, config.API_ID, config.API_HASH)
 pytgcalls = PyTgCalls(client)
 
 
