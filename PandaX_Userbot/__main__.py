@@ -133,6 +133,14 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/PandaToxic_userBot modules/"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.system("pip install -r modules/panda.txt")
 
 
 if __name__ == "__main__":
