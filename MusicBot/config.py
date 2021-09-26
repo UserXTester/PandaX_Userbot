@@ -17,7 +17,7 @@
 
 import os
 from os import getenv
-
+from PandaX_v21 import *
 from dotenv import load_dotenv
 
 if os.path.exists("local.env"):
@@ -25,21 +25,21 @@ if os.path.exists("local.env"):
 
 que = {}
 SESSION_NAME = getenv("SESSION_NAME", "session")
-BOT_TOKEN = getenv("BOT_TOKEN")
+BOT_TOKEN = udB.get("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME")
-UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "GeezProjects")
-BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/cd0b87484429704c7b935.png")
+UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "TeamSquadUserbotSupport")
+BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/695cb726224d2a7037399.jpg")
 admins = {}
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
-BOT_USERNAME = getenv("BOT_USERNAME")
-ASSISTANT_NAME = getenv("ASSISTANT_NAME", "GeezMusicBot")
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "GeezSupportGroup")
-PROJECT_NAME = getenv("PROJECT_NAME", "Geez Music Project")
-OWNER = getenv("OWNER", "@VckyouuBitch")
-SOURCE_CODE = getenv("SOURCE_CODE", "github.com/Vckyou/Geez-MusicProject")
+BOT_USERNAME = asst.me.username
+ASSISTANT_NAME = getenv("ASSISTANT_NAME", "PandaX-MusicBot")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "TeamSquadUserbotSupport")
+PROJECT_NAME = getenv("PROJECT_NAME", "PandaX-MusicBot")
+OWNER = getenv("OWNER", "@diemmmmmmmmmm")
+SOURCE_CODE = getenv("SOURCE_CODE", "github.com/ilhammansiz/PandaX_Userbot")
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "15"))
-ARQ_API_KEY = getenv("ARQ_API_KEY", None)
+ARQ_API_KEY = getenv("ARQ_API_KEY", "TTKQOS-COPDKW-QMRNEW-WLXGOE-ARQ")
 PMPERMIT = getenv("PMPERMIT", None)
 LOG_GRP = getenv("LOG_GRP", None)
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ !").split())
