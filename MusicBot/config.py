@@ -15,6 +15,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # Modified by Inukaasith
 
+from PandaX_Userbot import udB
+from PandaX_v20 import *
 import os
 from os import getenv
 from dotenv import load_dotenv
@@ -31,7 +33,7 @@ BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/695cb726224d2a7037399.jpg
 admins = {}
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
-BOT_USERNAME = getenv("BOT_USERNAME", None)
+BOT_USERNAME = asst.me.username
 ASSISTANT_NAME = getenv("ASSISTANT_NAME", "PandaX-MusicBot")
 SUPPORT_GROUP = getenv("SUPPORT_GROUP", "TeamSquadUserbotSupport")
 PROJECT_NAME = getenv("PROJECT_NAME", "PandaX-MusicBot")
