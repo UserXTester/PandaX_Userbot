@@ -6,6 +6,7 @@
 # <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 # Editor by ilham mansiz
 
+from MusicBot import run, bot as pandabot
 import os
 import sys
 import traceback
@@ -143,3 +144,8 @@ if len(argv) not in (1, 3, 4):
     petercordpanda_bot.disconnect()
 else:
     petercordpanda_bot.run_until_disconnected()
+
+
+if __name__ == "__main__":
+pandabot.start()
+run()
