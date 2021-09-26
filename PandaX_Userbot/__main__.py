@@ -17,7 +17,7 @@ from telethon.errors.rpcerrorlist import (
     PhoneNumberInvalidError,
 )
 
-from PandaX_Userbot.PandaBase.session import bot as pandabot
+from PandaX_Userbot.session import bot as pandabot
 from MusicBot.services.callsmusic import run
 
 from . import *
