@@ -33,25 +33,25 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
 
-from GeezProject.config import ARQ_API_KEY
-from GeezProject.config import BOT_NAME as bn
-from GeezProject.config import DURATION_LIMIT
-from GeezProject.config import UPDATES_CHANNEL as updateschannel
-from GeezProject.config import que
-from GeezProject.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,BOT_USERNAME, OWNER
-from GeezProject.function.admins import admins as a
-from GeezProject.helpers.admins import get_administrators
-from GeezProject.helpers.channelmusic import get_chat_id
-from GeezProject.helpers.errors import DurationLimitError
-from GeezProject.helpers.decorators import errors
-from GeezProject.helpers.decorators import authorized_users_only
-from GeezProject.helpers.filters import command, other_filters
-from GeezProject.helpers.gets import get_file_name
-from GeezProject.services.callsmusic import callsmusic
-from GeezProject.services.callsmusic.callsmusic import client as USER
-from GeezProject.services.converter.converter import convert
-from GeezProject.services.downloaders import youtube
-from GeezProject.services.queues import queues
+from MusicBot.config import ARQ_API_KEY
+from MusicBot.config import BOT_NAME as bn
+from MusicBot.config import DURATION_LIMIT
+from MusicBot.config import UPDATES_CHANNEL as updateschannel
+from MusicBot.config import que
+from MusicBot.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,BOT_USERNAME, OWNER
+from MusicBot.function.admins import admins as a
+from MusicBot.helpers.admins import get_administrators
+from MusicBot.helpers.channelmusic import get_chat_id
+from MusicBot.helpers.errors import DurationLimitError
+from MusicBot.helpers.decorators import errors
+from MusicBot.helpers.decorators import authorized_users_only
+from MusicBot.helpers.filters import command, other_filters
+from MusicBot.helpers.gets import get_file_name
+from MusicBot.services.callsmusic import callsmusic
+from MusicBot.services.callsmusic.callsmusic import client as USER
+from MusicBot.services.converter.converter import convert
+from MusicBot.services.downloaders import youtube
+from MusicBot.services.queues import queues
 
 aiohttpsession = aiohttp.ClientSession()
 chat_id = None
