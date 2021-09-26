@@ -9,6 +9,7 @@ class Var:
     API_HASH = config("API_HASH", default="eb06d4abfb49dc3eeb1aeb98ae0f581e")
     BOT_TOKEN = config("BOT_TOKEN", default=None)
     SESSION = config("SESSION", default=None)
+    SESSION_NAME = config("SESSION_NAME", default=None)
     REDIS_URI = config("REDIS_URI", default=None)
     REDIS_PASSWORD = config("REDIS_PASSWORD", default=None)
     LOG_CHANNEL = config("LOG_CHANNEL", default=0, cast=int)
