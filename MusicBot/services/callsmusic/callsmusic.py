@@ -18,7 +18,6 @@
 from pyrogram import Client
 from pytgcalls import PyTgCalls
 from PandaX_Userbot import client
-import config
 from MusicBot.services.queues import queues
 
 pytgcalls = PyTgCalls(client)
