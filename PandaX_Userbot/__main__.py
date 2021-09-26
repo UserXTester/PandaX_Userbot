@@ -117,6 +117,17 @@ if Hosted_On == "railway" and not udB.get("VCBOT"):
 
 plugin_loader(modules=modules, pmbot=pmbot, manager=manager, toxic=toxic)
 
+
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/PandaToxic_userBot music/"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.system("pip install -r music/panda.txt")
+
+
 def pycli():
     client.start()
     multiprocessing.Process(target=idle).start()
