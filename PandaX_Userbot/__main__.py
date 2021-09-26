@@ -93,6 +93,14 @@ except BaseException:
 
 petercordpanda_bot.loop.run_until_complete(autopilot())
 
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/UserbotPanda xpanda/"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.system("pip install -r xpanda/pandax.txt")
 
 
 try:
@@ -116,16 +124,6 @@ if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
 plugin_loader(modules=modules, pmbot=pmbot, manager=manager, toxic=toxic)
-
-try:
-    os.system(
-        "git clone https://github.com/ilhammansiz/UserbotPanda xpanda/"
-    )
-except BaseException:
-    pass
-LOGS.info("Installing packages for modules")
-os.system("pip install -r xpanda/pandax.txt")
-
 plugin_loader(vcbot=vcbot)
 
 
