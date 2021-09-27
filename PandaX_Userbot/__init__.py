@@ -11,7 +11,7 @@ MusicPanda = vc_musicbot(udB, petercordpanda_bot)
 client = vc_bot(udB)
 
 if not udB.get("CHANNEL_PANDA"):
-    udB.set("CHANNEL_PANDA", "")
+    udB.set("CHANNEL_PANDA", "@pluginspandabot")
 
 
 if not udB.get("HNDLR"):
