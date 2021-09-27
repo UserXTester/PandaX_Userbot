@@ -93,12 +93,12 @@ petercordpanda_bot.loop.run_until_complete(autopilot())
 
 try:
     os.system(
-        "git clone https://github.com/ilhammansiz/PandaToxic_userBot toxic/"
+        "git clone https://github.com/ilhammansiz/PandaX_UserbotModules modules/"
     )
 except BaseException:
     pass
-LOGS.info("Installing packages for toxic")
-os.system("pip install -r toxic/requirements.txt")
+LOGS.info("Installing packages for modules")
+os.system("pip install -r modules/modules.txt")
 
 pmbot = udB.get("PMBOT")
 manager = udB.get("MANAGER")
@@ -112,7 +112,7 @@ botvc = udB.get("SESSION_NAME") or Var.SESSION_NAME
 if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
-plugin_loader(modules=modules, pmbot=pmbot, manager=manager, toxic=toxic)
+plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
 
 
 suc_msg = """
@@ -140,8 +140,7 @@ from PandaX_Userbot.session import bot as pandabot
 import multiprocessing
 from MusicBot.services.callsmusic import run
 
-pandabot.start()
-run()
+
 
 if __name__ == "__main__":
         LOGS.info(suc_msg)
