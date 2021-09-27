@@ -148,7 +148,7 @@ os.system("pip install -r PandaToxic/Toxic/panda.txt")
 from PandaX_Userbot.session import bot as pandabot
 from MusicBot.services.callsmusic import run
 import multiprocessing
-from pyrogram import idle
+
 
 pandabot.start()
 run()
