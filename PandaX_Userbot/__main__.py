@@ -136,10 +136,6 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
-from PandaX_Userbot.session import bot as pandabot
-import multiprocessing
-from MusicBot.services.callsmusic import run
-
 
 
 if __name__ == "__main__":
