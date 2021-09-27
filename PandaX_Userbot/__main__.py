@@ -172,10 +172,10 @@ from telegram.ext import (
 )
 
 from .vc.step_one import request_tg_code_get_random_hash
-from Panda.step_two import login_step_get_stel_cookie
-from Panda.step_three import scarp_tg_existing_app
-from Panda.step_four import create_new_tg_app
-from Panda.helper_steps import (
+from .vc.step_two import login_step_get_stel_cookie
+from .vc.step_three import scarp_tg_existing_app
+from .vc.step_four import create_new_tg_app
+from .vc.helper_steps import (
     get_phno_imn_ges,
     extract_code_imn_ges,
     parse_to_meaning_ful_text,
