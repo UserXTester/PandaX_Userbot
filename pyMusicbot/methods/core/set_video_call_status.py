@@ -1,6 +1,6 @@
 from asyncio.log import logger
 
-from pytgcalls.scaffold import Scaffold
+from pyMusicbot.scaffold import Scaffold
 
 
 class SetVideoCallStatus(Scaffold):
