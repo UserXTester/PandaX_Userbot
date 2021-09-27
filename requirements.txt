@@ -1,4 +1,4 @@
-
+Pyrogram==1.2.9
 pytz
 https://github.com/ilhammansiz/Telethon/archive/Crunch.zip
 redis>=3.3.10
@@ -69,6 +69,5 @@ python-arq
 future
 wget
 search_engine_parser
-tgcalls==3.0.0.dev4
 apscheduler
-pytgcalls==2.1.0
+
