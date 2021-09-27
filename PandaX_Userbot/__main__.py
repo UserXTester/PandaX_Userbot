@@ -150,19 +150,9 @@ from MusicBot.services.callsmusic import run
 import multiprocessing
 from pyrogram import idle
 
-def pycli():
-    pandabot.start()
-    multiprocessing.Process(target=idle).start()
-    run()
-
-
+pandabot.start()
+run()
 
 if __name__ == "__main__":
-    if botvc:
-        if pandabot and run:
-            multiprocessing.Process(target=pycli).start()
-        LOGS.info(suc_msg)
-        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
-    else:
         LOGS.info(suc_msg)
         petercordpanda_bot.run_until_disconnected()
