@@ -136,20 +136,6 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
-try:
-    os.system(
-        "git clone https://github.com/ilhammansiz/PandaToxic_userBot toxic/"
-    )
-except BaseException:
-    pass
-LOGS.info("Installing packages for toxic")
-os.system("pip install -r toxic/requirements.txt")
-
-from PandaX_Userbot.session import bot as pandabot
-import multiprocessing
-
-
-pandabot.start()
 
 
 if __name__ == "__main__":
