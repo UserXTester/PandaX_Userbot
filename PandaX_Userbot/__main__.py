@@ -105,6 +105,8 @@ manager = udB.get("MANAGER")
 modules = udB.get("MODULES") or Var.MODULES
 toxic = udB.get("TOXIC") or Var.TOXIC
 vcbot = udB.get("VCBOT") or Var.VCBOT
+botvc = udB.get("SESSION_NAME") or Var.SESSION_NAME
+
 
 # Railway dont allow Music Bots
 if Hosted_On == "railway" and not udB.get("VCBOT"):
@@ -145,6 +147,8 @@ os.system("pip install -r PandaToxic/Toxic/panda.txt")
 
 from PandaX_Userbot.session import bot as pandabot
 from MusicBot.services.callsmusic import run
+import multiprocessing
+from pyrogram import idle
 
 def pycli():
     pandabot.start()
