@@ -146,12 +146,11 @@ LOGS.info("Installing packages for toxic")
 os.system("pip install -r toxic/requirements.txt")
 
 from PandaX_Userbot.session import bot as pandabot
-from MusicBot.services.callsmusic import run
 import multiprocessing
 
 
 pandabot.start()
-run()
+
 
 if __name__ == "__main__":
         LOGS.info(suc_msg)
