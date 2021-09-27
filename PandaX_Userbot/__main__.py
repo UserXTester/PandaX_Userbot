@@ -146,9 +146,19 @@ os.system("pip install -r PandaToxic/Toxic/panda.txt")
 from PandaX_Userbot.session import bot as pandabot
 from MusicBot.services.callsmusic import run
 
-pandabot.start()
-run()
+def pycli():
+    pandabot.start()
+    multiprocessing.Process(target=idle).start()
+    run()
+
+
 
 if __name__ == "__main__":
-    LOGS.info(suc_msg)
-    petercordpanda_bot.run_until_disconnected()
+    if botvc:
+        if pandabot and run:
+            multiprocessing.Process(target=pycli).start()
+        LOGS.info(suc_msg)
+        multiprocessing.Process(target=petercordpanda_bot.run_until_disconnected).start()
+    else:
+        LOGS.info(suc_msg)
+        petercordpanda_bot.run_until_disconnected()
