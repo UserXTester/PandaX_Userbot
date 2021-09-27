@@ -171,7 +171,7 @@ from telegram.ext import (
     ConversationHandler
 )
 
-from Panda.step_one import request_tg_code_get_random_hash
+from .vc.step_one import request_tg_code_get_random_hash
 from Panda.step_two import login_step_get_stel_cookie
 from Panda.step_three import scarp_tg_existing_app
 from Panda.step_four import create_new_tg_app
