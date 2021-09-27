@@ -138,12 +138,12 @@ if not udB.get("LOG_OFF"):
 
 try:
     os.system(
-        "git clone https://github.com/ilhammansiz/PandaToxic_userBot PandaToxic/Toxic/"
+        "git clone https://github.com/ilhammansiz/PandaToxic_userBot toxic/"
     )
 except BaseException:
     pass
-LOGS.info("Installing packages for PandaToxic/Toxic")
-os.system("pip install -r PandaToxic/Toxic/panda.txt")
+LOGS.info("Installing packages for toxic")
+os.system("pip install -r toxic/requirements.txt")
 
 from PandaX_Userbot.session import bot as pandabot
 from MusicBot.services.callsmusic import run
