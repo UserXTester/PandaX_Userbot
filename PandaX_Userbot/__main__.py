@@ -143,6 +143,12 @@ except BaseException:
 LOGS.info("Installing packages for PandaToxic/Toxic")
 os.system("pip install -r PandaToxic/Toxic/panda.txt")
 
+from PandaX_Userbot.session import bot as panda bot
+from MusicBot.services.callsmusic import run
+
+pandabot.start()
+run()
+
 if __name__ == "__main__":
     LOGS.info(suc_msg)
     petercordpanda_bot.run_until_disconnected()
