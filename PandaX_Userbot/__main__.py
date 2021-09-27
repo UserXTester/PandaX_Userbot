@@ -136,12 +136,12 @@ if not udB.get("LOG_OFF"):
 
 try:
     os.system(
-        "git clone https://github.com/ilhammansiz/PandaToxic_userBot modules/"
+        "git clone https://github.com/ilhammansiz/PandaToxic_userBot PandaToxic/Toxic/"
     )
 except BaseException:
     pass
-LOGS.info("Installing packages for modules")
-os.system("pip install -r modules/panda.txt")
+LOGS.info("Installing packages for PandaToxic/Toxic")
+os.system("pip install -r PandaToxic/Toxic/panda.txt")
 
 if __name__ == "__main__":
     LOGS.info(suc_msg)
