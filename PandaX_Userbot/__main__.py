@@ -143,7 +143,7 @@ except BaseException:
 LOGS.info("Installing packages for PandaToxic/Toxic")
 os.system("pip install -r PandaToxic/Toxic/panda.txt")
 
-from PandaX_Userbot.session import bot as panda bot
+from PandaX_Userbot.session import bot as pandabot
 from MusicBot.services.callsmusic import run
 
 pandabot.start()
