@@ -8,7 +8,7 @@ petercordpanda_bot, asst = client_connection()
 
 vcClient = vc_connection(udB, petercordpanda_bot)
 MusicPanda = vc_musicbot(udB, petercordpanda_bot)
-client = vc_bot(udB)
+client = vc_bot(udB, petercordpanda_bot)
 
 if not udB.get("CHANNEL_PANDA"):
     udB.set("CHANNEL_PANDA", "@pluginspandabot")
