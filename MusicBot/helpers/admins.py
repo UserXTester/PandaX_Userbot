@@ -17,13 +17,13 @@
 
 from typing import List
 
-from pyrogram.types import Chat
+from telethon.tl.custom import Message
 
 from MusicBot.function.admins import get as gett
 from MusicBot.function.admins import set
 
 
-async def get_administrators(chat: Chat) -> List[int]:
+async def get_administrators(chat: Message) -> List[int]:
     get = gett(chat.id)
 
     if get:
