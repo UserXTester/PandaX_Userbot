@@ -4,9 +4,6 @@ from PandaX_Userbot.Panda.database import Var
 from MusicBot.config import BG_IMAGE 
 from MusicBot.services.callsmusic import run
 
-response = requests.get(BG_IMAGE)
-with open("./etc/foreground.png", "wb") as file:
-    file.write(response.content)
 pandabot = Bot(
     ":memory:",
     Var.API_ID,
