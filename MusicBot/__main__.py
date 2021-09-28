@@ -2,7 +2,6 @@ import requests
 from pyrogram import Client as Bot
 from PandaX_Userbot.Panda.database import Var
 from MusicBot.config import BG_IMAGE 
-from MusicBot.services.callsmusic import run
 
 pandabot = Bot(
     ":memory:",
