@@ -5,7 +5,7 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-from . import *
+from PandaX_v20 import *
 
 
 @ilhammansiz_cmd(pattern="dkick", type=["manager", "official"])
