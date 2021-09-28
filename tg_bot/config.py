@@ -27,7 +27,7 @@ class Config(object):
     TIGER_USERS = set(int(x) for x in os.environ.get("TIGER_USERS", "").split())
     
     SPAMMERS = set(int(x) for x in os.environ.get("SPAMMERS", "").split())
-    
+    DONATION_LINK = None
     # OPTIONAL
     #ID Seperation format [1,2,3,4]
     SUDO_USERS = "1593802955" # List of id's -  (not usernames) for users which have sudo access to the bot.
