@@ -136,19 +136,8 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
-try:
-    os.system(
-        "git clone https://github.com/ilhammansiz/PandaToxic_userBot music/"
-    )
-except BaseException:
-    pass
-LOGS.info("Installing packages for modules")
-os.system("pip install -r music/requirements.txt")
-
-from MusicBot.__main__ import pandabot
 
 
 if __name__ == "__main__":
-        pandabot.start()
         LOGS.info(suc_msg)
         petercordpanda_bot.run_until_disconnected()
