@@ -1,5 +1,5 @@
 try:
-    from tg_bot.modules.sql_helper import SESSION, BASE
+    from tg_bot.modules.sql import SESSION, BASE
 except ImportError:
     raise AttributeError
 from sqlalchemy import Column, String, UnicodeText
