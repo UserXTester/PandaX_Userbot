@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import CommandHandler, RegexHandler, MessageHandler
 
-import tg_bot import UB_BLACK_LIST_CHAT
+from tg_bot import UB_BLACK_LIST_CHAT
 from tg_bot import ALLOW_EXCL
 
 if ALLOW_EXCL:
