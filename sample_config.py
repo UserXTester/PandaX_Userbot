@@ -2,7 +2,6 @@ import os
 from translation import Translation
 from PandaX_Userbot import udB
 
-class Config:
     # get a token from @BotFather
     TG_BOT_TOKEN = udB.get("BOT_TOKEN")
     # required for running on Heroku
@@ -66,5 +65,3 @@ class Config:
     VFCN_RETURN_STATUS = "'compareFiles' returned '{ret_status}'."
 
 
-class Development(Config):
-    pass
