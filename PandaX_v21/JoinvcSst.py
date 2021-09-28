@@ -2,8 +2,8 @@
 from pytgcalls.exceptions import NotConnectedError
 from telethon import events
 
+from PandaX_Userbot import PandaBotX
 from . import *
-
 
 @PadaBotX.on(events.NewMessage(incoming=True, pattern="/joinvc"))
 async def join_(event):
