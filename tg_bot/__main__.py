@@ -13,7 +13,7 @@ from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, F
 from telegram.ext.dispatcher import run_async, DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
-from tg_bot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, CERT_PATH, PORT, LOGGER, \
+from tg_bot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, CERT_PATH, PORT, URL, LOGGER, \
     ALLOW_EXCL
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
@@ -26,30 +26,25 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 
 PM_START_TEXT = """
-**Hello {}, My Name is {}!** 
-I am an **SUPERB**  group management bot.
-You can find the list of available commands with /help.
-
+**Hello {}, NAMA SAYA ADALAH {}!** 
+Saya adalah **ROBOT**  group kalian loh.
+Ketik perintah /help.
 """
 
 HELP_STRINGS = """
-
-Hello! my name *{}*.
-
-*Main* commands available:
- - /start: start the bot
- - /help: PM's you this message.
- - /help <module name>: PM's you info about that module.
+Hello! Nama saya *{}*.
+**Main* commands available:
+ - /start: start untuk bot
+ - /help: PM adalah Anda pesan ini
+ - /help <module name>: Menampilkan module.
  - /settings:
-   - in PM: will send you your settings for all supported modules.
-   - in a group: will redirect you to pm, with all that chat's settings.
-
-
+   - di PM: akan mengirimkan pengaturan Anda untuk semua modul yang didukung.
+   - dalam grup: akan mengarahkan Anda ke pm, dengan semua pengaturan obrolan itu.
 {}
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-TECHNO_IMG = "https://telegra.ph/file/84b2017bc2f3c90f2e61c.jpg"
+TECHNO_IMG = "https://telegra.ph/file/ae6156410d484fc975b09.jpg"
 IMPORTED = {}
 MIGRATEABLE = []
 HELPABLE = {}
@@ -139,18 +134,18 @@ def start(bot: Bot, update: Update, args: List[str]):
             update.effective_message.reply_photo(
                 TECHNO_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🤝HELP🤝",
+                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔶PERTOLONGAN🔶",
                                                                        callback_data="help_back".format(bot.username)),
-                                                                                   InlineKeyboardButton(text="🧑‍💻My Creator🧑‍💻",
-                                                                       url="t.me/teamishere")],
-                                                                                   [InlineKeyboardButton(text="ADD GRAND OFFICIAL TO YOUR GROUP",
+                                                                                   InlineKeyboardButton(text="📌INSTAGRAM📌",
+                                                                       url="https://www.instagram.com/imansiez77/")],
+                                                                                   [InlineKeyboardButton(text="ADD SAYA TO YOUR GROUP",
                                                                        url="t.me/{}?startgroup=true".format(bot.username)),
-                                                                                   InlineKeyboardButton(text="Source Code",
-                                                                       url="https://github.com/legendx22/GRANDROBOT")
+                                                                                   InlineKeyboardButton(text="REPO PETERCORD USERBOT",
+                                                                       url="https://github.com/ilham77mansiz/-PETERCORD-")
                                                                                  ]]))
-
+                                                                                 
     else:
-        update.effective_message.reply_text("Yuss, I am Already ONline")
+        update.effective_message.reply_text("Hi saya ONline")
 
 
 def send_start(bot, update):
@@ -384,7 +379,7 @@ def settings_button(bot: Bot, update: Update):
             chat_id = prev_match.group(1)
             curr_page = int(prev_match.group(2))
             chat = bot.get_chat(chat_id)
-            query.message.reply_text("Hi there! There are quite a few settings for {} - go ahead and pick what "
+            query.message.reply_text("Halo yang disana! Ada beberapa pengaturan untuk {} - lanjutkan dan pilih apa "
                                      "you're interested in.".format(chat.title),
                                      reply_markup=InlineKeyboardMarkup(
                                          paginate_modules(curr_page - 1, CHAT_SETTINGS, "stngs",
@@ -394,7 +389,7 @@ def settings_button(bot: Bot, update: Update):
             chat_id = next_match.group(1)
             next_page = int(next_match.group(2))
             chat = bot.get_chat(chat_id)
-            query.message.reply_text("Hi there! There are quite a few settings for {} - go ahead and pick what "
+            query.message.reply_text("Halo yang disana! Ada beberapa pengaturan untuk {} - lanjutkan dan pilih apa "
                                      "you're interested in.".format(chat.title),
                                      reply_markup=InlineKeyboardMarkup(
                                          paginate_modules(next_page + 1, CHAT_SETTINGS, "stngs",
@@ -440,7 +435,7 @@ def get_settings(bot: Bot, update: Update):
                                                       url="t.me/{}?start=stngs_{}".format(
                                                           bot.username, chat.id))]]))
         else:
-            text = "Click here to check your settings."
+            text = "Klik untuk setting."
 
     else:
         send_settings(chat.id, user.id, True)
@@ -496,9 +491,20 @@ def main():
     dispatcher.add_handler(IMDB_SEARCHDATA_HANDLER)
     # dispatcher.add_error_handler(error_callback)
 
-    
+    if WEBHOOK:
+        LOGGER.info("Using webhooks.")
+        updater.start_webhook(listen="127.0.0.1",
+                              port=PORT,
+                              url_path=TOKEN)
 
+        if CERT_PATH:
+            updater.bot.set_webhook(url=URL + TOKEN,
+                                    certificate=open(CERT_PATH, 'rb'))
+        else:
+            updater.bot.set_webhook(url=URL + TOKEN)
 
-if __name__ == '__main__':
-    LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
-    main()
+    else:
+        LOGGER.info("Using long polling.")
+        updater.start_polling(timeout=15, read_latency=4)
+
+    updater.idle()
