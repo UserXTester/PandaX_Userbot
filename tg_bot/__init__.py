@@ -22,6 +22,8 @@ ENV = bool(os.environ.get('ENV', False))
 
 if ENV:
     TOKEN = udB.get("BOT_TOKEN")
+    UB_BLACK_LIST_CHAT = os.environ.get("UB_BLACK_LIST_CHAT", None)
+
 
     try:
         OWNER_ID = OWNER_ID
