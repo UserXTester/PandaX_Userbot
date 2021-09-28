@@ -27,7 +27,6 @@ from pyrogram.raw.types import MessageService
 from pyrogram.raw.types import PeerChat
 from pyrogram.raw.types import UpdateChannel
 from pyrogram.raw.types import UpdateGroupCall
-from pyrogram.raw.types import UpdateGroupCallConnection
 from pyrogram.raw.types import UpdateNewChannelMessage
 from pyrogram.raw.types import UpdateNewMessage
 from pyrogram.raw.types import Updates
@@ -234,7 +233,7 @@ class PyrogramClient(BridgedClient):
                 ),
             )
             for update in result.updates:
-                if isinstance(update, UpdateGroupCallConnection):
+                if isinstance(update, UpdateNewChannelMessage):
                     transport = json.loads(update.params.data)[
                         'transport'
                     ]
