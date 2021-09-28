@@ -3,7 +3,7 @@ import os
 import sys
 import time
 import telegram.ext as tg
-
+from PandaX_v20 import *
 StartTime = time.time()
 
 # enable logging
@@ -21,16 +21,15 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 ENV = bool(os.environ.get('ENV', False))
 
 if ENV:
-    TOKEN = os.environ.get('TOKEN', None)
+    TOKEN = udB.get("BOT_TOKEN")
 
     try:
-        OWNER_ID = int(os.environ.get('OWNER_ID', None))
+        OWNER_ID = OWNER_ID
     except ValueError:
         raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
     MESSAGE_DUMP = os.environ.get('MESSAGE_DUMP', None)
-    OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
-
+    OWNER_USERNAME = OWNER_NAME
     try:
         SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
         DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
@@ -82,7 +81,7 @@ if ENV:
 
 else:
     from tg_bot.config import Development as Config
-    TOKEN = Config.API_KEY
+    TOKEN = Config.API_ID
 
     try:
         OWNER_ID = int(Config.OWNER_ID)
