@@ -17,10 +17,12 @@
 
 from typing import Union
 
-from pyrogram.types import Audio, Message, Voice
+from telethon.event import Album
+from telethon.tl.core import TLMessage
 
 
-def get_url(message_1: Message) -> Union[str, None]:
+
+def get_url(message_1: TLMessage) -> Union[str, None]:
     messages = [message_1]
 
     if message_1.reply_to_message:
@@ -47,5 +49,5 @@ def get_url(message_1: Message) -> Union[str, None]:
     return text[offset : offset + length]
 
 
-def get_file_name(audio: Union[Audio, Voice]):
-    return f'{audio.file_unique_id}.{audio.file_name.split(".")[-1] if not isinstance(audio, Voice) else "ogg"}'
+def get_file_name(audio: Union[Album]):
+    return f'{audio.file_unique_id}.{audio.file_name.split(".")[-1] if not isinstance(audio, Album) else "ogg"}'
