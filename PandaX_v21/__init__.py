@@ -371,7 +371,7 @@ async def file_download(event, reply, fast_download=True):
     title = reply.file.title or reply.file.name or str(time()) + ".mp4"
     if fast_download:
         dl = await downloader(
-            "PandaX_v21/downloads/" + reply.file.name,
+            "PandaVersion/downloads/" + reply.file.name,
             reply.media.document,
             event,
             time(),
@@ -382,7 +382,7 @@ async def file_download(event, reply, fast_download=True):
         dl = await reply.download_media()
     duration = time_formatter(reply.file.duration * 1000) if reply.file.duration else "🤷‍♂️"
     if reply.document.thumbs:
-        thumb = await reply.download_media("PandaX_v21/downloads/", thumb=-1)
+        thumb = await reply.download_media("PandaVersion/downloads/", thumb=-1)
     return dl, thumb, title, reply.message_link, duration
 
 
