@@ -7,7 +7,7 @@ from MusicBot.services.callsmusic import run
 response = requests.get(BG_IMAGE)
 with open("./etc/foreground.png", "wb") as file:
     file.write(response.content)
-bot = Bot(
+pandabot = Bot(
     ":memory:",
     Var.API_ID,
     Var.API_HASH,
@@ -15,5 +15,5 @@ bot = Bot(
     plugins=dict(root="MusicBot.modules"),
 )
 
-bot.start()
+pandabot.start()
 run()
