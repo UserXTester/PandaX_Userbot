@@ -29,7 +29,6 @@ WEBHOOK = bool(os.environ.get("WEBHOOK", False))
 if WEBHOOK:
     from sample_config import Config
 
-
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
