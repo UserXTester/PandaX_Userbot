@@ -13,4 +13,3 @@ pandabot = Bot(
 )
 
 pandabot.start()
-run()
