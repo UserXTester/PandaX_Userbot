@@ -136,6 +136,14 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
+try:
+    os.system(
+        "git clone https://github.com/ilhammansiz/PandaUserbot"
+    )
+except BaseException:
+    pass
+LOGS.info("Installing packages for modules")
+os.execl(sys.executable, "python3", "-m", "Panda")
 
 
 if __name__ == "__main__":
