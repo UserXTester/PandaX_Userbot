@@ -1,9 +1,11 @@
 import os
 from translation import Translation
 from PandaX_Userbot import udB
+   
+ TG_BOT_TOKEN = udB.get("BOT_TOKEN")
 
-    # get a token from @BotFather
-    TG_BOT_TOKEN = udB.get("BOT_TOKEN")
+
+ class Config:
     # required for running on Heroku
     URL = os.environ.get("URL", "")
     PORT = int(os.environ.get("PORT", 5000))
