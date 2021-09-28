@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 from tg_bot import DB_URI
 
+BASE = declarative_base()
 
 def start() -> scoped_session:
     engine = create_engine(DB_URI, client_encoding="utf8")
@@ -12,5 +13,5 @@ def start() -> scoped_session:
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 
-BASE = declarative_base()
+
 SESSION = start()
