@@ -26,7 +26,7 @@ async def _(e):
     if m:
         if e.pattern_match.group(1):
             if "fast" in e.pattern_match.group(1) or "soft" in e.pattern_match.group(1):
-                await bash("git pull -f && pip3 install -r PandaVersion/Panda/requirements.txt")
+                await bash("git pull -f && pip3 install -r requirements.txt")
                 call_back()
                 await xx.edit("`Fast Soft Updating...`")
                 execl(sys.executable, "python3", "-m", "PandaX_Userbot")
