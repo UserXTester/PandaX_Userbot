@@ -1,5 +1,5 @@
 from telethon import Button, custom
-
+from PandaX_v20 import *
 from PandaX_Userbot import *
 from PandaX_Userbot.Panda.database import Var
 from PandaX_Userbot.functions.all import *
