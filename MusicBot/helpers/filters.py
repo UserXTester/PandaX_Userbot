@@ -17,7 +17,7 @@
 
 from typing import List, Union
 
-from pyrogram import filters
+from telethon import events
 
 from MusicBot.config import COMMAND_PREFIXES
 
@@ -28,4 +28,4 @@ other_filters2 = (
 
 
 def command(commands: Union[str, List[str]]):
-    return filters.command(commands, COMMAND_PREFIXES)
+    return events.command(commands, COMMAND_PREFIXES)
