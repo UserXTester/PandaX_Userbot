@@ -15,7 +15,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from pyrogram import Client
+from telethon import TelegramClient
+
 from pyMusicbot import PyTgCalls
 
 from PandaX_Userbot import client
