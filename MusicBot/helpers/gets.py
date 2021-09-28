@@ -50,4 +50,4 @@ def get_url(message_1: TLMessage) -> Union[str, None]:
 
 
 def get_file_name(audio: Union[Album]):
-    return f'{audio.file_unique_id}.{audio.file_name.split(".")[-1] if not isinstance(audio, Voice) else "ogg"}'
+    return f'{audio.file_unique_id}.{audio.file_name.split(".")[-1] if not isinstance(audio, Album) else "ogg"}'
