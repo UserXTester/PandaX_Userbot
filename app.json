@@ -20,11 +20,6 @@
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
     },
-    "URL": {
-         "description": "The Heroku App URL :-  https://<appname>.herokuapp.com/",
-         "required": true,
-         "value": ""
-    },
     "SESSION": {
       "description": "Ambil string session TELETHON KETIKA MENGAMBIL KETIK T JANGAN P",
       "value": "",
