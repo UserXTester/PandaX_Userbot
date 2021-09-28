@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import CommandHandler, RegexHandler, MessageHandler
 
-from tg_bot import UB_BLACK_LIST_CHAT
+import tg_bot.modules.sql.blacklistusers_sql as sql
 from tg_bot import ALLOW_EXCL
 
 if ALLOW_EXCL:
@@ -23,7 +23,7 @@ class CustomCommandHandler(CommandHandler):
         if isinstance(update, Update) and (update.message or update.edited_message and self.allow_edited):
             message = update.message or update.edited_message
 
-            if UB_BLACK_LIST_CHAT(update.effective_user.id):
+            if sql.is_user_blacklisted(update.effective_user.id):
                 return False
 
             if message.text and len(message.text) > 1:
