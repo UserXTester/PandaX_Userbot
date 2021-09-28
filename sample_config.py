@@ -1,8 +1,8 @@
 import os
 from translation import Translation
-from PandaX_Userbot import udB
+
    
- TG_BOT_TOKEN = udB.get("BOT_TOKEN")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 
 
  class Config:
