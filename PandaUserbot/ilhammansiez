@@ -89,6 +89,7 @@ _set_bot () {
                          ┗━━━━━━━━━━━━━━━━━━━ 
     "
     python3 -m PandaX_Userbot
+    python3 -m tg_bot
 }
 
 _set_bot
