@@ -17,7 +17,7 @@
 
 from typing import Callable
 
-from pyrogram import Client
+from telethon import TelegramClient
 from pyrogram.types import Message
 
 from MusicBot.config import SUDO_USERS
@@ -25,7 +25,7 @@ from MusicBot.helpers.admins import get_administrators
 
 
 def errors(func: Callable) -> Callable:
-    async def decorator(client: Client, message: Message):
+    async def decorator(client: TelegramClient, message: Message):
         try:
             return await func(client, message)
         except Exception as e:
