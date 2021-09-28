@@ -1,8 +1,9 @@
-import threading
-
+try:
+    from tg_bot.modules.sql_helper import SESSION, BASE
+except ImportError:
+    raise AttributeError
 from sqlalchemy import Column, String, UnicodeText
-
-from tg_bot.modules.sql import BASE, SESSION
+import threading
 
 
 class BlacklistUsers(BASE):
