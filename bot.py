@@ -194,10 +194,13 @@ def go_heck_verification(update, context):
     os.remove(pokk)
 
 
+from sample_config import TG_BOT_TOKEN
+
+
 def main():
     """ Initial Entry Point """
     # Create the Updater and pass it your bot's token.
-    updater = Updater(Config.TG_BOT_TOKEN)
+    updater = Updater(TG_BOT_TOKEN)
 
     # Get the dispatcher to register handlers
     tg_bot_dis_patcher = updater.dispatcher
@@ -235,10 +238,10 @@ def main():
         updater.start_webhook(
             listen="0.0.0.0",
             port=Config.PORT,
-            url_path=Config.TG_BOT_TOKEN
+            url_path=TG_BOT_TOKEN
         )
         # https://t.me/MarieOT/22915
-        updater.bot.set_webhook(url=Config.URL + Config.TG_BOT_TOKEN)
+        updater.bot.set_webhook(url=Config.URL + TG_BOT_TOKEN)
     else:
         updater.start_polling()
 
