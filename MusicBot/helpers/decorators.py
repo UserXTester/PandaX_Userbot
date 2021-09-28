@@ -18,14 +18,15 @@
 from typing import Callable
 
 from telethon import TelegramClient
-from pyrogram.types import Message
+from telethon.tl.core import TLMessage
+
 
 from MusicBot.config import SUDO_USERS
 from MusicBot.helpers.admins import get_administrators
 
 
 def errors(func: Callable) -> Callable:
-    async def decorator(client: TelegramClient, message: Message):
+    async def decorator(client: TelegramClient, message: TLMessage):
         try:
             return await func(client, message)
         except Exception as e:
@@ -35,7 +36,7 @@ def errors(func: Callable) -> Callable:
 
 
 def authorized_users_only(func: Callable) -> Callable:
-    async def decorator(client: Client, message: Message):
+    async def decorator(client: TelegramClient, message: TLMessage):
         if message.from_user.id in SUDO_USERS:
             return await func(client, message)
 
