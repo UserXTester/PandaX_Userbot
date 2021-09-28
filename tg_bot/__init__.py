@@ -21,7 +21,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 ENV = bool(os.environ.get('ENV', False))
 
 if ENV:
-    TOKEN = os.environ.get('TOKEN', None)
+    TOKEN = udB.get("BOT_TOKEN")
 
     try:
         OWNER_ID = OWNER_ID
