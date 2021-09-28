@@ -185,7 +185,7 @@ def vc_bot(udB, petercordpanda_bot):
         try:
             client = TelegramClient(
                 StringSession(SESSION_NAME), api_id=Var.API_ID, api_hash=Var.API_HASH
-            ).start()
+            ).start(bot_token=(udB.get("BOT_TOKEN"))
             return client
         except (AuthKeyDuplicatedError, PhoneNumberInvalidError, EOFError):
             LOGS.info("Your SESSION_NAME Expired. Deleting SESSION_NAME from redis...")
