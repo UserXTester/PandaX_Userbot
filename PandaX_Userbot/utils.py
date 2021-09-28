@@ -443,7 +443,7 @@ def load_vc(plugin_name):
 
 def load_vcbot(plugin_name):
     if not plugin_name.startswith("__"):
-        from . import HNDLR, LOGS, asst, udB, petercordpanda_bot, MusicPanda
+        from . import HNDLR, LOGS, asst, udB, petercordpanda_bot, PandaBotX
         from .Panda.core import VC_HELP
 
         path = Path(f"PandaMusicBot/{plugin_name}.py")
@@ -457,7 +457,7 @@ def load_vcbot(plugin_name):
         mod.Redis = udB.get
         mod.udB = udB
         mod.asst = asst
-        mod.MusicPanda = MusicPanda
+        mod.PandaBotX = PandaBotX
         mod.LOGS = LOGS
         spec.loader.exec_module(mod)
         modules["PandaMusicBot." + plugin_name] = mod
