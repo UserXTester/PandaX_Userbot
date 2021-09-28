@@ -24,7 +24,9 @@ class Config(object):
     NO_LOAD = ['translation', 'rss']   
     WEBHOOK = False
     URL = None
-
+     
+    SPAMMERS = set(int(x) for x in os.environ.get("SPAMMERS", "").split())
+    
     # OPTIONAL
     #ID Seperation format [1,2,3,4]
     SUDO_USERS = "1593802955" # List of id's -  (not usernames) for users which have sudo access to the bot.
