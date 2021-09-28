@@ -4,6 +4,11 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 from tg_bot import DB_URI
 
+import logging
+
+LOGS = logging.getLogger(__name__)
+
+
 def start() -> scoped_session:
     database_url = (
         DB_URI.replace("postgres:", "postgresql:")
