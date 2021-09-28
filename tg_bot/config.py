@@ -24,7 +24,8 @@ class Config(object):
     NO_LOAD = ['translation', 'rss']   
     WEBHOOK = False
     URL = None
-     
+    TIGER_USERS = set(int(x) for x in os.environ.get("TIGER_USERS", "").split())
+    
     SPAMMERS = set(int(x) for x in os.environ.get("SPAMMERS", "").split())
     
     # OPTIONAL
