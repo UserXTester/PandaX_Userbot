@@ -5,7 +5,7 @@ from telethon import events
 from PandaX_Userbot import PandaBotX
 from . import *
 
-@PadaBotX.on(events.NewMessage(incoming=True, pattern="/joinvc"))
+@PandaBotX.on(events.NewMessage(incoming=True, pattern="/joinvc"))
 async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -23,7 +23,7 @@ async def join_(event):
 
 
 
-@PadaBotX.on(events.NewMessage(incoming=True, pattern="/leavevc"))
+@PandaBotX.on(events.NewMessage(incoming=True, pattern="/leavevc"))
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -44,7 +44,7 @@ async def leaver(event):
     await eor(event, "`Left the voice chat.`")
 
 
-@PadaBotX.on(events.NewMessage(incoming=True, pattern="/rejoin"))
+@PandaBotX.on(events.NewMessage(incoming=True, pattern="/rejoin"))
 async def rejoiner(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
