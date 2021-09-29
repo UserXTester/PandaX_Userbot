@@ -6,9 +6,9 @@ Tr = "id"
 @owner
 async def _(e):
     Translator()
-    if not event.is_private:
+    if not e.is_private:
         return
-    x = await event.get_reply_message()
+    x = await e.get_reply_message()
     if x is None:
         return await e.reply("**Beri saya kata atau balas agar saya dapat menerjemahkannya**")
     try:
