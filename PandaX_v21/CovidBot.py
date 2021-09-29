@@ -1,6 +1,11 @@
 
+from PandaX_Userbot import PandaBotX
+from . import *
 
-@register(outgoing=True, pattern="^.covid (.*)")
+from covid import Covid
+
+
+@PandaBotX.on(events.NewMessage(incoming=True, pattern="/covid"))
 async def corona(event):
     await event.edit("`Processing...`")
     country = event.pattern_match.group(1)
@@ -22,7 +27,7 @@ async def corona(event):
     await event.edit(f"`Corona Virus Info in {country}:`\n\n{output_text}")
 
 
-@register(outgoing=True, pattern="^.covid$")
+@PandaBotX.on(events.NewMessage(incoming=True, pattern="/covid"))
 async def corona(event):
     await event.edit("`Processing...`")
     country = "World"
