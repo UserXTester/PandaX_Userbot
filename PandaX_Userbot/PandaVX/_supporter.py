@@ -15,8 +15,8 @@ from ..Panda.database import Var
 from speedtest import Speedtest
 
 
-IG_ALIVE = "@imansiez77"
-GROUP_LINK = "@TeamSquadUserbotSupport"
+IG_ALIVE = "instagram.com/imansiez77"
+GROUP_LINK = "t.me/TeamSquadUserbotSupport"
 EMOJI_HELP = "🐼"
 REPO_NAME = "PandaToxic_Kentot"
 ALIVE_LOGO = udB.get("ALIVE_PIC")
