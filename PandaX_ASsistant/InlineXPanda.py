@@ -9,7 +9,6 @@ from re import findall
 
 import requests
 from bs4 import BeautifulSoup
-from orangefoxapi import OrangeFoxAPI
 from play_scraper import search
 from search_engine_parser import GoogleSearch, YahooSearch
 from telethon import Button
@@ -33,7 +32,7 @@ yeah = "https://telegra.ph/file/e3c67885e16a194937516.jpg"
 ps = "https://telegra.ph/file/de0b8d9c858c62fae3b6e.jpg"
 ultpic = "https://telegra.ph/file/0d025dc216d0ae5d36b07.jpg"
 
-ofox_api = OrangeFoxAPI()
+
 
 api1 = base64.b64decode("QUl6YVN5QXlEQnNZM1dSdEI1WVBDNmFCX3c4SkF5NlpkWE5jNkZV").decode(
     "ascii"
