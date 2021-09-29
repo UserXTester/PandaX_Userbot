@@ -6,15 +6,11 @@ Tr = "id"
 @owner
 async def _(e):
     Translator()
-    textx = await e.get_reply_message()
-    message = e.pattern_match.group(1)
-    if message:
-        pass
-    elif textx:
-        message = textx.text
-    else:
-        await e.reply("**Beri saya kata atau balas agar saya dapat menerjemahkannya**")
+    if not event.is_private:
         return
+    x = await event.get_reply_message()
+    if x is None:
+        return await e.reply("**Beri saya kata atau balas agar saya dapat menerjemahkannya**")
     try:
         reply_text = await getTranslate(deEmojify(message), dest=Tr)
     except ValueError:
