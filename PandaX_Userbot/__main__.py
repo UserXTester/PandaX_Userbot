@@ -136,7 +136,9 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
+from tg_bot.__main__ import main
 
 if __name__ == "__main__":
+        main()
         LOGS.info(suc_msg)
         petercordpanda_bot.run_until_disconnected()
