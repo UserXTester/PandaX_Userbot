@@ -478,7 +478,7 @@ def load_vcmusicbot(plugin_name):
     if plugin_name.startswith("__"):
         pass
     else:
-        from . import udB, petercordpanda_bot, Panda
+        from . import udB, petercordpanda_bot, Panda, User
 
         path = Path(f"BotMusic/{plugin_name}.py")
         name = "BotMusic.{}".format(plugin_name)
@@ -490,7 +490,6 @@ def load_vcmusicbot(plugin_name):
         mod.Redis = udB.get
         mod.udB = udB
         mod.Panda = Panda
-        mod.Panda = Panda
-        mod.Panda = Panda
+        mod.User = User
         spec.loader.exec_module(mod)
         modules["BotMusic" + plugin_name] = mod
