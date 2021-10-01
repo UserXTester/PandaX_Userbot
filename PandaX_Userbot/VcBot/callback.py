@@ -21,7 +21,7 @@ from config import Config
 from pyrogram import Client
 from helpers.log import LOGGER
 from pyrogram.errors import MessageNotModified
-from plugins.private import HOME_TEXT, HELP_TEXT
+from VcBot.private import HOME_TEXT, HELP_TEXT
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from helpers.utils import get_admins, get_buttons, get_playlist_str, mute, pause, restart_playout, resume, seek_file, shuffle_playlist, skip, unmute
 
