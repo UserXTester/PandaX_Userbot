@@ -21,6 +21,7 @@ import re
 import heroku3
 from dotenv import load_dotenv
 from helpers.log import LOGGER
+from PandaX_Userbot import udB
 
 load_dotenv()
 
@@ -44,8 +45,8 @@ class Config:
     ADMINS = [int(admin) for admin in (ADMIN).split()]
     API_ID = int(os.environ.get("API_ID", ""))
     API_HASH = os.environ.get("API_HASH", "")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")     
-    SESSION = os.environ.get("SESSION_STRING", "")
+    BOT_TOKEN = udB.get("BOT_TOKEN")     
+    SESSION_NAME = os.environ.get("SESSION_NAME", "")
     CHAT_ID = int(os.environ.get("CHAT_ID", ""))
 
     # Optional Variables
