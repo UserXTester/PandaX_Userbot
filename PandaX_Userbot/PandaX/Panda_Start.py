@@ -177,6 +177,21 @@ def vc_musicbot(udB, petercordpanda_bot):
     return petercordpanda_bot
 
 
+def vc_botmusic(udB):
+    SESSION_NAME = udB.get("SESSION_NAME") or Var.SESSION_NAME
+    if SESSION_NAME:
+        try:
+            Panda = Client(
+                ":memory:",
+                api_id=Var.API_ID,
+                api_hash=Var.API_HASH,
+                bot_token=udB.get("BOT_TOKEN"),
+            )
+            User = Client(SESSION_NAME, api_id=Var.API_ID, api_hash=Var.API_HASH)
+            return Panda, User
+        except Exception as er:
+            LOGS.info(str(er))
+    return None, None
 
 
 
