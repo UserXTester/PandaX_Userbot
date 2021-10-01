@@ -9,6 +9,7 @@
 import os
 import sys
 import traceback
+import asyncio
 
 from telethon.errors.rpcerrorlist import (
     AccessTokenExpiredError,
@@ -136,7 +137,9 @@ if plugin_channels:
 if not udB.get("LOG_OFF"):
     petercordpanda_bot.loop.run_until_complete(ready())
 
+from main import main
 
 if __name__ == "__main__":
         LOGS.info(suc_msg)
         petercordpanda_bot.run_until_disconnected()
+        asyncio.get_event_loop().run_until_complete(main())
