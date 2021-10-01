@@ -472,3 +472,25 @@ def load_vcbot(plugin_name):
             )
         except BaseException:
             pass
+
+
+def load_vcmusicbot(plugin_name):
+    if plugin_name.startswith("__"):
+        pass
+    else:
+        from . import udB, petercordpanda_bot, Panda
+
+        path = Path(f"BotMusic/{plugin_name}.py")
+        name = "BotMusic.{}".format(plugin_name)
+        spec = util.spec_from_file_location(name, path)
+        mod = util.module_from_spec(spec)
+        mod.petercordpanda_bot = petercordpanda_bot
+        mod.petercordpanda_bot = petercordpanda_bot
+        mod.bot = petercordpanda_bot
+        mod.Redis = udB.get
+        mod.udB = udB
+        mod.Panda = Panda
+        mod.Panda = Panda
+        mod.Panda = Panda
+        spec.loader.exec_module(mod)
+        modules["BotMusic" + plugin_name] = mod
