@@ -15,6 +15,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>
 """
+from PandaX_Userbot import User, Panda
 
 import asyncio
 from pyrogram import Client, filters
@@ -25,7 +26,7 @@ from config import SUPPORT_GROUP, UPDATES_CHANNEL
 from translations import START_TEXT, HELP_TEXT, ABOUT_TEXT
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
-@Client.on_message(filters.command(["start", f"start@{USERNAME}"]))
+@Panda.on_message(filters.command(["start", f"start@{USERNAME}"]))
 async def start(client, message):
    buttons = [
             [
@@ -52,7 +53,7 @@ async def start(client, message):
    else:
       await message.reply_text(f"**{BOT_NAME} is Alive !** ✨")
 
-@Client.on_callback_query()
+@Panda.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data=="help":
         buttons = [
