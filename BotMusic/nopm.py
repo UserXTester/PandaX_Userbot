@@ -20,13 +20,9 @@ import asyncio
 from pyrogram import Client, filters
 from helpers.bot_utils import USERNAME
 from pyrogram.errors import BotInlineDisabled
-from config import API_ID, API_HASH, SESSION_STRING, REPLY_MESSAGE
+from config import REPLY_MESSAGE
+from PandaX_Userbot import User, Panda
 
-User = Client(
-    SESSION_STRING,
-    API_ID,
-    API_HASH
-)
 
 
 @User.on_message(filters.private & filters.incoming & ~filters.bot & ~filters.service & ~filters.me & ~filters.edited & ~filters.chat([777000, 454000]))
