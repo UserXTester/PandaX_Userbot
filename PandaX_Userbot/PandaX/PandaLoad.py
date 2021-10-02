@@ -113,7 +113,7 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
 
     
     if botvc:
-        files = sorted(os.listdir("Bot_Music"))
+        files = sorted(os.listdir("BotMusic"))
         for plugin_name in files:
             if plugin_name.endswith(".py"):
                 load_vcmusicbot(plugin_name[:-3])
