@@ -47,11 +47,11 @@ class Config:
     API_HASH = os.environ.get("API_HASH", "")
     BOT_TOKEN = udB.get("BOT_TOKEN")     
     SESSION_NAME = os.environ.get("SESSION_NAME", "")
-    CHAT_ID = int(os.environ.get("CHAT_ID", ""))
+    CHAT_ID = udB.get("LOG_CHANNEL")
 
     # Optional Variables
 
-    LOG_GROUP=os.environ.get("LOG_GROUP", "")
+    LOG_GROUP=udB.get("LOG_CHANNEL")
     if LOG_GROUP:
         LOG_GROUP=int(LOG_GROUP)
     else:
