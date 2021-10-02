@@ -16,10 +16,11 @@ from PandaX_Userbot.utils import (
     load_panda,
     load_pmbot,
     load_vc,
+    load_vcmusicbot,
 )
 
 
-def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot=None, toxic=None):
+def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot=None, toxic=None, botvc=None):
     # for userbot
     files = sorted(os.listdir("PandaX_v20"))
     for plugin_name in files:
@@ -111,3 +112,11 @@ def plugin_loader(modules=None, pmbot=None, manager=None, vcbot=None, vcmusicbot
         LOGS.info("-" * 70)
 
     
+    if botvc:
+        files = sorted(os.listdir("Bot_Music"))
+        for plugin_name in files:
+            if plugin_name.endswith(".py"):
+                load_vcmusicbot(plugin_name[:-3])
+            if not plugin_name.startswith("_"):
+                LOGS.info(f"Panda - VC Bot - Installed - {plugin_name}.")
+        LOGS.info("-" * 70)
