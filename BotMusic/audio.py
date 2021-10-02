@@ -12,9 +12,11 @@ from config import AUDIO_CALL, VIDEO_CALL
 from MusicBot.video import ydl, group_call
 from helpers.decorators import authorized_users_only, sudo_users_only
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from PandaX_Userbot import User, Panda
 
 
-@Client.on_message(filters.command(["play", f"play@{USERNAME}"]) & filters.group & ~filters.edited)
+
+@Panda.on_message(filters.command(["play", f"play@{USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def play(client, m: Message):
     msg = await m.reply_text("🔄 `Processing ...`")
@@ -150,7 +152,7 @@ async def play(client, m: Message):
     )
 
 
-@Client.on_message(filters.command(["restart", f"restart@{USERNAME}"]))
+@Panda.on_message(filters.command(["restart", f"restart@{USERNAME}"]))
 @sudo_users_only
 async def restart(client, m: Message):
     k = await m.reply_text("🔄 `Restarting ...`")
