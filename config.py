@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 import os
 from os import getenv
 from dotenv import load_dotenv
-from PandaX_Iserbot import udB
+from PandaX_Userbot import udB
 
 load_dotenv()
 
