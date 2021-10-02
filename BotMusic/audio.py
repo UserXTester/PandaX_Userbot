@@ -9,7 +9,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from helpers.bot_utils import USERNAME
 from config import AUDIO_CALL, VIDEO_CALL
-from plugins.video import ydl, group_call
+from MusicBot.video import ydl, group_call
 from helpers.decorators import authorized_users_only, sudo_users_only
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
