@@ -22,6 +22,7 @@ from pyrogram import Client, errors
 from pyrogram.handlers import InlineQueryHandler
 from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent, InlineKeyboardButton, InlineKeyboardMarkup
 from youtubesearchpython import VideosSearch
+from PandaX_Userbot import User, Panda
 
 
 buttons = [
@@ -34,7 +35,7 @@ buttons = [
             ]
          ]
 
-@Client.on_inline_query()
+@Panda.on_inline_query()
 async def search(client, query):
     answers = []
     if query.query == "SAF_ONE":
