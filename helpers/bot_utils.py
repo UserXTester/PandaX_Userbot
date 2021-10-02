@@ -17,13 +17,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 """
 
 from pyrogram import Client
-from config import API_ID, API_HASH, BOT_TOKEN
+from config import API_ID, API_HASH
+from PandaX_Userbot import udB
 
 bot = Client(
     "VideoPlayer",
     API_ID,
     API_HASH,
-    bot_token=BOT_TOKEN
+    bot_token=udB.get("BOT_TOKEN")
 )
 bot.start()
 ok = bot.get_me()
