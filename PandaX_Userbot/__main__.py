@@ -113,7 +113,7 @@ botvc = udB.get("SESSION_NAME") or Var.SESSION_NAME
 if Hosted_On == "railway" and not udB.get("VCBOT"):
     vcbot = "False"
 
-plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic)
+plugin_loader(modules=modules, pmbot=pmbot, manager=manager, vcbot=vcbot, toxic=toxic, botvc=botvc)
 
 
 suc_msg = """
