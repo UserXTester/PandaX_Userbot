@@ -34,6 +34,7 @@ from config import AUDIO_CALL, VIDEO_CALL
 from youtubesearchpython import VideosSearch
 from helpers.decorators import authorized_users_only
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from PandaX_Userbot import User, Panda
 
 
 ydl_opts = {
@@ -45,7 +46,7 @@ ydl = YoutubeDL(ydl_opts)
 group_call = GroupCallFactory(User, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM).get_group_call()
 
 
-@Client.on_callback_query(filters.regex("pause_callback"))
+@Panda.on_callback_query(filters.regex("pause_callback"))
 async def pause_callbacc(client, CallbackQuery):
     chat_id = CallbackQuery.message.chat.id
     if chat_id in AUDIO_CALL:
@@ -60,7 +61,7 @@ async def pause_callbacc(client, CallbackQuery):
         CallbackQuery.id, text, show_alert=True
     )
 
-@Client.on_callback_query(filters.regex("resume_callback"))
+@Panda.on_callback_query(filters.regex("resume_callback"))
 async def resume_callbacc(client, CallbackQuery):
     chat_id = CallbackQuery.message.chat.id
     if chat_id in AUDIO_CALL:
@@ -76,7 +77,7 @@ async def resume_callbacc(client, CallbackQuery):
     )
 
 
-@Client.on_callback_query(filters.regex("end_callback"))
+@Panda.on_callback_query(filters.regex("end_callback"))
 async def end_callbacc(client, CallbackQuery):
     chat_id = CallbackQuery.message.chat.id
     if chat_id in AUDIO_CALL:
@@ -99,7 +100,7 @@ async def end_callbacc(client, CallbackQuery):
     await CallbackQuery.message.delete()
 
 
-@Client.on_message(filters.command(["stream", f"stream@{USERNAME}"]) & filters.group & ~filters.edited)
+@Panda.on_message(filters.command(["stream", f"stream@{USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def stream(client, m: Message):
     msg = await m.reply_text("🔄 `Processing ...`")
@@ -252,7 +253,7 @@ async def stream(client, m: Message):
     )
 
 
-@Client.on_message(filters.command(["pause", f"pause@{USERNAME}"]) & filters.group & ~filters.edited)
+@Panda.on_message(filters.command(["pause", f"pause@{USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def pause(_, m: Message):
     chat_id = m.chat.id
@@ -269,7 +270,7 @@ async def pause(_, m: Message):
         await m.reply_text("❌ **Noting Is Streaming !**")
 
 
-@Client.on_message(filters.command(["resume", f"resume@{USERNAME}"]) & filters.group & ~filters.edited)
+@Panda.on_message(filters.command(["resume", f"resume@{USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def resume(_, m: Message):
     chat_id = m.chat.id
@@ -286,7 +287,7 @@ async def resume(_, m: Message):
         await m.reply_text("❌ **Noting Is Streaming !**")
 
 
-@Client.on_message(filters.command(["endstream", f"endstream@{USERNAME}"]) & filters.group & ~filters.edited)
+@Panda.on_message(filters.command(["endstream", f"endstream@{USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def endstream(client, m: Message):
     msg = await m.reply_text("🔄 `Processing ...`")
